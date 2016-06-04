@@ -1,0 +1,10 @@
+pt-BR:
+  mongoid:
+    models:
+      user: Usuário
+
+    attributes:
+      user:
+        email: E-mail
+        password: Senha
+        remember_me: Relembre-me
