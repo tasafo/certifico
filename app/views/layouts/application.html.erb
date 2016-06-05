@@ -12,11 +12,12 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= link_to 'Login', new_user_session_path unless user_signed_in? %>
-
     <% if user_signed_in? %>
       <%= current_user.email %> |
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <%= link_to t('sign.out'), destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to t('sign.in'), new_user_session_path %> |
+      <%= link_to t('sign.up'), new_user_registration_path %>
     <% end %>
 
     <%= yield %>

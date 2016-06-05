@@ -8,3 +8,4 @@ pt-BR:
         email: E-mail
         password: Senha
         remember_me: Relembre-me
+        password_confirmation: Confirmação da senha
