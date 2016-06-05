@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hjpzk13xy
+  api_key: '363297923957772'
+  api_secret: GcpsSVedlYwLCBDbJxe74-Wys04
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hjpzk13xy
+  api_key: '363297923957772'
+  api_secret: GcpsSVedlYwLCBDbJxe74-Wys04
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hjpzk13xy
+  api_key: '363297923957772'
+  api_secret: GcpsSVedlYwLCBDbJxe74-Wys04
+  enhance_image_tag: true
+  static_image_support: false

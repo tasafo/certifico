@@ -7,6 +7,7 @@ gem 'rails-i18n'
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass', '~> 3.3.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -29,8 +30,14 @@ gem 'jbuilder', '~> 2.0'
 # gem 'capistrano-rails', group: :development
 
 gem 'mongoid', github: 'mongodb/mongoid'
+
 gem 'devise'
 gem 'devise-i18n'
+gem 'simple_form'
+
+gem 'cloudinary'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -41,9 +48,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'selenium-webdriver'
 end
 
 group :development do
