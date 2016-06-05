@@ -21,3 +21,6 @@
 
 # Ignore coverage folder
 coverage/
+
+# Ignore uploads folder
+public/uploads/

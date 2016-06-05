@@ -1,0 +1,8 @@
+pt-BR:
+  notice:
+    created: "%{model} foi criado com sucesso."
+    updated: "%{model} foi atualizado com sucesso."
+    destroyed: "%{model} foi destruído com sucesso."
+    not_saved:
+      one: "Não foi possível salvar %{resource}: 1 erro"
+      other: "Não foi possível salvar %{resource}: %{count} erros."

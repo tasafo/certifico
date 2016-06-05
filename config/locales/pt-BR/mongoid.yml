@@ -2,6 +2,7 @@ pt-BR:
   mongoid:
     models:
       user: Usuário
+      template: Modelo
 
     attributes:
       user:
@@ -9,3 +10,6 @@ pt-BR:
         password: Senha
         remember_me: Relembre-me
         password_confirmation: Confirmação da senha
+      template:
+        name: Nome
+        image: Imagem

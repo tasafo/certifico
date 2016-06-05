@@ -1,0 +1,13 @@
+pt-BR:
+  title:
+    models:
+      users: Usuários
+      templates: Modelos
+    action:
+      new: Novo
+      edit: Editar
+      editing: Editando
+      show: Exibir
+      destroy: Remover
+      are_you_sure: Você tem certeza?
+      back: Voltar

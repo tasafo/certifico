@@ -1,0 +1,5 @@
+<h1><%= t('title.action.new') + ' ' + t('mongoid.models.template') %></h1>
+
+<%= render 'form', template: @template %>
+
+<%= link_to t('title.action.back'), templates_path, class: 'btn btn-default' %>

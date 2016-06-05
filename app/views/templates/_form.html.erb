@@ -1,0 +1,8 @@
+<%= simple_form_for(@template) do |f| %>
+  <%= f.input :name %>
+
+  <%= f.input :image_cache, as: :hidden %>
+  <%= f.input :image, as: :file %>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

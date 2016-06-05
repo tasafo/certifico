@@ -1,0 +1,29 @@
+<!--<p id="notice"><%= notice %></p>-->
+
+<h1><%= t('title.models.templates') %></h1>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th><%= t('mongoid.attributes.template.name') %></th>
+      <th><%= t('mongoid.attributes.template.image') %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @templates.each do |template| %>
+      <tr>
+        <td><%= template.name %></td>
+        <td><%= cl_image_tag(template.image, width: 50, height: 50) %></td>
+        <td><%= link_to t('title.action.show'), template, class: 'btn btn-info' %></td>
+        <td><%= link_to t('title.action.edit'), edit_template_path(template), class: 'btn btn-success' %></td>
+        <td><%= link_to t('title.action.destroy'), template, class: 'btn btn-danger', method: :delete, data: { confirm: t('title.action.are_you_sure') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('title.action.new') + ' ' + t('mongoid.models.template'), new_template_path, class: 'btn btn-primary' %>
