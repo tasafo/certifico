@@ -6,4 +6,6 @@ class Category
   field :preposition, type: String, localize: true
 
   validates_presence_of :name, :preposition
+
+  has_many :certificates
 end

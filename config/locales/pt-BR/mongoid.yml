@@ -3,6 +3,7 @@ pt-BR:
     models:
       user: Usuário
       template: Modelo
+      certificate: Certificado
 
     attributes:
       user:
@@ -13,3 +14,13 @@ pt-BR:
       template:
         name: Nome
         image: Imagem
+      certificate:
+        title: Título
+        initial_date: Data de início
+        final_date: Data de término
+        workload: Carga horária
+        local: Local
+        site: Site
+        image: Imagem
+        template: Modelo
+        category: Categoria

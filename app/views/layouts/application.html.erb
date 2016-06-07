@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <title>certificar.me</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -12,12 +13,13 @@
       <div class="navbar-inner">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">certificar.me</a>
+            <a class="navbar-brand" href="/">certificar.me</a>
           </div>
           <ul class="nav navbar-nav">
           <% if user_signed_in? %>
             <li><%= link_to current_user.email, '#' %></li>
             <li><%= link_to t('menu.templates'), templates_path %></li>
+            <li><%= link_to t('menu.certificates'), certificates_path %></li>
             <li><%= link_to t('menu.sign.out'), destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to t('menu.sign.in'), new_user_session_path %></li>
@@ -51,7 +53,5 @@
         <p>Copyright 2016 <a href="https://nomadetec.com.br">Nômade Tecnologia</a></p>
       </div>
     </footer>
-
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

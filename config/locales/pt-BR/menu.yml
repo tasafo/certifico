@@ -1,6 +1,7 @@
 pt-BR:
   menu:
     templates: Modelos
+    certificates: Certificados
     sign:
       in: Entrar
       up: Inscrever-se

@@ -65,4 +65,6 @@ RSpec.configure do |config|
   end
 
   Mongoid.logger.level = Logger::INFO
+
+  I18n.locale = 'pt-BR'
 end

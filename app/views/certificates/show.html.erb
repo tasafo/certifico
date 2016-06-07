@@ -1,0 +1,36 @@
+<p>
+  <strong><%= t('mongoid.attributes.certificate.title') %>:</strong>
+  <%= @certificate.title %>
+</p>
+
+<p>
+  <strong><%= t('mongoid.attributes.certificate.initial_date') %>:</strong>
+  <%= @certificate.initial_date %>
+</p>
+
+<p>
+  <strong><%= t('mongoid.attributes.certificate.final_date') %>:</strong>
+  <%= @certificate.final_date %>
+</p>
+
+<p>
+  <strong><%= t('mongoid.attributes.certificate.workload') %>:</strong>
+  <%= @certificate.workload %>
+</p>
+
+<p>
+  <strong><%= t('mongoid.attributes.certificate.local') %>:</strong>
+  <%= @certificate.local %>
+</p>
+
+<p>
+  <strong><%= t('mongoid.attributes.certificate.site') %>:</strong>
+  <%= @certificate.site %>
+</p>
+
+<p>
+  <strong><%= t('mongoid.attributes.certificate.image') %>:</strong>
+  <%= cl_image_tag(@certificate.image, width: 50, height: 50) %>
+</p>
+
+<%= link_to t('title.action.edit'), edit_certificate_path(@certificate), class: 'btn btn-default' %> <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>

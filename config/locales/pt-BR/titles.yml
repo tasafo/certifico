@@ -3,6 +3,7 @@ pt-BR:
     models:
       users: Usuários
       templates: Modelos
+      certificates: Certificados
     action:
       new: Novo
       edit: Editar
