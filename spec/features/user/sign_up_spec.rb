@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Sign up' do
+describe 'Sign up', js: true do
   context 'with valid data' do
     before do
       visit root_path

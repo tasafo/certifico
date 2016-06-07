@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Sign out' do
+describe 'Sign out', js: true do
   context 'when logged in' do
     let!(:user) { create(:user, :paul) }
 
