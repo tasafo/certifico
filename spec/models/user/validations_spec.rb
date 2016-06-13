@@ -12,7 +12,7 @@ describe User, 'validations' do
   it 'requires e-mail' do
     user = User.create(email: nil)
 
-    expect(user.errors[:email].size).to eq(1)
+    expect(user.errors[:email].size).to eq(2)
   end
 
   it 'requires valid e-mail' do

@@ -1,0 +1,14 @@
+<%= simple_form_for @subscriber, url: url do |subscriber| %>
+  <%= subscriber.simple_fields_for :user do |user| %>
+    <div class="form-inputs">
+      <%= user.input :email %>
+      <%= user.input :name %>
+      <%= subscriber.input :profile_id, collection: @profiles %>
+      <%= subscriber.input :theme %>
+    </div>
+
+    <div class="form-actions">
+      <%= subscriber.button :submit, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% end %>

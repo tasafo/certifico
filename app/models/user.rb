@@ -1,12 +1,13 @@
 class User
   include Mongoid::Document
-  include Mongoid::Timestamps
+  include Mongoid::Timestamps::Short
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
+  field :name,               type: String, default: I18n.t('title.default.user.name')
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
@@ -37,4 +38,11 @@ class User
 
   has_many :templates
   has_many :certificates
+  has_many :subscribers
+
+  validates_presence_of :email, :name
+  validates_length_of :email, maximum: 100
+  validates_length_of :name, maximum: 100
+
+  index({ email: 1 }, { background: true })
 end

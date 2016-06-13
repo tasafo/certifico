@@ -1,0 +1,6 @@
+<h1><%= t('title.action.editing') + ' ' + t('mongoid.models.subscriber') %></h1>
+<h2><%= @certificate.category.name %>: <%= @certificate.title %></h2>
+
+<%= render 'form', url: certificate_subscriber_path(@certificate) %>
+
+<%= link_to t('title.action.back'), certificate_path(@certificate), class: 'btn btn-default' %>

@@ -1,0 +1,29 @@
+<h1><%= t('title.models.subscribers') %></h1>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th><%= t('mongoid.attributes.user.email') %></th>
+      <th><%= t('mongoid.attributes.user.name') %></th>
+      <th><%= t('mongoid.attributes.subscriber.profile_id') %></th>
+      <th><%= t('mongoid.attributes.subscriber.theme') %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @certificate.subscribers.each do |subscriber| %>
+      <tr>
+        <td><%= subscriber.user.name %></td>
+        <td><%= subscriber.user.email %></td>
+        <td><%= subscriber.profile.name %></td>
+        <td><%= subscriber.theme %></td>
+        <td><%= link_to t('title.action.edit'), edit_certificate_subscriber_path(@certificate, subscriber), class: 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('title.action.new2') + ' ' + t('mongoid.models.subscriber'), new_certificate_subscriber_path(@certificate), class: 'btn btn-primary' %>

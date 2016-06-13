@@ -4,9 +4,10 @@ pt-BR:
       users: Usuários
       templates: Modelos
       certificates: Certificados
-      subscribers: Inscritos
+      subscribers: Inscrições
     action:
       new: Novo
+      new2: Nova
       edit: Editar
       editing: Editando
       show: Exibir

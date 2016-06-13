@@ -1,11 +1,11 @@
 class Certificate
   include Mongoid::Document
-  include Mongoid::Timestamps
+  include Mongoid::Timestamps::Short
 
   field :title, type: String
   field :initial_date, type: Date
   field :final_date, type: Date
-  field :workload, type: Integer
+  field :workload, type: String
   field :local, type: String
   field :site, type: String
 
@@ -16,4 +16,5 @@ class Certificate
   belongs_to :user
   belongs_to :template
   belongs_to :category
+  has_many :subscribers, dependent: :restrict
 end
