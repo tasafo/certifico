@@ -1,0 +1,40 @@
+en:
+  mongoid:
+    models:
+      user: User
+      template: Template
+      certificate: Certificate
+      subscriber: Subscriber
+      category: Category
+      profile: Profile
+
+    attributes:
+      user:
+        name: Name
+        email: E-mail
+        password: Password
+        remember_me: Remember-me
+        password_confirmation: Password confirmation
+      template:
+        name: Name
+        image: Image
+      certificate:
+        title: Title
+        initial_date: Initial Date
+        final_date: Final Date
+        workload: Workload
+        local: Local
+        site: Site
+        image: Image
+        template: Template
+        category: Category
+      subscriber:
+        theme: Theme
+        user: User
+        profile_id: Profile
+        certificate_id: Certificate
+      category:
+        name: Name
+        preposition: Preposition
+      profile:
+        name: Name

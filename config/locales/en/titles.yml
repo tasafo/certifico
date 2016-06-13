@@ -1,0 +1,18 @@
+en:
+  title:
+    models:
+      users: Users
+      templates: Templates
+      certificates: Certificates
+      subscribers: Subscribers
+    action:
+      new: New
+      edit: Edit
+      editing: Editing
+      show: Show
+      destroy: Remove
+      are_you_sure: Are you sure?
+      back: Back
+    default:
+      user:
+        name: Your name

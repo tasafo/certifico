@@ -4,9 +4,13 @@ pt-BR:
       user: Usuário
       template: Modelo
       certificate: Certificado
+      subscriber: Inscrito
+      category: Categoria
+      profile: Perfil
 
     attributes:
       user:
+        name: Nome
         email: E-mail
         password: Senha
         remember_me: Relembre-me
@@ -24,3 +28,13 @@ pt-BR:
         image: Imagem
         template: Modelo
         category: Categoria
+      subscriber:
+        theme: Tema
+        user: Usuário
+        profile_id: Perfil
+        certificate_id: Certificado
+      category:
+        name: Nome
+        preposition: Preposição
+      profile:
+        name: Nome

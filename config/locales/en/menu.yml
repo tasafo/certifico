@@ -1,0 +1,8 @@
+en:
+  menu:
+    templates: Templates
+    certificates: Certificates
+    sign:
+      in: Sign in
+      up: Sign up
+      out: Sign out

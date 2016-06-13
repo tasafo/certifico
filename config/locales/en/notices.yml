@@ -1,0 +1,12 @@
+en:
+  notice:
+    created: "%{model} was successfully created."
+    updated: "%{model} was successfully updated."
+    destroyed: "%{model} was successfully removed."
+    not_saved:
+      one: "Could not save %{resource}: 1 error"
+      other: "Could not save %{resource}: %{count} errors."
+    delete:
+      restriction:
+        template: Cannot remove template because of dependent certificates.
+        certificate: Cannot remove certificates because of dependent subscribers.

@@ -4,6 +4,7 @@ pt-BR:
       users: Usuários
       templates: Modelos
       certificates: Certificados
+      subscribers: Inscritos
     action:
       new: Novo
       edit: Editar
@@ -12,3 +13,6 @@ pt-BR:
       destroy: Remover
       are_you_sure: Você tem certeza?
       back: Voltar
+    default:
+      user:
+        name: Seu nome

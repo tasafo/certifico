@@ -6,3 +6,7 @@ pt-BR:
     not_saved:
       one: "Não foi possível salvar %{resource}: 1 erro"
       other: "Não foi possível salvar %{resource}: %{count} erros."
+    delete:
+      restriction:
+        template: Não é possível remover o modelo por causa de certificados dependentes.
+        certificate: Não é possível remover o certificado por causa de inscritos dependentes.
