@@ -1,6 +1,7 @@
 class CertificatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
+  before_action :authorization, only: [:show, :edit]
 
   def index
     @certificates = current_user.certificates
@@ -36,9 +37,15 @@ class CertificatesController < ApplicationController
   end
 
   def destroy
-    @certificate.destroy
+    begin
+      @certificate.destroy
 
-    redirect_to certificates_url, notice: t('notice.destroyed', model: t('mongoid.models.certificate'))
+      notice = t('notice.destroyed', model: t('mongoid.models.certificate'))
+    rescue Mongoid::Errors::DeleteRestriction
+      notice = t('notice.delete.restriction.certificate')
+    end
+
+    redirect_to certificates_path, notice: notice
   end
 
   private
@@ -49,5 +56,9 @@ class CertificatesController < ApplicationController
 
   def certificate_params
     params.require(:certificate).permit(:title, :initial_date, :final_date, :workload, :local, :site, :image, :template_id, :category_id)
+  end
+
+  def authorization
+    redirect_to certificates_path and return if @certificate.nil?
   end
 end

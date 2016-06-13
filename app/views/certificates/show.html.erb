@@ -1,3 +1,4 @@
+<h1><%= t('mongoid.models.certificate') %></h1>
 <p>
   <strong><%= t('mongoid.attributes.certificate.title') %>:</strong>
   <%= @certificate.title %>
@@ -30,7 +31,9 @@
 
 <p>
   <strong><%= t('mongoid.attributes.certificate.image') %>:</strong>
-  <%= cl_image_tag(@certificate.image, width: 50, height: 50) %>
+  <%= cl_image_tag(@certificate.image, width: 200, height: 100) %>
 </p>
 
-<%= link_to t('title.action.edit'), edit_certificate_path(@certificate), class: 'btn btn-default' %> <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>
+<%= link_to t('title.action.edit'), edit_certificate_path(@certificate), class: 'btn btn-primary' %> <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>
+
+<%= render 'subscribers/index' %>

@@ -1,6 +1,6 @@
 class Category
   include Mongoid::Document
-  include Mongoid::Timestamps
+  include Mongoid::Timestamps::Short
 
   field :name, type: String, localize: true
   field :preposition, type: String, localize: true

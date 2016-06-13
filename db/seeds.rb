@@ -11,7 +11,9 @@ categories = {
     {name: 'encontro', preposition: 'do'},
     {name: 'simpósio', preposition: 'do'},
     {name: 'seminário', preposition: 'do'},
+    {name: 'fórum', preposition: 'do'},
     {name: 'curso', preposition: 'do'},
+    {name: 'conferência', preposition: 'da'},
     {name: 'semana', preposition: 'da'},
     {name: 'feira', preposition: 'da'},
     {name: 'oficina', preposition: 'da'}
@@ -21,24 +23,28 @@ categories = {
     {name: 'meeting', preposition: 'the'},
     {name: 'symposium', preposition: 'the'},
     {name: 'seminar', preposition: 'the'},
+    {name: 'forum', preposition: 'the'},
     {name: 'course', preposition: 'the'},
+    {name: 'conference', preposition: 'the'},
     {name: 'week', preposition: 'the'},
     {name: 'fair', preposition: 'the'},
     {name: 'workshop', preposition: 'the'}
   ],
   es: [
-    {name: 'evento', preposition: 'el'},
-    {name: 'reunión', preposition: 'el'},
-    {name: 'simposio', preposition: 'el'},
-    {name: 'seminario', preposition: 'el'},
-    {name: 'curso', preposition: 'el'},
-    {name: 'semana', preposition: 'la'},
-    {name: 'feria', preposition: 'la'},
-    {name: 'taller', preposition: 'la'}
+    {name: 'evento', preposition: 'en el'},
+    {name: 'reunión', preposition: 'en el'},
+    {name: 'simposio', preposition: 'en el'},
+    {name: 'seminario', preposition: 'en el'},
+    {name: 'foro', preposition: 'en el'},
+    {name: 'curso', preposition: 'en el'},
+    {name: 'conferencia', preposition: 'a la'},
+    {name: 'semana', preposition: 'a la'},
+    {name: 'feria', preposition: 'a la'},
+    {name: 'taller', preposition: 'a la'}
   ]
 }
 
-0.upto(7) do |index|
+0.upto(categories[:pt_BR].count - 1) do |index|
   I18n.locale = 'pt-BR'
   category = Category.new
   category.name = categories[:pt_BR][index][:name]
@@ -57,32 +63,32 @@ end
 
 profiles = {
   pt_BR: [
-    {name: 'organizador'},
-    {name: 'palestrante'},
-    {name: 'participante'},
-    {name: 'coordenador'},
-    {name: 'instrutor'},
-    {name: 'professor'}
+    {name: 'Organizador'},
+    {name: 'Palestrante'},
+    {name: 'Participante'},
+    {name: 'Coordenador'},
+    {name: 'Instrutor'},
+    {name: 'Professor'}
   ],
   en: [
-    {name: 'organizer'},
-    {name: 'speaker'},
-    {name: 'participant'},
-    {name: 'coordinator'},
-    {name: 'instructor'},
-    {name: 'teacher'}
+    {name: 'Organizer'},
+    {name: 'Speaker'},
+    {name: 'Participant'},
+    {name: 'Coordinator'},
+    {name: 'Instructor'},
+    {name: 'Teacher'}
   ],
   es: [
-    {name: 'organizador'},
-    {name: 'orador'},
-    {name: 'partícipe'},
-    {name: 'coordinador'},
-    {name: 'entrenador'},
-    {name: 'profesor'}
+    {name: 'Organizador'},
+    {name: 'Orador'},
+    {name: 'Partícipe'},
+    {name: 'Coordinador'},
+    {name: 'Entrenador'},
+    {name: 'Profesor'}
   ]
 }
 
-0.upto(5) do |index|
+0.upto(profiles[:pt_BR].count - 1) do |index|
   I18n.locale = 'pt-BR'
   profile = Profile.new
   profile.name = profiles[:pt_BR][index][:name]

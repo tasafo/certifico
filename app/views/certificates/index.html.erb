@@ -3,7 +3,9 @@
 <table class="table table-hover table-responsive">
   <thead>
     <tr>
+      <th><%= t('mongoid.models.category') %></th>
       <th><%= t('mongoid.attributes.certificate.title') %></th>
+      <th><%= t('mongoid.models.template') %></th>
       <th><%= t('mongoid.attributes.certificate.initial_date') %></th>
       <th><%= t('mongoid.attributes.certificate.final_date') %></th>
       <th><%= t('mongoid.attributes.certificate.workload') %></th>
@@ -15,7 +17,9 @@
   <tbody>
     <% @certificates.each do |certificate| %>
       <tr>
+        <td><%= certificate.category.name %></td>
         <td><%= certificate.title %></td>
+        <td><%= certificate.template.name %></td>
         <td><%= certificate.initial_date %></td>
         <td><%= certificate.final_date %></td>
         <td><%= certificate.workload %></td>

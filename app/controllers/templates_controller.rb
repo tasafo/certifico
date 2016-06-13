@@ -1,6 +1,7 @@
 class TemplatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_template, only: [:show, :edit, :update, :destroy]
+  before_action :authorization, only: [:show, :edit]
 
   def index
     @templates = current_user.templates
@@ -36,9 +37,15 @@ class TemplatesController < ApplicationController
   end
 
   def destroy
-    @template.destroy
+    begin
+      @template.destroy
 
-    redirect_to templates_url, notice: t('notice.destroyed', model: t('mongoid.models.template'))
+      notice = t('notice.destroyed', model: t('mongoid.models.template'))
+    rescue Mongoid::Errors::DeleteRestriction
+      notice = t('notice.delete.restriction.template')
+    end
+
+    redirect_to templates_path, notice: notice
   end
 
   private
@@ -49,5 +56,9 @@ class TemplatesController < ApplicationController
 
   def template_params
     params.require(:template).permit(:name, :image)
+  end
+
+  def authorization
+    redirect_to templates_path and return if @template.nil?
   end
 end
