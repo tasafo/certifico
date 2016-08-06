@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 categories = {
   pt_BR: [
     {name: 'evento', preposition: 'do'},
@@ -63,28 +56,28 @@ end
 
 profiles = {
   pt_BR: [
-    {name: 'Organizador'},
-    {name: 'Palestrante'},
-    {name: 'Participante'},
-    {name: 'Coordenador'},
-    {name: 'Instrutor'},
-    {name: 'Professor'}
+    {name: 'organizador', has_theme: false},
+    {name: 'palestrante', has_theme: true},
+    {name: 'participante', has_theme: false},
+    {name: 'coordenador', has_theme: true},
+    {name: 'instrutor', has_theme: false},
+    {name: 'professor', has_theme: false}
   ],
   en: [
-    {name: 'Organizer'},
-    {name: 'Speaker'},
-    {name: 'Participant'},
-    {name: 'Coordinator'},
-    {name: 'Instructor'},
-    {name: 'Teacher'}
+    {name: 'organizer'},
+    {name: 'speaker'},
+    {name: 'participant'},
+    {name: 'coordinator'},
+    {name: 'instructor'},
+    {name: 'teacher'}
   ],
   es: [
-    {name: 'Organizador'},
-    {name: 'Orador'},
-    {name: 'Partícipe'},
-    {name: 'Coordinador'},
-    {name: 'Entrenador'},
-    {name: 'Profesor'}
+    {name: 'organizador'},
+    {name: 'orador'},
+    {name: 'partícipe'},
+    {name: 'coordinador'},
+    {name: 'entrenador'},
+    {name: 'profesor'}
   ]
 }
 
@@ -92,6 +85,7 @@ profiles = {
   I18n.locale = 'pt-BR'
   profile = Profile.new
   profile.name = profiles[:pt_BR][index][:name]
+  profile.has_theme = profiles[:pt_BR][index][:has_theme]
 
   I18n.locale = :en
   profile.name = profiles[:en][index][:name]
@@ -102,4 +96,21 @@ profiles = {
   profile.save
 end
 
-User.create(email: 'user@mail.com', password: '123456')
+I18n.locale = 'pt-BR'
+
+admin_user = User.create(email: 'admin@mail.com', name: 'System Administrator', password: '123456')
+luiz_user = User.create(email: 'luiz@mail.com', name: 'Luiz Sanches', password: '123456')
+
+category = Category.first
+
+vaam_template = admin_user.templates.create(name: 'VAAM 2009', font_color: '000000', image: File.open(File.join(Rails.root, 'app/assets/images/vaam_template.jpg')))
+mare_template = admin_user.templates.create(name: 'Maré 2009', font_color: 'FFFFFF', image: File.open(File.join(Rails.root, 'app/assets/images/mare_template.jpg')))
+
+vaam_certificate = admin_user.certificates.create(template: vaam_template, category: category, title: 'Visão Ágil Academic Leaders 2009', initial_date: '2009-05-19', final_date: '2009-05-19', workload: '8', local: 'no auditório do IESAM, Belém - Pará')
+mare_certificate = admin_user.certificates.create(template: mare_template, category: category, title: 'Maré de Agilidade Belém 2009', initial_date: '2009-11-19', final_date: '2009-11-19', workload: '8', local: 'no auditório do CESUPA, Belém - Pará')
+
+participant = Profile.find_by(name: 'participante')
+speaker = Profile.find_by(name: 'palestrante')
+
+luiz_user.subscribers.create(certificate: vaam_certificate, profile: speaker, theme: 'Slackware Linux')
+luiz_user.subscribers.create(certificate: mare_certificate, profile: participant)
