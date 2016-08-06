@@ -55,7 +55,7 @@ class TemplatesController < ApplicationController
   end
 
   def template_params
-    params.require(:template).permit(:name, :image)
+    params.require(:template).permit(:name, :font_color, :image)
   end
 
   def authorization

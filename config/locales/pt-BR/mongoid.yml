@@ -17,6 +17,7 @@ pt-BR:
         password_confirmation: Confirmação da senha
       template:
         name: Nome
+        font_color: Cor da fonte
         image: Imagem
       certificate:
         title: Título

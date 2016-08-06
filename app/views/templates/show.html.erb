@@ -3,7 +3,10 @@
   <strong><%= t('mongoid.attributes.template.name') %>:</strong>
   <%= @template.name %>
 </p>
-
+<p>
+  <strong><%= t('mongoid.attributes.template.font_color') %>:</strong>
+  <%= @template.font_color %>
+</p>
 <p>
   <strong><%= t('mongoid.attributes.template.image') %>:</strong>
   <%= cl_image_tag(@template.image, width: 500, height: 300) %>

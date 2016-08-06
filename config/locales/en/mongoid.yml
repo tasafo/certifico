@@ -17,6 +17,7 @@ en:
         password_confirmation: Password confirmation
       template:
         name: Name
+        font_color: Font color
         image: Image
       certificate:
         title: Title
