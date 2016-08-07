@@ -17,7 +17,7 @@ describe 'Create subscriber', js: true do
 
       fill_in 'E-mail', with: 'carlos@mail.com'
       fill_in 'Nome', with: 'Carlos Alexandre'
-      select 'Participante', from: 'subscriber_profile_id'
+      select 'participante', from: 'subscriber_profile_id'
 
       click_button 'Criar Inscrição'
     end

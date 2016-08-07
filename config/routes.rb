@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   resources :templates
+  resources :issues, only: [:index, :show]
 
   devise_for :users
 

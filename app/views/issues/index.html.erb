@@ -1,0 +1,27 @@
+<h1><%= t('title.models.certificates') %></h1>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th><%= t('mongoid.attributes.certificate.title') %></th>
+      <th><%= t('mongoid.attributes.certificate.initial_date') %></th>
+      <th><%= t('mongoid.attributes.certificate.final_date') %></th>
+      <th><%= t('mongoid.attributes.certificate.workload') %></th>
+      <th><%= t('mongoid.attributes.certificate.local') %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.subscribers.each do |subscriber| %>
+      <tr>
+        <td><%= subscriber.certificate.title %></td>
+        <td><%= subscriber.certificate.initial_date %></td>
+        <td><%= subscriber.certificate.final_date %></td>
+        <td><%= subscriber.certificate.workload %></td>
+        <td><%= subscriber.certificate.local %></td>
+        <td><%= link_to t('title.action.generate'), issue_path(subscriber), class: 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

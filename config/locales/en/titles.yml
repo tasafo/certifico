@@ -7,12 +7,29 @@ en:
       subscribers: Subscribers
     action:
       new: New
+      new2: New
       edit: Edit
       editing: Editing
       show: Show
       destroy: Remove
       are_you_sure: Are you sure?
       back: Back
+      generate: Generate
     default:
       user:
         name: Your name
+    certificate:
+      certify_that: We certify that
+      attended: attended
+      realized: realized
+      quality_of: in quality of
+      date:
+        'on': 'on'
+        between: between the days
+        and: and
+        of: of
+      with_hours: with hours of
+      theme: on the theme
+      workload:
+        hour: hour
+        hours: hours

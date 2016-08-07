@@ -15,4 +15,10 @@ describe Template, 'validations' do
 
     expect(template.errors[:name].size).to eq(1)
   end
+
+  it 'requires font_color' do
+    template = Template.create(font_color: nil)
+
+    expect(template.errors[:font_color].size).to eq(1)
+  end
 end

@@ -11,6 +11,7 @@ describe 'Create template', js: true do
       click_link 'Novo Modelo'
 
       fill_in 'Nome', with: 'Modelo de certificado'
+      fill_in 'Cor da fonte', with: '000000'
       attach_file('Imagem', 'app/assets/images/template_example.jpg')
 
       click_button 'Criar Modelo'

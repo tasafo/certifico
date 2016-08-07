@@ -14,6 +14,22 @@ pt-BR:
       destroy: Remover
       are_you_sure: Você tem certeza?
       back: Voltar
+      generate: Gerar
     default:
       user:
         name: Seu nome
+    certificate:
+      certify_that: Certificamos que
+      attended: participou
+      realized: realizado
+      quality_of: na qualidade de
+      date:
+        'on': dia
+        between: entre os dias
+        and: e
+        of: de
+      with_hours: com carga horária de
+      theme: do tema
+      workload:
+        hour: hora
+        hours: horas

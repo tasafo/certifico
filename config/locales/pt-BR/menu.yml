@@ -2,6 +2,7 @@ pt-BR:
   menu:
     templates: Modelos
     certificates: Certificados
+    issues: Emissões
     sign:
       in: Entrar
       up: Inscrever-se

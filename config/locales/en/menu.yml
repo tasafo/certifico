@@ -2,6 +2,7 @@ en:
   menu:
     templates: Templates
     certificates: Certificates
+    issues: Issues
     sign:
       in: Sign in
       up: Sign up

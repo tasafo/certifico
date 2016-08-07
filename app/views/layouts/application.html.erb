@@ -20,6 +20,7 @@
             <li><%= link_to current_user.email, '#' %></li>
             <li><%= link_to t('menu.templates'), templates_path %></li>
             <li><%= link_to t('menu.certificates'), certificates_path %></li>
+            <li><%= link_to t('menu.issues'), issues_path %></li>
             <li><%= link_to t('menu.sign.out'), destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to t('menu.sign.in'), new_user_session_path %></li>
