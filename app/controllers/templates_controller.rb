@@ -59,6 +59,7 @@ class TemplatesController < ApplicationController
   end
 
   def authorization
-    redirect_to templates_path and return if @template.nil?
+    redirect_to templates_path,
+      notice: t('notice.not_found', model: t('mongoid.models.template')) and return if @template.nil?
   end
 end

@@ -55,10 +55,21 @@ class CertificatesController < ApplicationController
   end
 
   def certificate_params
-    params.require(:certificate).permit(:title, :initial_date, :final_date, :workload, :local, :site, :image, :template_id, :category_id)
+    params.require(:certificate).permit(
+      :title,
+      :initial_date,
+      :final_date,
+      :workload,
+      :local,
+      :site,
+      :image,
+      :template_id,
+      :category_id
+    )
   end
 
   def authorization
-    redirect_to certificates_path and return if @certificate.nil?
+    redirect_to certificates_path,
+      notice: t('notice.not_found', model: t('mongoid.models.certificate')) and return if @certificate.nil?
   end
 end

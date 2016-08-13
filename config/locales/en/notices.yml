@@ -10,3 +10,4 @@ en:
       restriction:
         template: Cannot remove template because of dependent certificates.
         certificate: Cannot remove certificates because of dependent subscribers.
+    not_found: "%{model} is not found."

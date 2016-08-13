@@ -10,3 +10,4 @@ pt-BR:
       restriction:
         template: Não é possível remover o modelo por causa de certificados dependentes.
         certificate: Não é possível remover o certificado por causa de inscritos dependentes.
+    not_found: "%{model} não foi encontrado(a)."

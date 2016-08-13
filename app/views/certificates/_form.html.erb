@@ -1,6 +1,6 @@
 <%= simple_form_for(@certificate) do |f| %>
   <div class="form-inputs">
-    <%= f.association :template %>
+    <%= f.association :template, collection: current_user.templates %>
     <%= f.association :category %>
     <%= f.input :title %>
     <%= f.input :initial_date%>

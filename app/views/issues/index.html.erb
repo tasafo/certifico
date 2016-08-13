@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th><%= t('mongoid.attributes.certificate.title') %></th>
+      <th><%= t('mongoid.models.profile') %></th>
       <th><%= t('mongoid.attributes.certificate.initial_date') %></th>
       <th><%= t('mongoid.attributes.certificate.final_date') %></th>
       <th><%= t('mongoid.attributes.certificate.workload') %></th>
@@ -16,6 +17,7 @@
     <% current_user.subscribers.each do |subscriber| %>
       <tr>
         <td><%= subscriber.certificate.title %></td>
+        <td><%= subscriber.profile.name %></td>
         <td><%= subscriber.certificate.initial_date %></td>
         <td><%= subscriber.certificate.final_date %></td>
         <td><%= subscriber.certificate.workload %></td>
