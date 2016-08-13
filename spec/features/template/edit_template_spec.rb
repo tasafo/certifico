@@ -17,7 +17,7 @@ describe 'Edit template', js: true do
     end
 
     it 'redirects to the template page' do
-      expect(current_path).to eql(template_path(template))
+      expect(current_path).to eql(template_path('nome-do-modelo-alterado'))
     end
 
     it 'displays success message' do

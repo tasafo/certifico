@@ -1,15 +1,19 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps::Short
+  include Mongoid::Slug
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
-  field :name,               type: String, default: I18n.t('title.default.user.name')
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
+
+  field :name,               type: String, default: I18n.t('title.default.user.name')
+  field :nick,               type: String
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -36,6 +40,8 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
+  slug :nick
+
   has_many :templates
   has_many :certificates
   has_many :subscribers
@@ -45,4 +51,10 @@ class User
   validates_length_of :name, maximum: 100
 
   index({ email: 1 }, { background: true })
+
+  before_create do
+    self.nick = self.email.split('@')[0]
+    self.name = self.nick
+    self.build_slug
+  end
 end

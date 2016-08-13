@@ -18,6 +18,7 @@ gem 'turbolinks', '~> 5.x'
 gem 'jbuilder', '~> 2.0'
 
 gem 'mongoid', github: 'mongodb/mongoid'
+gem 'mongoid-slug', github: 'digitalplaywright/mongoid-slug'
 
 gem 'devise'
 gem 'devise-i18n'

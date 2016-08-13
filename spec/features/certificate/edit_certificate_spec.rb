@@ -26,7 +26,7 @@ describe 'Edit certificate', js: true do
     end
 
     it 'redirects to the certificate page' do
-      expect(current_path).to eql(certificate_path(certificate))
+      expect(current_path).to eql(certificate_path('forum-internacional-de-software-livre-10-ponto-0'))
     end
 
     it 'displays success message' do
