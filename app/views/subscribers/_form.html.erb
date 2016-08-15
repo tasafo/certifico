@@ -1,14 +1,11 @@
 <%= simple_form_for @subscriber, url: url do |subscriber| %>
   <%= subscriber.simple_fields_for :user do |user| %>
-    <div class="form-inputs">
-      <%= user.input :email %>
-      <%= user.input :name %>
-      <%= subscriber.input :profile_id, collection: @profiles %>
-      <%= subscriber.input :theme %>
-    </div>
+    <%= user.input :email %>
+    <%= user.input :name %>
+    <%= subscriber.input :profile_id, collection: @profiles %>
+    <%= subscriber.input :theme %>
 
-    <div class="form-actions">
-      <%= subscriber.button :submit, class: 'btn btn-primary' %>
-    </div>
+    <%= subscriber.button :submit, class: 'btn btn-primary' %>
+    <%= link_to t('title.action.back'), certificate_path(@certificate), class: 'btn btn-default' %>
   <% end %>
 <% end %>

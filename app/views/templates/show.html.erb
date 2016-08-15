@@ -1,15 +1,1 @@
-<h1><%= t('mongoid.models.template') %></h1>
-<p>
-  <strong><%= t('mongoid.attributes.template.name') %>:</strong>
-  <%= @template.name %>
-</p>
-<p>
-  <strong><%= t('mongoid.attributes.template.font_color') %>:</strong>
-  <%= @template.font_color %>
-</p>
-<p>
-  <strong><%= t('mongoid.attributes.template.image') %>:</strong>
-  <%= cl_image_tag(@template.image, width: 500, height: 300) %>
-</p>
-
-<%= link_to t('title.action.edit'), edit_template_path(@template), class: 'btn btn-primary' %> <%= link_to t('title.action.back'), templates_path, class: 'btn btn-default' %>
+<%= render partial: 'show', layout: 'shared/form', locals: { cols: 7, title: t('mongoid.models.template') } %>

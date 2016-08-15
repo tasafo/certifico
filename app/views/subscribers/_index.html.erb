@@ -1,5 +1,3 @@
-<h1><%= t('title.models.subscribers') %> (<%= @certificate.subscribers.count %>)</h1>
-
 <%= link_to "#{t('title.action.new2')} #{t('mongoid.models.subscriber')}", new_certificate_subscriber_path(@certificate), class: 'btn btn-primary' %>
 <%= link_to "#{t('title.action.import')} #{t('title.models.subscribers')}", new_certificate_import_subscriber_path(@certificate), class: 'btn btn-primary' %>
 

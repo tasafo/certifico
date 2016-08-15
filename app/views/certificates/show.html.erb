@@ -1,39 +1,4 @@
-<h1><%= t('mongoid.models.certificate') %></h1>
-<p>
-  <strong><%= t('mongoid.attributes.certificate.title') %>:</strong>
-  <%= @certificate.title %>
-</p>
+<%= render partial: 'show', layout: 'shared/form', locals: { cols: 6, title: t('mongoid.models.certificate') } %>
 
-<p>
-  <strong><%= t('mongoid.attributes.certificate.initial_date') %>:</strong>
-  <%= @certificate.initial_date %>
-</p>
-
-<p>
-  <strong><%= t('mongoid.attributes.certificate.final_date') %>:</strong>
-  <%= @certificate.final_date %>
-</p>
-
-<p>
-  <strong><%= t('mongoid.attributes.certificate.workload') %>:</strong>
-  <%= @certificate.workload %>
-</p>
-
-<p>
-  <strong><%= t('mongoid.attributes.certificate.local') %>:</strong>
-  <%= @certificate.local %>
-</p>
-
-<p>
-  <strong><%= t('mongoid.attributes.certificate.site') %>:</strong>
-  <%= @certificate.site %>
-</p>
-
-<p>
-  <strong><%= t('mongoid.attributes.certificate.image') %>:</strong>
-  <%= cl_image_tag(@certificate.image, width: 200, height: 100) %>
-</p>
-
-<%= link_to t('title.action.edit'), edit_certificate_path(@certificate), class: 'btn btn-primary' %> <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>
-
-<%= render 'subscribers/index' %>
+<%= render partial: 'subscribers/index', layout: 'shared/form', locals: { cols: 12,
+  title: "#{t('title.models.subscribers')} (#{@certificate.subscribers.count})" } %>

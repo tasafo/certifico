@@ -1,5 +1,1 @@
-<h1><%= t('title.action.editing') + ' ' + t('mongoid.models.certificate') %></h1>
-
-<%= render 'form', certificate: @certificate %>
-
-<%= link_to t('title.action.show'), @certificate, class: 'btn btn-default' %> <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>
+<%= render partial: 'form', layout: 'shared/form', locals: { cols: 6, title: "#{t('title.action.editing')} #{t('mongoid.models.certificate')}", certificate: @certificate } %>

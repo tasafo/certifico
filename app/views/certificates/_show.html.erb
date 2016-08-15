@@ -1,0 +1,43 @@
+<table class="table table-responsive">
+  <tbody>
+    <tr>
+      <th><%= t('mongoid.models.template') %></th>
+      <td><%= @certificate.template.name %></td>
+    </tr>
+    <tr>
+      <th><%= t('mongoid.models.category') %></th>
+      <td><%= @certificate.category.name %></td>
+    </tr>
+    <tr>
+      <th><%= t('mongoid.attributes.certificate.title') %></th>
+      <td><%= @certificate.title %></td>
+    </tr>
+    <tr>
+      <th><%= t('mongoid.attributes.certificate.initial_date') %></th>
+      <td><%= @certificate.initial_date %></td>
+    </tr>
+    <tr>
+      <th><%= t('mongoid.attributes.certificate.final_date') %></th>
+      <td><%= @certificate.final_date %></td>
+    </tr>
+    <tr>
+      <th><%= t('mongoid.attributes.certificate.workload') %></th>
+      <td><%= @certificate.workload %></td>
+    </tr>
+    <tr>
+      <th><%= t('mongoid.attributes.certificate.local') %></th>
+      <td><%= @certificate.local %></td>
+    </tr>
+    <tr>
+      <th><%= t('mongoid.attributes.certificate.site') %></th>
+      <td><%= @certificate.site %></td>
+    </tr>
+    <tr>
+      <th><%= t('mongoid.attributes.certificate.image') %></th>
+      <td><%= cl_image_tag(@certificate.image, width: 200, height: 100) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to t('title.action.edit'), edit_certificate_path(@certificate), class: 'btn btn-primary' %>
+<%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>

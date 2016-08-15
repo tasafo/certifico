@@ -1,19 +1,16 @@
 <%= simple_form_for(@certificate) do |f| %>
-  <div class="form-inputs">
-    <%= f.association :template, collection: current_user.templates %>
-    <%= f.association :category %>
-    <%= f.input :title %>
-    <%= f.input :initial_date%>
-    <%= f.input :final_date %>
-    <%= f.input :workload %>
-    <%= f.input :local %>
-    <%= f.input :site %>
+  <%= f.association :template, collection: current_user.templates %>
+  <%= f.association :category %>
+  <%= f.input :title %>
+  <%= f.input :initial_date%>
+  <%= f.input :final_date %>
+  <%= f.input :workload %>
+  <%= f.input :local %>
+  <%= f.input :site %>
 
-    <%= f.input :image_cache, as: :hidden %>
-    <%= f.input :image, as: :file %>
-  </div>
+  <%= f.input :image_cache, as: :hidden %>
+  <%= f.input :image, as: :file %>
 
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-primary' %>
-  </div>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>
 <% end %>
