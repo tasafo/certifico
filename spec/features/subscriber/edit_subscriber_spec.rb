@@ -2,11 +2,12 @@ require 'rails_helper'
 
 describe 'Edit subscriber', js: true do
   let!(:user)         { create(:user, :paul) }
-  let!(:profile)      { create(:profile, :participant) }
+  let!(:participant)  { create(:profile, :participant) }
+  let!(:organizer)    { create(:profile, :organizer) }
   let!(:category)     { create(:category, :event) }
   let!(:template)     { create(:template, :fisl, user: user) }
   let!(:certificate)  { create(:certificate, :future, user: user, category: category, template: template) }
-  let!(:subscriber)   { create(:subscriber, user: user, certificate: certificate, profile: profile) }
+  let!(:subscriber)   { create(:subscriber, user: user, certificate: certificate, profile: participant) }
 
   context 'with valid data' do
     before do
@@ -16,9 +17,9 @@ describe 'Edit subscriber', js: true do
       click_link 'Exibir'
       visit edit_certificate_subscriber_path(certificate, subscriber)
 
-      fill_in 'Nome', with: 'Carlos Antônio'
+      select 'organizador', from: 'subscriber_profile_id'
 
-      click_button 'Atualizar Inscrição'
+      click_button 'Atualizar Inscrito'
     end
 
     it 'redirects to the certificate page' do
@@ -26,29 +27,31 @@ describe 'Edit subscriber', js: true do
     end
 
     it 'displays success message' do
-      expect(page).to have_content('Inscrição foi atualizado com sucesso.')
+      expect(page).to have_content('Inscrito foi atualizado com sucesso.')
     end
   end
 
-  context 'with invalid data' do
+  context 'with profile existing' do
+    let!(:subscriber2)   { create(:subscriber, user: user, certificate: certificate, profile: organizer) }
+
     before do
       login_as user
 
       click_link 'Certificados'
       click_link 'Exibir'
-      visit edit_certificate_subscriber_path(certificate, subscriber)
+      visit edit_certificate_subscriber_path(certificate, subscriber2)
 
-      fill_in 'E-mail', with: ''
+      select 'participant', from: 'subscriber_profile_id'
 
-      click_button 'Atualizar Inscrição'
+      click_button 'Atualizar Inscrito'
     end
 
-    it 'redirects to the certificate page' do
-      expect(current_path).to eql(certificate_path(certificate))
+    it 'redirects to the subscriber page' do
+      expect(current_path).to eql(edit_certificate_subscriber_path(certificate, subscriber2))
     end
 
-    it 'displays error message' do
-      expect(page).to have_content('Inscrição foi atualizado com sucesso.')
+    it 'displays success message' do
+      expect(page).to have_content('Perfil já está em uso')
     end
   end
 end

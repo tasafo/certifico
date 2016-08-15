@@ -17,8 +17,12 @@ class SubscribersController < ApplicationController
     @subscriber.certificate = @certificate
     @subscriber.user.password = rand(11111111..99999999)
 
+    user = User.find_by(email: @subscriber.user.email)
+    @subscriber.user = user if user
+
     if @subscriber.user.save && @subscriber.save
-      redirect_to certificate_path(@certificate), notice: t('notice.created', model: t('mongoid.models.subscriber'))
+      redirect_to certificate_path(@certificate),
+        notice: t('notice.created', model: t('mongoid.models.subscriber'))
     else
       render :new
     end
@@ -26,16 +30,28 @@ class SubscribersController < ApplicationController
 
   def update
     if @subscriber.update(subscriber_params)
-      redirect_to certificate_path(@certificate), notice: t('notice.updated', model: t('mongoid.models.subscriber'))
+      redirect_to certificate_path(@certificate),
+        notice: t('notice.updated', model: t('mongoid.models.subscriber'))
     else
-      render :edit
+      message = @subscriber.errors.messages[:user_id][0]
+
+      if message
+        redirect_to edit_certificate_subscriber_path(@certificate, @subscriber),
+          alert: "#{t('mongoid.models.profile')} #{message}"
+      else
+        render :edit
+      end
     end
   end
 
   private
 
   def subscriber_params
-    params.require(:subscriber).permit(:profile_id, :theme, user_attributes: [:email, :name])
+    params.require(:subscriber).permit(
+      :profile_id,
+      :theme,
+      user_attributes: [:email, :name]
+    )
   end
 
   def set_certificate_and_profiles
@@ -48,6 +64,7 @@ class SubscribersController < ApplicationController
   end
 
   def authorization
-    redirect_to certificates_path and return if @subscriber.nil?
+    redirect_to certificate_path(@certificate),
+      notice: t('notice.not_found', model: t('mongoid.models.subscriber')) and return if @subscriber.nil?
   end
 end

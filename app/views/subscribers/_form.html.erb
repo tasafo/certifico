@@ -1,9 +1,15 @@
 <%= simple_form_for @subscriber, url: url do |subscriber| %>
   <%= subscriber.simple_fields_for :user do |user| %>
-    <%= user.input :email %>
-    <%= user.input :name %>
+    <% if form == 'new' %>
+      <%= user.input :email %>
+      <%= user.input :name %>
+    <% end %>
+
     <%= subscriber.input :profile_id, collection: @profiles %>
-    <%= subscriber.input :theme %>
+
+    <% if form == 'new' || (form == 'edit' && @subscriber.profile.has_theme?) %>
+      <%= subscriber.input :theme %>
+    <% end %>
 
     <%= subscriber.button :submit, class: 'btn btn-primary' %>
     <%= link_to t('title.action.back'), certificate_path(@certificate), class: 'btn btn-default' %>

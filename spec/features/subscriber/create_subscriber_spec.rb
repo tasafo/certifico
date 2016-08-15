@@ -13,13 +13,13 @@ describe 'Create subscriber', js: true do
 
       click_link 'Certificados'
       click_link 'Exibir'
-      click_link 'Nova Inscrição'
+      click_link 'Novo Inscrito'
 
       fill_in 'E-mail', with: 'carlos@mail.com'
       fill_in 'Nome', with: 'Carlos Alexandre'
       select 'participante', from: 'subscriber_profile_id'
 
-      click_button 'Criar Inscrição'
+      click_button 'Criar Inscrito'
     end
 
     it 'redirects to the certificate page' do
@@ -27,7 +27,7 @@ describe 'Create subscriber', js: true do
     end
 
     it 'displays success message' do
-      expect(page).to have_content('Inscrição foi criado com sucesso.')
+      expect(page).to have_content('Inscrito foi criado com sucesso.')
     end
   end
 
@@ -37,9 +37,9 @@ describe 'Create subscriber', js: true do
 
       click_link 'Certificados'
       click_link 'Exibir'
-      click_link 'Nova Inscrição'
+      click_link 'Novo Inscrito'
 
-      click_button 'Criar Inscrição'
+      click_button 'Criar Inscrito'
     end
 
     it 'renders form page' do

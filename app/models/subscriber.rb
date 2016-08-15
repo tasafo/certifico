@@ -12,6 +12,11 @@ class Subscriber
 
   validates_presence_of :certificate_id, :profile_id
   validates_uniqueness_of :user, scope: [:profile, :certificate]
+  validates_length_of :theme, maximum: 100
+
+  before_save do
+    self.theme = nil unless self.profile.has_theme?
+  end
 
   def self.import(certificate_id, profile_id, sheet)
     certificate = Certificate.find(certificate_id)

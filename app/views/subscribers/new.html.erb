@@ -1,1 +1,1 @@
-<%= render partial: 'form', layout: 'shared/form', locals: { cols: 6, title: "#{t('title.action.new2')} #{t('mongoid.models.subscriber')} - #{@certificate.category.name}: #{@certificate.title}", url: certificate_subscribers_path(@certificate) } %>
+<%= render partial: 'form', layout: 'shared/form', locals: { cols: 6, title: "#{t('title.action.new')} #{t('mongoid.models.subscriber')}<br/>#{@certificate.category.name.capitalize}: #{@certificate.title}", url: certificate_subscribers_path(@certificate), form: 'new' } %>
