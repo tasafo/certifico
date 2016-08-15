@@ -34,6 +34,8 @@ pt-BR:
         user: Usuário
         profile_id: Perfil
         certificate_id: Certificado
+        profile: Perfil
+        file: Arquivo
       category:
         name: Nome
         preposition: Preposição

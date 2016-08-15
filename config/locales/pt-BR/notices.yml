@@ -3,6 +3,7 @@ pt-BR:
     created: "%{model} foi criado com sucesso."
     updated: "%{model} foi atualizado com sucesso."
     destroyed: "%{model} foi removido com sucesso."
+    imported: "%{model} foram importados com sucesso."
     not_saved:
       one: "Não foi possível salvar %{resource}: 1 erro"
       other: "Não foi possível salvar %{resource}: %{count} erros."
@@ -11,3 +12,6 @@ pt-BR:
         template: Não é possível remover o modelo por causa de certificados dependentes.
         certificate: Não é possível remover o certificado por causa de inscritos dependentes.
     not_found: "%{model} não foi encontrado(a)."
+    unsupported_file: Arquivo não suportado
+    import:
+      was_not_selected: não foi selecionado

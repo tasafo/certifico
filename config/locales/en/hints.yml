@@ -1,4 +1,10 @@
 en:
   hint:
     template:
-      image: image size 845x597 px, full quality JPEG format
+      image: Image size 845x597 px, full quality JPEG format
+    subscriber:
+      file_html: <br/><b><u>Comments!</u></b><br/>
+                 - The supported file types are <b>csv, ods, xls, xlsx</b><br/>
+                 - The file should not contain header. The fields must follow the order <b>E-MAIL, NAME [,THEME]</b><br/>
+                 - The field <b>THEME</b> is used in the profiles <b>speaker, professor and instructor</b>
+                 - Depending on the subscribers contained in the file number, the import process may take. <b>Be patient :)</b>

@@ -34,6 +34,8 @@ en:
         user: User
         profile_id: Profile
         certificate_id: Certificate
+        profile: Profile
+        file: File
       category:
         name: Name
         preposition: Preposition

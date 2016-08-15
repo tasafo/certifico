@@ -40,7 +40,7 @@ class SubscribersController < ApplicationController
 
   def set_certificate_and_profiles
     @certificate = current_user.certificates.find(params[:certificate_id])
-    @profiles = Profile.all
+    @profiles = Profile.all.by_name
   end
 
   def set_subscriber

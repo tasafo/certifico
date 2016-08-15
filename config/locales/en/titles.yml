@@ -15,6 +15,7 @@ en:
       are_you_sure: Are you sure?
       back: Back
       generate: Generate
+      import: Import
     default:
       user:
         name: Your name

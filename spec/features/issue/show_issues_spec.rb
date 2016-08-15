@@ -6,6 +6,7 @@ describe 'Show issues', js: true do
   let!(:user3)        { create(:user, :luis) }
   let!(:profile)      { create(:profile, :participant) }
   let!(:profile2)     { create(:profile, :speaker) }
+  let!(:profile3)     { create(:profile, :organizer) }
   let!(:category)     { create(:category, :event) }
   let!(:template)     { create(:template, :fisl, user: user) }
   let!(:certificate1) { create(:certificate, :future, user: user, category: category, template: template) }
@@ -15,7 +16,7 @@ describe 'Show issues', js: true do
   let!(:subscriber1)  { create(:subscriber, user: user2, certificate: certificate1, profile: profile) }
   let!(:subscriber2)  { create(:subscriber, user: user3, certificate: certificate2, profile: profile2, theme: 'Slackware Linux') }
   let!(:subscriber3)  { create(:subscriber, user: user3, certificate: certificate3, profile: profile) }
-  let!(:subscriber4)  { create(:subscriber, user: user3, certificate: certificate4, profile: profile) }
+  let!(:subscriber4)  { create(:subscriber, user: user3, certificate: certificate4, profile: profile3) }
 
   context 'with same dates' do
     before do

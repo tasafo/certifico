@@ -8,4 +8,6 @@ class Profile
   validates_presence_of :name
 
   has_many :subscribers
+
+  scope :by_name, -> { order_by(name: :asc) }
 end

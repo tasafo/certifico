@@ -61,7 +61,8 @@ profiles = {
     {name: 'participante', has_theme: false},
     {name: 'coordenador', has_theme: true},
     {name: 'instrutor', has_theme: false},
-    {name: 'professor', has_theme: false}
+    {name: 'professor', has_theme: false},
+    {name: 'voluntário', has_theme: false}
   ],
   en: [
     {name: 'organizer'},
@@ -69,7 +70,8 @@ profiles = {
     {name: 'participant'},
     {name: 'coordinator'},
     {name: 'instructor'},
-    {name: 'teacher'}
+    {name: 'teacher'},
+    {name: 'voluntary'}
   ],
   es: [
     {name: 'organizador'},
@@ -77,7 +79,8 @@ profiles = {
     {name: 'partícipe'},
     {name: 'coordinador'},
     {name: 'entrenador'},
-    {name: 'profesor'}
+    {name: 'profesor'},
+    {name: 'voluntario'}
   ]
 }
 
@@ -98,8 +101,8 @@ end
 
 I18n.locale = 'pt-BR'
 
-admin_user = User.create(email: 'admin@mail.com', password: '123456')
-luiz_user = User.create(email: 'luiz@mail.com', password: '123456')
+admin_user = User.create(email: 'admin@mail.com', password: '123456', name: 'Administrador do Sistema')
+luiz_user = User.create(email: 'luiz@mail.com', password: '123456', name: 'Luiz Sanches')
 
 category = Category.first
 

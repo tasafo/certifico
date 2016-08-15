@@ -31,6 +31,9 @@ gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'prawn'
 gem 'prawn-table'
 
+gem 'roo'
+gem 'roo-xls'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'

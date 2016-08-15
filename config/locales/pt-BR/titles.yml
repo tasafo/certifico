@@ -4,7 +4,7 @@ pt-BR:
       users: Usuários
       templates: Modelos
       certificates: Certificados
-      subscribers: Inscrições
+      subscribers: Inscritos
     action:
       new: Novo
       new2: Nova
@@ -15,6 +15,7 @@ pt-BR:
       are_you_sure: Você tem certeza?
       back: Voltar
       generate: Gerar
+      import: Importar
     default:
       user:
         name: Seu nome

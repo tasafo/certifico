@@ -3,6 +3,7 @@ en:
     created: "%{model} was successfully created."
     updated: "%{model} was successfully updated."
     destroyed: "%{model} was successfully removed."
+    imported: "%{model} was successfully imported."
     not_saved:
       one: "Could not save %{resource}: 1 error"
       other: "Could not save %{resource}: %{count} errors."
@@ -11,3 +12,6 @@ en:
         template: Cannot remove template because of dependent certificates.
         certificate: Cannot remove certificates because of dependent subscribers.
     not_found: "%{model} is not found."
+    unsupported_file: Unsupported file
+    import:
+      was_not_selected: was not selected

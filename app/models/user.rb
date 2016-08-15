@@ -54,7 +54,7 @@ class User
 
   before_create do
     self.nick = self.email.split('@')[0]
-    self.name = self.nick
+    self.name = self.nick if self.name.empty?
     self.build_slug
   end
 end
