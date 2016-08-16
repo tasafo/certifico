@@ -4,14 +4,20 @@ FactoryGirl.define do
 
     trait :paul do
       email 'paul@example.org'
+      full_name 'Paulo Moura'
+      user_name 'paulo'
     end
 
     trait :billy do
       email 'billy@example.org'
+      full_name 'Billy Blay'
+      user_name 'billy'
     end
 
     trait :luis do
-      email 'luis@example.org'
+      email 'luiz@example.org'
+      full_name 'Luiz Sanches'
+      user_name 'luiz'
     end
   end
 end

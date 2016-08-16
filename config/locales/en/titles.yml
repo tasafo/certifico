@@ -35,3 +35,7 @@ en:
         hour: hour
         hours: hours
     issue: Issue
+    user:
+      cancel_count: Cancel my account
+      unhappy: Unhappy?
+

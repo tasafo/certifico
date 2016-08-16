@@ -10,7 +10,8 @@ pt-BR:
 
     attributes:
       user:
-        name: Nome
+        full_name: Nome completo
+        user_name: Nome de usuário
         email: E-mail
         password: Senha
         remember_me: Relembre-me

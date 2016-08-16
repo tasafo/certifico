@@ -9,7 +9,7 @@ class IssuesController < ApplicationController
     subscriber = current_user.subscribers.find(params[:id])
 
     if subscriber
-      user_name = current_user.name.parameterize
+      user_name = current_user.full_name.parameterize
       certificate_title = subscriber.certificate.title.parameterize
       profile_name = subscriber.profile.name.parameterize
 

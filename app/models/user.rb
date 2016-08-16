@@ -12,8 +12,8 @@ class User
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
-  field :name,               type: String, default: I18n.t('title.default.user.name')
-  field :nick,               type: String
+  field :full_name,          type: String, default: ""
+  field :user_name,          type: String, default: ""
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -40,21 +40,18 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  slug :nick
+  slug :user_name
 
   has_many :templates
   has_many :certificates
   has_many :subscribers
 
-  validates_presence_of :email, :name
+  validates_presence_of :email, :full_name, :user_name
   validates_length_of :email, maximum: 100
-  validates_length_of :name, maximum: 100
+  validates_length_of :full_name, maximum: 100
+  validates_length_of :user_name, maximum: 50
+  validates_uniqueness_of :user_name
 
   index({ email: 1 }, { background: true })
-
-  before_create do
-    self.nick = self.email.split('@')[0]
-    self.name = self.nick if self.name.empty?
-    self.build_slug
-  end
+  index({ user_name: 1 }, { background: true })
 end

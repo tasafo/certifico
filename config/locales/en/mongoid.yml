@@ -10,7 +10,8 @@ en:
 
     attributes:
       user:
-        name: Name
+        full_name: Full name
+        user_name: User name
         email: E-mail
         password: Password
         remember_me: Remember-me

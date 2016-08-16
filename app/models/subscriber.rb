@@ -26,7 +26,7 @@ class Subscriber
       email = line[0]
       name = line[1]
 
-      user = User.find_by(email: email) || User.create(email: email, name: name, password: rand(11111111..99999999))
+      user = User.find_by(email: email) || User.create(email: email, full_name: name, user_name: email.split('@')[0], password: rand(11111111..99999999))
 
       subscriber = Subscriber.find_by(user_id: user, certificate_id: certificate, profile_id: profile)
 

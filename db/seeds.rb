@@ -101,8 +101,8 @@ end
 
 I18n.locale = 'pt-BR'
 
-admin_user = User.create(email: 'admin@mail.com', password: '123456', name: 'Administrador do Sistema')
-luiz_user = User.create(email: 'luiz@mail.com', password: '123456', name: 'Luiz Sanches')
+admin_user = User.create(email: 'admin@mail.com', password: '123456', full_name: 'Administrador do Sistema', user_name: 'admin')
+luiz_user = User.create(email: 'luiz@mail.com', password: '123456', full_name: 'Luiz Sanches', user_name: 'luiz')
 
 category = Category.first
 

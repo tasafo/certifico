@@ -16,9 +16,6 @@ pt-BR:
       back: Voltar
       generate: Gerar
       import: Importar
-    default:
-      user:
-        name: Seu nome
     certificate:
       certify_that: Certificamos que
       attended: participou
@@ -35,3 +32,6 @@ pt-BR:
         hour: hora
         hours: horas
     issue: Emissão
+    user:
+      cancel_count: Cancelar a minha conta
+      unhappy: Infeliz?

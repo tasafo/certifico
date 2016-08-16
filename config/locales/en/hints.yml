@@ -8,3 +8,8 @@ en:
                  - The file should not contain header. The fields must follow the order <b>E-MAIL, NAME [,THEME]</b><br/>
                  - The field <b>THEME</b> is used in the profiles <b>speaker, professor and instructor</b>
                  - Depending on the subscribers contained in the file number, the import process may take. <b>Be patient :)</b>
+    user:
+      password:
+        leave_blank: leave it blank if you don't want to change it
+        characters_minimum: characters minimum
+      current_password: we need your current password to confirm your changes

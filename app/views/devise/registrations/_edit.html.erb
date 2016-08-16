@@ -1,0 +1,19 @@
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :user_name, required: true %>
+    <%= f.input :full_name, required: true %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+
+    <%= f.input :password, autocomplete: "off", hint: t('hint.user.password.leave_blank'), required: false %>
+    <%= f.input :password_confirmation, required: false %>
+    <%= f.input :current_password, hint: t('hint.user.current_password'), required: true %>
+
+    <%= f.button :submit, t('menu.update_account'), class: 'btn btn-primary' %>
+<% end %>
+
+<h3><%= t('title.user.cancel_count') %></h3>
+
+<p><%= t('title.user.unhappy') %> <%= link_to t('title.user.cancel_count'), registration_path(resource_name), data: { confirm: t('title.action.are_you_sure') }, method: :delete %></p>

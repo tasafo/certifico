@@ -2,7 +2,8 @@
   <%= subscriber.simple_fields_for :user do |user| %>
     <% if form == 'new' %>
       <%= user.input :email %>
-      <%= user.input :name %>
+      <%= user.input :user_name %>
+      <%= user.input :full_name %>
     <% end %>
 
     <%= subscriber.input :profile_id, collection: @profiles %>

@@ -12,7 +12,7 @@ describe 'Sign in', js: true do
       fill_in 'E-mail', with: user.email
       fill_in 'Senha', with: user.password
 
-      click_button 'Login'
+      click_button 'Entrar'
     end
 
     it 'redirects to home page' do
@@ -20,7 +20,7 @@ describe 'Sign in', js: true do
     end
 
     it 'displays greeting message' do
-      expect(page).to have_content('Login efetuado com sucesso.')
+      expect(page).to have_content('Login efetuado com sucesso!')
     end
   end
 
@@ -28,7 +28,7 @@ describe 'Sign in', js: true do
     before do
       visit root_path
       click_link 'Entrar'
-      click_button 'Login'
+      click_button 'Entrar'
     end
 
     it 'redirects to home page' do
@@ -36,7 +36,7 @@ describe 'Sign in', js: true do
     end
 
     it 'displays error message' do
-      expect(page).to have_content('Email ou senha inválidos.')
+      expect(page).to have_content('E-mail ou senha inválidos.')
     end
   end
 end

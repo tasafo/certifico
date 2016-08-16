@@ -31,7 +31,7 @@ class GenerateCertificate
   end
 
   def certificate_body
-    text =  "#{I18n.t('title.certificate.certify_that')} <b>#{subscriber.user.name}</b> "
+    text =  "#{I18n.t('title.certificate.certify_that')} <b>#{subscriber.user.full_name}</b> "
     text << "#{I18n.t('title.certificate.attended')} #{certificate.category.preposition} #{certificate.category.name} #{certificate.title}, "
     text << "#{I18n.t('title.certificate.realized')} #{certificate_long_date}, #{certificate.local}, #{certificate_work_load}, "
     text << "#{I18n.t('title.certificate.quality_of')} <b>#{subscriber.profile.name}</b>#{certificate_theme}"

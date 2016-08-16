@@ -43,7 +43,7 @@ describe User, 'validations' do
   end
 
   it 'set password hash when setting password' do
-    user = User.create(:password => 'testdrive')
+    user = User.create(password: 'testdrive')
 
     expect(user.encrypted_password).not_to be_blank
   end

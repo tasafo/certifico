@@ -3,7 +3,12 @@ en:
     templates: Templates
     certificates: Certificates
     issues: Issues
+    update_account: Update account
     sign:
       in: Sign in
       up: Sign up
       out: Sign out
+      with: with
+    forgot_password: Forgot your password?
+    confirmation_instructions: Didn't receive confirmation instructions?
+    unlock_instructions: Didn't receive unlock instructions?

@@ -3,7 +3,12 @@ pt-BR:
     templates: Modelos
     certificates: Certificados
     issues: Emissões
+    update_account: Atualizar conta
     sign:
       in: Entrar
       up: Inscrever-se
       out: Sair
+      with: com
+    forgot_password: Perdeu sua senha?
+    confirmation_instructions: Não recebeu instruções de confirmação?
+    unlock_instructions: Não recebeu instruções de desbloqueio?

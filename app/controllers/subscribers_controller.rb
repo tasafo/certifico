@@ -50,7 +50,7 @@ class SubscribersController < ApplicationController
     params.require(:subscriber).permit(
       :profile_id,
       :theme,
-      user_attributes: [:email, :name]
+      user_attributes: [:email, :full_name, :user_name]
     )
   end
 

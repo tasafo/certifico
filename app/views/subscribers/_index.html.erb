@@ -4,7 +4,7 @@
 <table class="table table-hover table-responsive">
   <thead>
     <tr>
-      <th><%= t('mongoid.attributes.user.name') %></th>
+      <th><%= t('mongoid.attributes.user.full_name') %></th>
       <th><%= t('mongoid.attributes.user.email') %></th>
       <th><%= t('mongoid.attributes.subscriber.profile_id') %></th>
       <th><%= t('mongoid.attributes.subscriber.theme') %></th>
@@ -15,7 +15,7 @@
   <tbody>
     <% @certificate.subscribers.each do |subscriber| %>
       <tr>
-        <td><%= subscriber.user.name %></td>
+        <td><%= subscriber.user.full_name %></td>
         <td><%= subscriber.user.email %></td>
         <td><%= subscriber.profile.name %></td>
         <td><%= subscriber.theme %></td>

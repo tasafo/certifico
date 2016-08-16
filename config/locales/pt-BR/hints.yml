@@ -8,3 +8,8 @@ pt-BR:
                  - O arquivo não devem conter cabeçalho. Os campos devem seguir a ordem <b>E-MAIL, NOME [,TEMA]</b><br/>
                  - O Campo <b>TEMA</b> é utilizado nos perfis <b>palestrante, professor e instrutor</b><br/>
                  - Dependendo do número de inscritos contidos no arquivo, o processo de importação pode demorar. <b>Tenha paciência :)</b>
+    user:
+      password:
+        leave_blank: deixe em branco se você não quer mudá-lo
+        characters_minimum: caracteres no mínimo
+      current_password: precisamos de sua senha atual para confirmar as alterações
