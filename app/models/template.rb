@@ -4,7 +4,7 @@ class Template
   include Mongoid::Slug
 
   field :name, type: String
-  field :font_color, type: String
+  field :font_color, type: String, default: '000000'
 
   slug :name
 

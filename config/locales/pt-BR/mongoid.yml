@@ -16,6 +16,7 @@ pt-BR:
         password: Senha
         remember_me: Relembre-me
         password_confirmation: Confirmação da senha
+        current_password: Senha atual
       template:
         name: Nome
         font_color: Cor da fonte

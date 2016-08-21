@@ -16,6 +16,7 @@ en:
         password: Password
         remember_me: Remember-me
         password_confirmation: Password confirmation
+        current_password: Current password
       template:
         name: Name
         font_color: Font color

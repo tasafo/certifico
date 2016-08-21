@@ -10,6 +10,6 @@ pt-BR:
                  - Dependendo do número de inscritos contidos no arquivo, o processo de importação pode demorar. <b>Tenha paciência :)</b>
     user:
       password:
-        leave_blank: deixe em branco se você não quer mudá-lo
+        leave_blank: deixe em branco se você não quiser mudá-la
         characters_minimum: caracteres no mínimo
       current_password: precisamos de sua senha atual para confirmar as alterações

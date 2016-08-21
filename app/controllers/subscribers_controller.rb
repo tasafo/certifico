@@ -39,6 +39,8 @@ class SubscribersController < ApplicationController
         redirect_to edit_certificate_subscriber_path(@certificate, @subscriber),
           alert: "#{t('mongoid.models.profile')} #{message}"
       else
+        set_subscriber
+
         render :edit
       end
     end

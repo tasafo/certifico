@@ -99,24 +99,26 @@ profiles = {
   profile.save
 end
 
-I18n.locale = 'pt-BR'
+if Rails.env.development?
+  I18n.locale = 'pt-BR'
 
-admin_user = User.create(email: 'admin@mail.com', password: '123456', full_name: 'Administrador do Sistema', user_name: 'admin')
-luiz_user = User.create(email: 'luiz@mail.com', password: '123456', full_name: 'Luiz Sanches', user_name: 'luiz')
+  admin_user = User.create(email: 'admin@mail.com', password: '123456', full_name: 'Administrador do Sistema', user_name: 'admin')
+  luiz_user = User.create(email: 'luiz@mail.com', password: '123456', full_name: 'Luiz Sanches', user_name: 'luiz')
 
-category = Category.first
+  category = Category.first
 
-vaam_template = admin_user.templates.create(name: 'VAAM 2009', font_color: '000000', image: File.open(File.join(Rails.root, 'app/assets/images/vaam_template.jpg')))
-mare_template = admin_user.templates.create(name: 'Maré 2009', font_color: 'FFFFFF', image: File.open(File.join(Rails.root, 'app/assets/images/mare_template.jpg')))
+  vaam_template = admin_user.templates.create(name: 'VAAM 2009', font_color: '000000', image: File.open(File.join(Rails.root, 'app/assets/images/vaam_template.jpg')))
+  mare_template = admin_user.templates.create(name: 'Maré 2009', font_color: 'FFFFFF', image: File.open(File.join(Rails.root, 'app/assets/images/mare_template.jpg')))
 
-vaam_certificate = admin_user.certificates.create(template: vaam_template, category: category, title: 'Visão Ágil Academic Leaders 2009', initial_date: '2009-05-19', final_date: '2009-05-19', workload: '8', local: 'auditório do IESAM, Belém - Pará')
-mare_certificate = admin_user.certificates.create(template: mare_template, category: category, title: 'Maré de Agilidade Belém 2009', initial_date: '2009-11-19', final_date: '2009-11-19', workload: '8', local: 'auditório do CESUPA, Belém - Pará')
+  vaam_certificate = admin_user.certificates.create(template: vaam_template, category: category, title: 'Visão Ágil Academic Leaders 2009', initial_date: '2009-05-19', final_date: '2009-05-19', workload: '8', local: 'auditório do IESAM, Belém - Pará')
+  mare_certificate = admin_user.certificates.create(template: mare_template, category: category, title: 'Maré de Agilidade Belém 2009', initial_date: '2009-11-19', final_date: '2009-11-19', workload: '8', local: 'auditório do CESUPA, Belém - Pará')
 
-participant = Profile.find_by(name: 'participante')
-speaker = Profile.find_by(name: 'palestrante')
-organizer = Profile.find_by(name: 'organizador')
+  participant = Profile.find_by(name: 'participante')
+  speaker = Profile.find_by(name: 'palestrante')
+  organizer = Profile.find_by(name: 'organizador')
 
-luiz_user.subscribers.create(certificate: vaam_certificate, profile: speaker, theme: 'Slackware Linux')
-luiz_user.subscribers.create(certificate: mare_certificate, profile: participant)
+  luiz_user.subscribers.create(certificate: vaam_certificate, profile: speaker, theme: 'Slackware Linux')
+  luiz_user.subscribers.create(certificate: mare_certificate, profile: participant)
 
-admin_user.subscribers.create(certificate: mare_certificate, profile: organizer)
+  admin_user.subscribers.create(certificate: mare_certificate, profile: organizer)
+end

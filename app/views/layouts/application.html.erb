@@ -15,19 +15,21 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="/">certificar.me</a>
           </div>
-          <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-            <li><%= link_to current_user.email, '#' %></li>
-            <li><%= link_to t('menu.templates'), templates_path %></li>
-            <li><%= link_to t('menu.certificates'), certificates_path %></li>
-            <li><%= link_to t('menu.issues'), issues_path %></li>
-            <li><%= link_to t('menu.update_account'), edit_user_registration_path %></li>
-            <li><%= link_to t('menu.sign.out'), destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to t('menu.sign.in'), new_user_session_path %></li>
-            <li><%= link_to t('menu.sign.up'), new_user_registration_path %></li>
-          <% end %>
-          </ul>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to current_user.user_name, '#' %></li>
+              <li class="<%= request.fullpath.include?(templates_path) ? 'active' : '' %>"><%= link_to t('menu.templates'), templates_path %></li>
+              <li class="<%= request.fullpath.include?(certificates_path) ? 'active' : '' %>"><%= link_to t('menu.certificates'), certificates_path %></li>
+              <li class="<%= request.fullpath.include?(issues_path) ? 'active' : '' %>"><%= link_to t('menu.issues'), issues_path %></li>
+              <li class="<%= request.fullpath.include?(edit_user_registration_path) ? 'active' : '' %>"><%= link_to t('menu.update_account'), edit_user_registration_path %></li>
+              <li><%= link_to t('menu.sign.out'), destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to t('menu.sign.in'), new_user_session_path %></li>
+              <li><%= link_to t('menu.sign.up'), new_user_registration_path %></li>
+            <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </header>

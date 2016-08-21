@@ -34,6 +34,8 @@ gem 'prawn-table'
 gem 'roo'
 gem 'roo-xls'
 
+gem 'pagseguro-oficial', '~> 2.5.0'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'

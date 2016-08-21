@@ -54,4 +54,24 @@ describe 'Edit subscriber', js: true do
       expect(page).to have_content('Perfil já está em uso')
     end
   end
+
+  context 'without profile' do
+    let!(:subscriber2)   { create(:subscriber, user: user, certificate: certificate, profile: organizer) }
+
+    before do
+      login_as user
+
+      click_link 'Certificados'
+      click_link 'Exibir'
+      visit edit_certificate_subscriber_path(certificate, subscriber2)
+
+      select '', from: 'subscriber_profile_id'
+
+      click_button 'Atualizar Inscrito'
+    end
+
+    it 'redirects to the subscriber page' do
+      expect(current_path).to eql(certificate_subscriber_path(certificate, subscriber2))
+    end
+  end
 end
