@@ -1,3 +1,5 @@
+#require 'sidekiq/web'
+
 Rails.application.routes.draw do
   resources :certificates do
     resources :subscribers, only: [:new, :create, :edit, :update]
@@ -9,6 +11,11 @@ Rails.application.routes.draw do
   resources :credits, only: [:index, :new, :create]
 
   devise_for :users, controllers: {registrations: 'registrations'}
+
+  namespace :admin do
+    resources :notifications
+    #mount Sidekiq::Web, at: '/sidekiq'
+  end
 
   root to: 'home#index'
 end

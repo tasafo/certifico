@@ -4,8 +4,6 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails', '5.0.0'
 gem 'rails-i18n'
 
-gem 'puma', '~> 3.0'
-
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 
@@ -37,6 +35,12 @@ gem 'roo-xls'
 
 gem 'pagseguro-oficial'
 
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+
+gem 'airbrake', '4.3.4'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
@@ -53,11 +57,15 @@ group :test do
 end
 
 group :development do
+  gem 'thin'
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :production do
+  gem 'unicorn'
+  gem 'newrelic_rpm'
+  gem 'rails_12factor'
+end
