@@ -10,7 +10,7 @@ class CreditsController < ApplicationController
     @credit.price = credit_value
   end
 
-def create
+  def create
     @credit = current_user.credits.new(credit_params)
     @credit.price = credit_value
 
@@ -38,7 +38,6 @@ def create
         redirect_to credits_path, notice: response.errors.join('\n')
       else
         @credit.save
-        puts response.inspect
         redirect_to response.url
       end
     else
@@ -53,7 +52,9 @@ def create
   end
 
   def credit_value
-    price = CreditParameter.last.price
+    credit_param = CreditParameter.last
+
+    price = credit_param ? credit_param.price : nil
 
     redirect_to @credits, notice: t('notice.zero_credit') and return if price.nil? || price <= 0
 

@@ -24,10 +24,6 @@ Gerencie seus certificados online
 
     sudo apt-get install qt5-default libqt5webkit5-dev
 
-### Instalar o foreman para iniciar a aplicação
-
-    gem install foreman
-
 ### MailCatcher (http://mailcatcher.me)
 
 #### Instale o MailCatcher para testar o envio de e-mails localmente.
@@ -51,6 +47,10 @@ Agora espera...
 ### Se você estiver executando outra aplicação que utilize o sidekiq, é melhor rodar o comando
 
     redis-cli flushall
+
+### Instalar o foreman para iniciar a aplicação
+
+    gem install foreman
 
 ### Agora é só rodar e brincar!
 
