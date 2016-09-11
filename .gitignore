@@ -4,23 +4,13 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
 /.bundle
-
-# Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
-# Ignore Byebug command history file.
 .byebug_history
-
-# Ignore .ruby-* files.
 .ruby-*
-
-# Ignore coverage folder
 coverage/
-
-# Ignore uploads folder
 public/uploads/
+.env

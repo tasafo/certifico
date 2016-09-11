@@ -102,8 +102,13 @@ end
 if Rails.env.development?
   I18n.locale = 'pt-BR'
 
-  admin_user = User.create(email: 'admin@mail.com', password: '123456', full_name: 'Administrador do Sistema', user_name: 'admin')
-  luiz_user = User.create(email: 'luiz@mail.com', password: '123456', full_name: 'Luiz Sanches', user_name: 'luiz')
+  credit_param = CreditParameter.create(price: 2)
+
+  admin_user = User.create(email: 'admin@sandbox.pagseguro.com.br', password: '123456', full_name: 'Administrador do Sistema', user_name: 'admin')
+  luiz_user = User.create(email: 'luiz@sandbox.pagseguro.com.br', password: '123456', full_name: 'Luiz Sanches', user_name: 'luiz')
+
+  credit = admin_user.credits.create(quantity: 10, price: credit_param.price, status: 'pago', type: 'boleto')
+  credit.update(paid_at: DateTime.now)
 
   category = Category.first
 

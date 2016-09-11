@@ -5,6 +5,7 @@ pt-BR:
       templates: Modelos
       certificates: Certificados
       subscribers: Inscritos
+      credits: Créditos
     action:
       new: Novo
       new2: Nova
@@ -16,6 +17,7 @@ pt-BR:
       back: Voltar
       generate: Gerar
       import: Importar
+      buy: Comprar
     certificate:
       certify_that: Certificamos que
       attended: participou

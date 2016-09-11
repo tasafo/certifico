@@ -15,3 +15,6 @@ en:
     unsupported_file: Unsupported file
     import:
       was_not_selected: was not selected
+    zero_credit: Credit value not set
+    insufficient_credits: Their credits are insufficient
+    invalid_email: "Invalid e-mail: %{email}"

@@ -40,11 +40,14 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
+  field :current_credits,   type: Integer, default: 0
+
   slug :user_name
 
   has_many :templates
   has_many :certificates
   has_many :subscribers
+  has_many :credits
 
   validates_presence_of :email, :full_name, :user_name
   validates_length_of :email, maximum: 100

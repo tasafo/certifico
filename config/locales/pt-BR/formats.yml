@@ -1,0 +1,10 @@
+pt-BR:
+  date:
+    formats:
+      extended: '%d de %B de %Y'
+      datetime: '%d/%m/%Y %H:%M'
+      date: '%d/%m/%Y'
+  time:
+    formats:
+      extended: '%d de %B de %Y - %H:%M'
+      datetime: '%d/%m/%Y %H:%M'

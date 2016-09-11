@@ -1,0 +1,7 @@
+<%= simple_form_for(@credit) do |f| %>
+  <%= f.input :price, disabled: true, input_html: { type: :text, class: "decimal", value: number_with_precision(f.object.price, precision: 2) } %>
+  <%= f.input :quantity, autofocus: true, input_html: { maxlength: 5 }, hint: t('hint.credit.quantity') %>
+
+  <%= f.submit "#{t('title.action.buy')} #{t('mongoid.models.credit')}", class: 'btn btn-primary' %>
+  <%= link_to t('title.action.back'), credits_path, class: 'btn btn-default' %>
+<% end %>

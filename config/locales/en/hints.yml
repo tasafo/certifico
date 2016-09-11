@@ -13,3 +13,5 @@ en:
         leave_blank: leave it blank if you don't want to change it
         characters_minimum: characters minimum
       current_password: we need your current password to confirm your changes
+    credit:
+      quality: After confirming the operation, you will be redirected to PagSeguro website to make payment of their credits

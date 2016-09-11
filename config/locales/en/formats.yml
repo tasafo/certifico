@@ -1,0 +1,10 @@
+en:
+  date:
+    formats:
+      extended: '%d, %B of %Y'
+      datetime: '%Y-%m-%d %H:%M'
+      date: '%Y-%m-%d'
+  time:
+    formats:
+      extended: '%d, %B of %Y - %H:%M'
+      datetime: '%Y-%m-%d %H:%M'

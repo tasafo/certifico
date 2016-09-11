@@ -15,3 +15,6 @@ pt-BR:
     unsupported_file: Arquivo não suportado
     import:
       was_not_selected: não foi selecionado
+    zero_credit: Valor do crédito não definido
+    insufficient_credits: Seus créditos são insuficientes
+    invalid_email: "E-mail inválido: %{email}"

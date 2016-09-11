@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails', '5.0.0'
 gem 'rails-i18n'
 
@@ -34,7 +35,7 @@ gem 'prawn-table'
 gem 'roo'
 gem 'roo-xls'
 
-gem 'pagseguro-oficial', '~> 2.5.0'
+gem 'pagseguro-oficial'
 
 group :development, :test do
   gem 'byebug', platform: :mri

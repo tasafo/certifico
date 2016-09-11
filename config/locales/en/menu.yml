@@ -3,6 +3,7 @@ en:
     templates: Templates
     certificates: Certificates
     issues: Issues
+    credits: Credits
     update_account: Update account
     sign:
       in: Sign in

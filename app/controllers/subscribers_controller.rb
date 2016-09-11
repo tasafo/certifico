@@ -5,6 +5,7 @@ class SubscribersController < ApplicationController
   before_action :authorization, only: [:edit]
 
   def new
+    check_credits certificate_path(@certificate)
     @subscriber = Subscriber.new
     @subscriber.user = User.new
   end
@@ -13,6 +14,7 @@ class SubscribersController < ApplicationController
   end
 
   def create
+    check_credits certificate_path(@certificate)
     @subscriber = Subscriber.new(subscriber_params)
     @subscriber.certificate = @certificate
     @subscriber.user.password = rand(11111111..99999999)

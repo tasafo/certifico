@@ -5,6 +5,7 @@ en:
       templates: Templates
       certificates: Certificates
       subscribers: Subscribers
+      credits: Credits
     action:
       new: New
       new2: New
@@ -16,6 +17,7 @@ en:
       back: Back
       generate: Generate
       import: Import
+      buy: Buy
     default:
       user:
         name: Your name

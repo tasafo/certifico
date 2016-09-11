@@ -1,0 +1,30 @@
+<%= link_to "#{t('title.action.buy')} #{t('mongoid.models.credit')}", new_credit_path, class: 'btn btn-primary' %>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th><%= t('mongoid.attributes.credit.quantity') %></th>
+      <th><%= t('mongoid.attributes.credit.price') %></th>
+      <th><%= t('mongoid.attributes.credit.total') %></th>
+      <th><%= t('mongoid.attributes.credit.type') %></th>
+      <th><%= t('mongoid.attributes.credit.created_at') %></th>
+      <th><%= t('mongoid.attributes.credit.status') %></th>
+      <th><%= t('mongoid.attributes.credit.paid_at') %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @credits.each do |credit| %>
+      <tr>
+        <td><%= credit.quantity %></td>
+        <td><%= number_with_precision(credit.price, precision: 2) %></td>
+        <td><%= number_with_precision(credit.quantity * credit.price, precision: 2) %></td>
+        <td><%= credit.type %></td>
+        <td><%= I18n.l(credit.created_at, format: :datetime) %></td>
+        <td><%= credit.status %></td>
+        <td><%= I18n.l(credit.paid_at, format: :datetime) unless credit.paid_at.nil? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

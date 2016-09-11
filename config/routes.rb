@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :templates
   resources :issues, only: [:index, :show]
+  resources :credits, only: [:index, :new, :create]
 
   devise_for :users, controllers: {registrations: 'registrations'}
 

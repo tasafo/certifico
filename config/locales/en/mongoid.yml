@@ -7,6 +7,7 @@ en:
       subscriber: Subscriber
       category: Category
       profile: Profile
+      credit: Credit
 
     attributes:
       user:
@@ -43,3 +44,12 @@ en:
         preposition: Preposition
       profile:
         name: Name
+      credit:
+        quantity: Quantity
+        price: Price
+        total: Total
+        paid_at: Paid at
+        created_at: Created at
+        code: Code
+        type: Form
+        status: Status

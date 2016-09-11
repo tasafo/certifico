@@ -1,7 +1,7 @@
 require 'roo'
 
 class SpreadSheet
-  def self.import(certificate_id, subscriber)
+  def self.import(certificate, subscriber)
     profile_id = subscriber[:profile_id]
     file = subscriber[:file]
 
@@ -17,7 +17,9 @@ class SpreadSheet
       raise e.message
     end
 
-    Subscriber.import(certificate_id, profile_id, spreadsheet)
+    result = Subscriber.import(certificate, profile_id, spreadsheet)
+
+    raise result unless result == true
   end
 
   def self.open(file)
