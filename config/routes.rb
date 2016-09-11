@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'registrations'}
 
   namespace :admin do
-    resources :notifications
+    resources :notifications, only: [:create]
     #mount Sidekiq::Web, at: '/sidekiq'
   end
 
