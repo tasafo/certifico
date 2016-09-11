@@ -27,7 +27,7 @@ module CertificarMe
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'pagseguro.uol.com.br'
+        origins 'https://sandbox.pagseguro.uol.com.br', 'https://pagseguro.uol.com.br'
         resource '/admin/notifications', headers: :any, methods: [:post]
       end
     end
