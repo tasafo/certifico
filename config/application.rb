@@ -24,5 +24,12 @@ module CertificarMe
     Prawn::Font::AFM.hide_m17n_warning = true
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'pagseguro.uol.com.br'
+        resource '/admin/notifications', headers: :any, methods: [:post]
+      end
+    end
   end
 end

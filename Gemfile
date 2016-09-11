@@ -43,6 +43,8 @@ gem 'slim'
 
 gem 'airbrake', '4.3.4'
 
+gem 'rack-cors', require: 'rack/cors'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
