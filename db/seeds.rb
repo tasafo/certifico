@@ -4,6 +4,7 @@ categories = {
     {name: 'encontro', preposition: 'do'},
     {name: 'simpósio', preposition: 'do'},
     {name: 'seminário', preposition: 'do'},
+    {name: 'congresso', preposition: 'do'},
     {name: 'fórum', preposition: 'do'},
     {name: 'curso', preposition: 'do'},
     {name: 'conferência', preposition: 'da'},
@@ -16,6 +17,7 @@ categories = {
     {name: 'meeting', preposition: 'the'},
     {name: 'symposium', preposition: 'the'},
     {name: 'seminar', preposition: 'the'},
+    {name: 'congress', preposition: 'the'},
     {name: 'forum', preposition: 'the'},
     {name: 'course', preposition: 'the'},
     {name: 'conference', preposition: 'the'},
@@ -28,6 +30,7 @@ categories = {
     {name: 'reunión', preposition: 'en el'},
     {name: 'simposio', preposition: 'en el'},
     {name: 'seminario', preposition: 'en el'},
+    {name: 'congreso', preposition: 'en el'},
     {name: 'foro', preposition: 'en el'},
     {name: 'curso', preposition: 'en el'},
     {name: 'conferencia', preposition: 'a la'},
@@ -59,6 +62,7 @@ profiles = {
     {name: 'organizador', has_theme: false},
     {name: 'palestrante', has_theme: true},
     {name: 'participante', has_theme: false},
+    {name: 'congressista', has_theme: false},
     {name: 'coordenador', has_theme: true},
     {name: 'instrutor', has_theme: false},
     {name: 'professor', has_theme: false},
@@ -68,6 +72,7 @@ profiles = {
     {name: 'organizer'},
     {name: 'speaker'},
     {name: 'participant'},
+    {name: 'congressman'},
     {name: 'coordinator'},
     {name: 'instructor'},
     {name: 'teacher'},
@@ -77,6 +82,7 @@ profiles = {
     {name: 'organizador'},
     {name: 'orador'},
     {name: 'partícipe'},
+    {name: 'congresista'},
     {name: 'coordinador'},
     {name: 'entrenador'},
     {name: 'profesor'},
@@ -107,8 +113,11 @@ if Rails.env.development?
   admin_user = User.create(email: 'admin@sandbox.pagseguro.com.br', password: '123456', full_name: 'Administrador do Sistema', user_name: 'admin')
   luiz_user = User.create(email: 'luiz@sandbox.pagseguro.com.br', password: '123456', full_name: 'Luiz Sanches', user_name: 'luiz')
 
-  credit = admin_user.credits.create(quantity: 10, price: credit_param.price, status: 'pago', type: 'boleto')
-  credit.update(paid_at: DateTime.now)
+  credit = admin_user.credits.create(quantity: 10, price: credit_param.price, status: '1', method: '2')
+  credit.histories.create(status: '1')
+
+  credit.update(paid_at: DateTime.now, status: '3')
+  credit.histories.create(status: '3')
 
   category = Category.first
 

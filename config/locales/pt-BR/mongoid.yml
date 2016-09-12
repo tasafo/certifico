@@ -8,6 +8,7 @@ pt-BR:
       category: Categoria
       profile: Perfil
       credit: Crédito
+      history: Histórico
 
     attributes:
       user:
@@ -50,6 +51,11 @@ pt-BR:
         total: Total
         paid_at: Pago em
         created_at: Criado em
-        code: Código
-        type: Forma
+        transaction: Transação
+        method: Método
         status: Situação
+        gateway: Meio
+      history:
+        notification: Notificação
+        status: Situação
+        created_at: Criado em

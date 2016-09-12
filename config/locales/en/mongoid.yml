@@ -8,6 +8,7 @@ en:
       category: Category
       profile: Profile
       credit: Credit
+      history: History
 
     attributes:
       user:
@@ -50,6 +51,11 @@ en:
         total: Total
         paid_at: Paid at
         created_at: Created at
-        code: Code
-        type: Form
+        transaction: Transaction
+        method: Method
         status: Status
+        gateway: Gateway
+      history:
+        notification: Notification
+        status: Status
+        created_at: Created at

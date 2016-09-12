@@ -6,11 +6,11 @@
       <th><%= t('mongoid.attributes.credit.quantity') %></th>
       <th><%= t('mongoid.attributes.credit.price') %></th>
       <th><%= t('mongoid.attributes.credit.total') %></th>
-      <th><%= t('mongoid.attributes.credit.type') %></th>
+      <th><%= t('mongoid.attributes.credit.method') %></th>
       <th><%= t('mongoid.attributes.credit.created_at') %></th>
       <th><%= t('mongoid.attributes.credit.status') %></th>
       <th><%= t('mongoid.attributes.credit.paid_at') %></th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -20,10 +20,11 @@
         <td><%= credit.quantity %></td>
         <td><%= number_with_precision(credit.price, precision: 2) %></td>
         <td><%= number_with_precision(credit.quantity * credit.price, precision: 2) %></td>
-        <td><%= credit.type %></td>
+        <td><%= PagseguroCodes.method(credit.method) %></td>
         <td><%= I18n.l(credit.created_at, format: :datetime) %></td>
-        <td><%= credit.status %></td>
+        <td><%= PagseguroCodes.status(credit.status) %></td>
         <td><%= I18n.l(credit.paid_at, format: :datetime) unless credit.paid_at.nil? %></td>
+        <td><%= link_to t('title.action.show'), credit, class: 'btn btn-info' %></td>
       </tr>
     <% end %>
   </tbody>

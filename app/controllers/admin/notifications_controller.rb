@@ -2,12 +2,28 @@ class Admin::NotificationsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: :create
 
   def create
-    transaction = PagSeguro::Transaction.find_by_notification_code(params[:notificationCode])
+    notification_code = params[:notificationCode]
+
+    transaction = PagSeguro::Transaction.find_by_notification_code(notification_code)
 
     if transaction.errors.empty?
-      puts "=" * 30
       puts transaction.inspect
-      puts "=" * 30
+
+      status_id = transaction.status.id
+
+      credit = Credit.find(transaction.reference[2..-1])
+
+      if credit
+        credit.update(
+          transaction: transaction.code,
+          method: transaction.payment_method.type_id,
+          status: status_id
+        )
+
+        credit.update(paid_at: transaction.created_at) if status_id == '3'
+
+        credit.histories.create(status: status_id, notification: notification_code)
+      end
     end
 
     render nothing: true, status: 200

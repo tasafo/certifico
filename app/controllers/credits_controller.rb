@@ -1,8 +1,13 @@
 class CreditsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_credit, only: [:show]
+  before_action :authorization, only: [:show]
 
   def index
     @credits = current_user.credits.order(c_at: :asc)
+  end
+
+  def show
   end
 
   def new
@@ -38,7 +43,9 @@ class CreditsController < ApplicationController
         redirect_to credits_path, notice: response.errors.join('\n')
       else
         @credit.save
-        redirect_to response.url
+        @credit.histories.create(status: '1')
+
+        redirect_to Rails.env.production? ? response.url : credits_path
       end
     else
       render :new
@@ -49,6 +56,15 @@ class CreditsController < ApplicationController
 
   def credit_params
     params.require(:credit).permit(:quantity)
+  end
+
+  def set_credit
+    @credit = current_user.credits.find(params[:id])
+  end
+
+  def authorization
+    redirect_to credits_path,
+      notice: t('notice.not_found', model: t('mongoid.models.credit')) and return if @credit.nil?
   end
 
   def credit_value
