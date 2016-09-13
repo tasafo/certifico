@@ -22,7 +22,7 @@ class CreditsController < ApplicationController
     payment = PagSeguro::PaymentRequest.new
 
     payment.reference = "CC#{@credit.id}"
-    payment.notification_url = "#{request.base_url}/admin/notifications"
+    payment.notification_url = ENV['PAGSEGURO_NOTIFICATION_URL']
     payment.redirect_url = "#{request.base_url}/credits"
     payment.abandon_url = "#{request.base_url}/credits"
 
