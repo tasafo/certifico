@@ -121,8 +121,8 @@ if Rails.env.development?
 
   category = Category.first
 
-  vaam_template = admin_user.templates.create(name: 'VAAM 2009', font_color: '000000', image: File.open(File.join(Rails.root, 'app/assets/images/vaam_template.jpg')))
-  mare_template = admin_user.templates.create(name: 'Maré 2009', font_color: 'FFFFFF', image: File.open(File.join(Rails.root, 'app/assets/images/mare_template.jpg')))
+  vaam_template = admin_user.templates.create(name: 'VAAM 2009', font_color: '#000000', image: File.open(File.join(Rails.root, 'app/assets/images/vaam_template.jpg')))
+  mare_template = admin_user.templates.create(name: 'Maré 2009', font_color: '#ffffff', image: File.open(File.join(Rails.root, 'app/assets/images/mare_template.jpg')))
 
   vaam_certificate = admin_user.certificates.create(template: vaam_template, category: category, title: 'Visão Ágil Academic Leaders 2009', initial_date: '2009-05-19', final_date: '2009-05-19', workload: '8', local: 'auditório do IESAM, Belém - Pará')
   mare_certificate = admin_user.certificates.create(template: mare_template, category: category, title: 'Maré de Agilidade Belém 2009', initial_date: '2009-11-19', final_date: '2009-11-19', workload: '8', local: 'auditório do CESUPA, Belém - Pará')

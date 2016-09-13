@@ -8,3 +8,9 @@
   <%= f.button :submit, class: 'btn btn-primary' %>
   <%= link_to t('title.action.back'), templates_path, class: 'btn btn-default' %>
 <% end %>
+
+<script>
+  $(function() {
+    $('#template_font_color').colorpicker();
+  });
+</script>

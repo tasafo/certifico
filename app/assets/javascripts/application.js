@@ -13,8 +13,10 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
+//= require bootstrap-colorpicker
 //= require turbolinks
 //= require_tree .

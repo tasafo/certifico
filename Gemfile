@@ -12,7 +12,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-colorpicker-rails'
 
 gem 'turbolinks', '~> 5.x'
 

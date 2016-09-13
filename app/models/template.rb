@@ -4,7 +4,7 @@ class Template
   include Mongoid::Slug
 
   field :name, type: String
-  field :font_color, type: String, default: '000000'
+  field :font_color, type: String, default: '#000000'
 
   slug :name
 
@@ -12,7 +12,7 @@ class Template
 
   validates_presence_of :name, :font_color
   validates_length_of :name, maximum: 100
-  validates_length_of :font_color, maximum: 6
+  validates_length_of :font_color, maximum: 7
 
   belongs_to :user
   has_many :certificates, dependent: :restrict

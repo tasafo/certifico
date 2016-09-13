@@ -20,13 +20,10 @@ class GenerateCertificate
 
   def pdf
     Prawn::Document.new(PDF_OPTIONS) do |pdf|
-      pdf.fill_color certificate.template.font_color
+      pdf.fill_color certificate.template.font_color.gsub('#', '')
 
       pdf.move_down 200
-      pdf.text certificate_body,
-               inline_format: true,
-               align: :justify,
-               size: 20
+      pdf.text certificate_body, inline_format: true, align: :justify, size: 20
     end
   end
 
