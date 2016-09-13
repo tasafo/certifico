@@ -18,6 +18,7 @@ pt-BR:
       generate: Gerar
       import: Importar
       buy: Comprar
+      validate_certificate: clique aqui para validar o certificado
     certificate:
       certify_that: Certificamos que
       attended: participou
@@ -33,6 +34,7 @@ pt-BR:
       workload:
         hour: hora
         hours: horas
+      validate: Validação de certificado
     issue: Emissão
     user:
       cancel_count: Cancelar a minha conta

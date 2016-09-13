@@ -18,6 +18,7 @@ en:
       generate: Generate
       import: Import
       buy: Buy
+      validate_certificate: click here to validate the certificate
     certificate:
       certify_that: We certify that
       attended: attended
@@ -33,6 +34,7 @@ en:
       workload:
         hour: hour
         hours: hours
+      validate: Certificate Validation
     issue: Issue
     user:
       cancel_count: Cancel my account

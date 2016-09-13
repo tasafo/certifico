@@ -1,5 +1,5 @@
 class GenerateCertificate
-  attr_accessor :subscriber, :certificate
+  attr_accessor :subscriber, :certificate, :link
 
   PDF_OPTIONS = {
     page_size:   "A4",
@@ -10,7 +10,7 @@ class GenerateCertificate
   def initialize(subscriber)
     @subscriber = subscriber
     @certificate = subscriber.certificate
-
+    @link = "#{ENV['RETURN_URL']}/admin/validates/#{@subscriber.id}"
     PDF_OPTIONS[:background] = ImageCertificate.new(certificate).download
   end
 
@@ -19,11 +19,16 @@ class GenerateCertificate
   end
 
   def pdf
+
     Prawn::Document.new(PDF_OPTIONS) do |pdf|
       pdf.fill_color certificate.template.font_color.gsub('#', '')
 
       pdf.move_down 200
       pdf.text certificate_body, inline_format: true, align: :justify, size: 20
+
+      pdf.bounding_box([pdf.bounds.right - 130, pdf.bounds.bottom - 30], width: 250, height: 20, align: :right) do
+        pdf.text "<i><link href='#{@link}'>#{I18n.t('title.action.validate_certificate')}</link></i>", inline_format: true
+      end
     end
   end
 

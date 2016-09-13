@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :notifications, only: [:create]
+    resources :validates, only: [:show]
     #mount Sidekiq::Web, at: '/sidekiq'
   end
 

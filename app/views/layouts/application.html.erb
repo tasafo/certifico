@@ -17,7 +17,7 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <li><%= link_to t('title.user.greeting', name: current_user.user_name), '#' %></li>
+              <li><%= link_to t('title.user.greeting', name: current_user.user_name), '/' %></li>
               <li class="<%= request.fullpath.include?(templates_path) ? 'active' : '' %>"><%= link_to t('menu.templates'), templates_path %></li>
               <li class="<%= request.fullpath.include?(certificates_path) ? 'active' : '' %>"><%= link_to t('menu.certificates'), certificates_path %></li>
               <li class="<%= request.fullpath.include?(issues_path) ? 'active' : '' %>"><%= link_to t('menu.issues'), issues_path %></li>
