@@ -37,3 +37,12 @@ pt-BR:
     user:
       cancel_count: Cancelar a minha conta
       unhappy: Infeliz?
+    password:
+      forgot: Esqueceu sua senha?
+      send_instructions: Envie-me instruções de redefinição de senha
+      change_your: Mude sua senha
+      change_my: Mude minha senha
+    confirmation:
+      resend_instructions: Reenviar instruções de confirmação
+    unlock:
+      resend_instructions: Reenviar instruções de desbloqueio

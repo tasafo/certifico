@@ -40,4 +40,12 @@ en:
     user:
       cancel_count: Cancel my account
       unhappy: Unhappy?
-
+    password:
+      forgot: Forgot your password?
+      send_instructions: Send me reset password instructions
+      change_your: Change your password
+      change_my: Change my password
+    confirmation:
+      resend_instructions: Resend confirmation instructions
+    unlock:
+      resend_instructions: Resend unlock instructions

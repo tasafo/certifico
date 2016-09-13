@@ -7,8 +7,6 @@ class Admin::NotificationsController < ApplicationController
     transaction = PagSeguro::Transaction.find_by_notification_code(notification_code)
 
     if transaction.errors.empty?
-      puts transaction.inspect
-
       status_id = transaction.status.id
 
       credit = Credit.find(transaction.reference[2..-1])
