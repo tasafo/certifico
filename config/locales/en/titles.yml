@@ -18,9 +18,6 @@ en:
       generate: Generate
       import: Import
       buy: Buy
-    default:
-      user:
-        name: Your name
     certificate:
       certify_that: We certify that
       attended: attended
@@ -40,6 +37,7 @@ en:
     user:
       cancel_count: Cancel my account
       unhappy: Unhappy?
+      greeting: "Hello, %{name}"
     password:
       forgot: Forgot your password?
       send_instructions: Send me reset password instructions

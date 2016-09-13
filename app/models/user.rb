@@ -40,7 +40,7 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  field :current_credits,   type: Integer, default: 0
+  field :current_credits,   type: Integer, default: 5
 
   slug :user_name
 

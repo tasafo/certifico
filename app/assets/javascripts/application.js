@@ -13,7 +13,7 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery-ui/core
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es

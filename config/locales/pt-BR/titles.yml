@@ -37,6 +37,7 @@ pt-BR:
     user:
       cancel_count: Cancelar a minha conta
       unhappy: Infeliz?
+      greeting: "Olá, %{name}"
     password:
       forgot: Esqueceu sua senha?
       send_instructions: Envie-me instruções de redefinição de senha
