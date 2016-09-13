@@ -21,4 +21,5 @@ class Certificate
   belongs_to :template
   belongs_to :category
   has_many :subscribers, dependent: :restrict
+  has_many :downloads
 end

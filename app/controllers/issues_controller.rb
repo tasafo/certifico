@@ -2,10 +2,9 @@ class IssuesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
   end
 
-  def show
+  def update
     subscriber = current_user.subscribers.find(params[:id])
 
     if subscriber
@@ -13,11 +12,11 @@ class IssuesController < ApplicationController
       certificate_title = subscriber.certificate.title.parameterize
       profile_name = subscriber.profile.name.parameterize
 
+      Download.create(user: current_user, certificate: subscriber.certificate)
+
       send_data GenerateCertificate.new(subscriber).save,
                 filename: "certificar-me_#{user_name}_#{certificate_title}_#{profile_name}.pdf",
                 type: "application/pdf"
-    else
-      redirect_to issues_path, notice: t('notice.not_found', model: t('title.issue'))
     end
   end
 end

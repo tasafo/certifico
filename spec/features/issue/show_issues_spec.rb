@@ -23,11 +23,11 @@ describe 'Show issues', js: true do
       login_as user2
 
       click_link 'Emissões'
-      visit issue_path(subscriber1)
+      click_link "generate_#{subscriber1.id}"
     end
 
     it 'redirects to the issue page' do
-      expect(current_path).to eql(issue_path(subscriber1))
+      expect(current_path).to eql(issues_path)
     end
   end
 
@@ -36,11 +36,11 @@ describe 'Show issues', js: true do
       login_as user3
 
       click_link 'Emissões'
-      visit issue_path(subscriber2)
+      click_link "generate_#{subscriber2.id}"
     end
 
     it 'redirects to the issue page' do
-      expect(current_path).to eql(issue_path(subscriber2))
+      expect(current_path).to eql(issues_path)
     end
   end
 
@@ -49,11 +49,11 @@ describe 'Show issues', js: true do
       login_as user3
 
       click_link 'Emissões'
-      visit issue_path(subscriber3)
+      click_link "generate_#{subscriber3.id}"
     end
 
     it 'redirects to the issue page' do
-      expect(current_path).to eql(issue_path(subscriber3))
+      expect(current_path).to eql(issues_path)
     end
   end
 
@@ -62,23 +62,10 @@ describe 'Show issues', js: true do
       login_as user3
 
       click_link 'Emissões'
-      visit issue_path(subscriber4)
+      click_link "generate_#{subscriber4.id}"
     end
 
     it 'redirects to the issue page' do
-      expect(current_path).to eql(issue_path(subscriber4))
-    end
-  end
-
-  context 'with different user' do
-    before do
-      login_as user3
-
-      click_link 'Emissões'
-      visit issue_path(subscriber1)
-    end
-
-    it 'redirects to the issues page' do
       expect(current_path).to eql(issues_path)
     end
   end

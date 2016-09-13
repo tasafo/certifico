@@ -20,7 +20,7 @@
         <td><%= subscriber.certificate.final_date %></td>
         <td><%= subscriber.certificate.workload %></td>
         <td><%= subscriber.certificate.local %></td>
-        <td><%= link_to t('title.action.generate'), issue_path(subscriber), class: 'btn btn-success' %></td>
+        <td><%= link_to t('title.action.generate'), issue_path(subscriber), id: "generate_#{subscriber.id}", class: 'btn btn-success', data: {confirm: t('title.action.are_you_sure')}, method: :patch %></td>
       </tr>
     <% end %>
   </tbody>

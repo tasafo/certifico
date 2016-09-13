@@ -48,6 +48,7 @@ class User
   has_many :certificates
   has_many :subscribers
   has_many :credits
+  has_many :downloads
 
   validates_presence_of :email, :full_name, :user_name
   validates_length_of :email, maximum: 100
