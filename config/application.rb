@@ -31,5 +31,7 @@ module CertificarMe
         resource '/admin/notifications', headers: :any, methods: [:post]
       end
     end
+
+    config.time_zone = 'Brasilia'
   end
 end
