@@ -4,11 +4,12 @@ class Credit
 
   field :quantity,    type: Integer
   field :price,       type: Float
+  field :fee,         type: Float
   field :paid_at,     type: DateTime
   field :gateway,     type: String, default: 'pagseguro'
   field :transaction, type: String
   field :method,      type: String
-  field :status,      type: String, default: '1'
+  field :status,      type: String, default: '0'
 
   validates_presence_of :quantity, :price, :gateway, :status
   validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 1 }

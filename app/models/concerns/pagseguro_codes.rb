@@ -1,5 +1,6 @@
 class PagseguroCodes
   TRANSACTION_STATUS = {
+    '0' => 'Iniciada',
     '1' => 'Aguardando pagamento',
     '2' => 'Em análise',
     '3' => 'Paga',

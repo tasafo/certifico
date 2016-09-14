@@ -15,10 +15,11 @@ class Admin::NotificationsController < ApplicationController
         credit.update(
           transaction: transaction.code,
           method: transaction.payment_method.type_id,
-          status: status_id
+          status: status_id,
+          fee: transaction.operational_fee_amount
         )
 
-        credit.update(paid_at: transaction.created_at) if status_id == '3'
+        credit.update(paid_at: DateTime.now) if status_id == '3'
 
         credit.histories.create(status: status_id, notification: notification_code)
       end
