@@ -43,7 +43,7 @@ class CreditsController < ApplicationController
         redirect_to credits_path, notice: response.errors.join('\n')
       else
         @credit.save
-        @credit.histories.create(status: '1')
+        @credit.histories.create(status: '0')
 
         redirect_to Rails.env.production? ? response.url : credits_path
       end
