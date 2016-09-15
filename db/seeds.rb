@@ -113,16 +113,16 @@ if Rails.env.development?
   admin_user = User.create(email: 'admin@sandbox.pagseguro.com.br', password: '123456', full_name: 'Administrador do Sistema', user_name: 'admin')
   luiz_user = User.create(email: 'luiz@sandbox.pagseguro.com.br', password: '123456', full_name: 'Luiz Sanches', user_name: 'luiz')
 
-  credit = admin_user.credits.create(quantity: 10, price: credit_param.price, status: '1', method: '2')
-  credit.histories.create(status: '1')
+  credit = admin_user.credits.create(quantity: 10, price: credit_param.price, status: '0', method: '2')
+  credit.histories.create(status: '0')
 
   credit.update(paid_at: DateTime.now, status: '3')
   credit.histories.create(status: '3')
 
   category = Category.first
 
-  vaam_template = admin_user.templates.create(name: 'VAAM 2009', font_color: '#000000', image: File.open(File.join(Rails.root, 'app/assets/images/vaam_template.jpg')))
-  mare_template = admin_user.templates.create(name: 'Maré 2009', font_color: '#ffffff', image: File.open(File.join(Rails.root, 'app/assets/images/mare_template.jpg')))
+  vaam_template = admin_user.templates.create(name: 'VAAM 2009', font_color: '#000000')
+  mare_template = admin_user.templates.create(name: 'Maré 2009', font_color: '#ffffff')
 
   vaam_certificate = admin_user.certificates.create(template: vaam_template, category: category, title: 'Visão Ágil Academic Leaders 2009', initial_date: '2009-05-19', final_date: '2009-05-19', workload: '8', local: 'auditório do IESAM, Belém - Pará')
   mare_certificate = admin_user.certificates.create(template: mare_template, category: category, title: 'Maré de Agilidade Belém 2009', initial_date: '2009-11-19', final_date: '2009-11-19', workload: '8', local: 'auditório do CESUPA, Belém - Pará')

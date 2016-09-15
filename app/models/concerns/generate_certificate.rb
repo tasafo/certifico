@@ -11,7 +11,8 @@ class GenerateCertificate
     @subscriber = subscriber
     @certificate = subscriber.certificate
     @link = "#{ENV['RETURN_URL']}/admin/validates/#{@subscriber.id}"
-    PDF_OPTIONS[:background] = ImageCertificate.new(certificate).download
+    image = ImageCertificate.new(certificate).download
+    PDF_OPTIONS[:background] = image unless image.nil?
   end
 
   def save
@@ -19,7 +20,6 @@ class GenerateCertificate
   end
 
   def pdf
-
     Prawn::Document.new(PDF_OPTIONS) do |pdf|
       pdf.fill_color certificate.template.font_color.gsub('#', '')
 

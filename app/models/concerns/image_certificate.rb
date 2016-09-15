@@ -13,6 +13,8 @@ class ImageCertificate
     else
       url = certificate.template.image_url
 
+      return nil if url.nil?
+
       image_file = "#{Rails.root}/tmp/#{certificate.id}"
 
       image_path = url.sub("http://res.cloudinary.com", "")
