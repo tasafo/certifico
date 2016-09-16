@@ -12,11 +12,13 @@ class Admin::NotificationsController < ApplicationController
       credit = Credit.find(transaction.reference[2..-1])
 
       if credit
+        fee_amount = transaction.respond_to?(:operational_fee_amount) ? transaction.operational_fee_amount : 0
+
         credit.update(
           transaction: transaction.code,
           method: transaction.payment_method.type_id,
           status: status_id,
-          fee: transaction.operational_fee_amount
+          fee: fee_amount
         )
 
         credit.update(paid_at: DateTime.now) if status_id == '3'
