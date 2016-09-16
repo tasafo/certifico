@@ -39,9 +39,9 @@ gem 'roo-xls'
 
 gem 'pagseguro-oficial'
 
-gem 'sidekiq'
-gem 'sinatra', require: false
-gem 'slim'
+#gem 'sidekiq'
+#gem 'sinatra', require: false
+#gem 'slim'
 
 gem 'airbrake', '4.3.4'
 
