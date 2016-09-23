@@ -134,5 +134,5 @@ if Rails.env.development?
   luiz_user.subscribers.create(certificate: vaam_certificate, profile: speaker, theme: 'Slackware Linux')
   luiz_user.subscribers.create(certificate: mare_certificate, profile: participant)
 
-  admin_user.subscribers.create(certificate: mare_certificate, profile: organizer)
+  admin_user.subscribers.create(certificate: vaam_certificate, profile: organizer)
 end

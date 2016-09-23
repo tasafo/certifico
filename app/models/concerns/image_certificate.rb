@@ -8,9 +8,7 @@ class ImageCertificate
   end
 
   def download
-    if Rails.env.test?
-      image_file = File.join(Rails.root, 'app/assets/images/vaam_template.jpg')
-    else
+    if Rails.env.production?
       url = certificate.template.image_url
 
       return nil if url.nil?
@@ -27,6 +25,8 @@ class ImageCertificate
       }
 
       image_file
+    else
+      File.join(Rails.root, 'app/assets/images/vaam_template.jpg')
     end
   end
 end
