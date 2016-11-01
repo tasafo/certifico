@@ -10,7 +10,7 @@ class GenerateCertificate
   def initialize(subscriber)
     @subscriber = subscriber
     @certificate = subscriber.certificate
-    @link = "#{ENV['RETURN_URL']}/admin/validates/#{@subscriber.id}"
+    @link = "#{ENV['RETURN_URL']}/validates/#{@subscriber.id}"
     image = ImageCertificate.new(certificate).download
     PDF_OPTIONS[:background] = image unless image.nil?
   end
@@ -24,10 +24,10 @@ class GenerateCertificate
       pdf.fill_color certificate.template.font_color.gsub('#', '')
 
       pdf.move_down 200
-      pdf.text certificate_body, inline_format: true, align: :justify, size: 20
+      pdf.text "<font size='20'>#{certificate_body}</font>", inline_format: true, align: :justify
 
-      pdf.bounding_box([pdf.bounds.right - 130, pdf.bounds.bottom - 30], width: 250, height: 20, align: :right) do
-        pdf.text "<i><link href='#{@link}'>#{I18n.t('title.action.validate_certificate')}</link></i>", inline_format: true
+      pdf.bounding_box([pdf.bounds.right - 60, pdf.bounds.bottom - 30], width: 250, height: 20, align: :right) do
+        pdf.text "<font size='10'><link href='#{@link}'>#{@subscriber.id}</link></font>", inline_format: true
       end
     end
   end

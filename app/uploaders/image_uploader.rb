@@ -47,7 +47,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   def extension_white_list
-    %w(jpg jpeg)
+    %w(png jpg jpeg)
   end
 
   version :thumbnail do

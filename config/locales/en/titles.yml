@@ -18,7 +18,7 @@ en:
       generate: Generate
       import: Import
       buy: Buy
-      validate_certificate: click here to validate the certificate
+      validate: Validate
     certificate:
       certify_that: We certify that
       attended: attended

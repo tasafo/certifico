@@ -18,7 +18,7 @@ pt-BR:
       generate: Gerar
       import: Importar
       buy: Comprar
-      validate_certificate: clique aqui para validar o certificado
+      validate: Validar
     certificate:
       certify_that: Certificamos que
       attended: participou

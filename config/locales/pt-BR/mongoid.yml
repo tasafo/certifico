@@ -34,6 +34,7 @@ pt-BR:
         template: Modelo
         category: Categoria
       subscriber:
+        id: Código
         theme: Tema
         user: Usuário
         profile_id: Perfil

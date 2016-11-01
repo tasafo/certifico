@@ -1,11 +1,11 @@
 pt-BR:
   hint:
     template:
-      image: Imagem em tamanho 845x597 px, formato JPEG de qualidade total
+      image: Imagem em tamanho 845x597 px, formatos PNG, JPEG de qualidade total
     subscriber:
       file_html: <br/><b><u>OBSERVAÇÕES!</u></b><br/>
                  - Os tipos de arquivos suportados são <b>csv, ods, xls, xlsx</b><br/>
-                 - O arquivo não devem conter cabeçalho. Os campos devem seguir a ordem <b>E-MAIL, NOME [,TEMA]</b><br/>
+                 - O arquivo não deve conter cabeçalho. Os campos devem seguir a ordem <b>E-MAIL, NOME [,TEMA]</b><br/>
                  - O Campo <b>TEMA</b> é utilizado nos perfis <b>palestrante, professor e instrutor</b><br/>
                  - Dependendo do número de inscritos contidos no arquivo, o processo de importação pode demorar. <b>Tenha paciência :)</b>
     user:

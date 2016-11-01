@@ -8,13 +8,13 @@ describe 'Show issues', js: true do
   let!(:certificate)  { create(:certificate, :future, user: user, category: category, template: template) }
   let!(:subscriber)   { create(:subscriber, user: user, certificate: certificate, profile: profile) }
 
-  context 'with valid data' do
+  context 'show with valid data' do
     before do
-      visit admin_validate_path(subscriber)
+      visit validate_path(subscriber)
     end
 
     it 'redirects to the issue page' do
-      expect(current_path).to eql(admin_validate_path(subscriber))
+      expect(current_path).to eql(validate_path(subscriber))
     end
 
     it 'displays success message' do
@@ -22,16 +22,48 @@ describe 'Show issues', js: true do
     end
   end
 
-  context 'with invalid data' do
+  context 'form with valid data' do
     before do
-      visit admin_validate_path('111111111111111111')
+      visit new_validate_path
+      fill_in 'Código', with: subscriber.id
+      click_button 'Validar Certificado'
+    end
+
+    it 'redirects to the validate page' do
+      expect(current_path).to eql(validate_path(subscriber))
+    end
+
+    it 'displays success message' do
+      expect(page).to have_content('Validação de certificado')
+    end
+  end
+
+  context 'show with invalid data' do
+    before do
+      visit validate_path('111111111111111111')
     end
 
     it 'redirects to the issue page' do
       expect(current_path).to eql(root_path)
     end
 
-    it 'displays success message' do
+    it 'displays error message' do
+      expect(page).to have_content('Certificado não foi encontrado(a).')
+    end
+  end
+
+  context 'form with invalid data' do
+    before do
+      visit new_validate_path
+      fill_in 'Código', with: '111111111111111111'
+      click_button 'Validar Certificado'
+    end
+
+    it 'redirects to the new validate page' do
+      expect(current_path).to eql(new_validate_path)
+    end
+
+    it 'displays error message' do
       expect(page).to have_content('Certificado não foi encontrado(a).')
     end
   end

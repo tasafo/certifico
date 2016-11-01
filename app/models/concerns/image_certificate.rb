@@ -26,7 +26,7 @@ class ImageCertificate
 
       image_file
     else
-      File.join(Rails.root, 'app/assets/images/vaam_template.jpg')
+      File.join(Rails.root, 'app/assets/images/vaam_template.png')
     end
   end
 end

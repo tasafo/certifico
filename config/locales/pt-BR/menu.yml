@@ -13,3 +13,4 @@ pt-BR:
     forgot_password: Perdeu sua senha?
     confirmation_instructions: Não recebeu instruções de confirmação?
     unlock_instructions: Não recebeu instruções de desbloqueio?
+    validate: Validar

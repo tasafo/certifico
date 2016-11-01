@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   resources :templates
   resources :issues, only: [:index, :update]
   resources :credits, only: [:index, :new, :create, :show]
+  resources :validates, only: [:new, :create, :show]
 
   devise_for :users, controllers: {registrations: 'registrations'}
 
   namespace :admin do
     resources :notifications, only: [:create]
-    resources :validates, only: [:show]
     #mount Sidekiq::Web, at: '/sidekiq'
   end
 

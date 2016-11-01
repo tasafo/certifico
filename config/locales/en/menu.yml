@@ -13,3 +13,4 @@ en:
     forgot_password: Forgot your password?
     confirmation_instructions: Didn't receive confirmation instructions?
     unlock_instructions: Didn't receive unlock instructions?
+    validate: Validate
