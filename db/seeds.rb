@@ -113,7 +113,7 @@ if Rails.env.development?
   admin_user = User.create(email: 'admin@sandbox.pagseguro.com.br', password: '123456', full_name: 'Administrador do Sistema', user_name: 'admin')
   luiz_user = User.create(email: 'luiz@sandbox.pagseguro.com.br', password: '123456', full_name: 'Luiz Sanches', user_name: 'luiz')
 
-  credit = admin_user.credits.create(quantity: 10, price: credit_param.price, status: '0', method: '2')
+  credit = admin_user.credits.create(quantity: 500, price: credit_param.price, status: '0', method: '2')
   credit.histories.create(status: '0')
 
   credit.update(paid_at: DateTime.now, status: '3')

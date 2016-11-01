@@ -38,9 +38,11 @@ class Subscriber
         break
       end
 
-      user = User.find_by(email: email) || User.create(email: email, full_name: name, user_name: email.split('@')[0], password: rand(11111111..99999999))
+      user_name = email.split('@')[0].gsub('.','')
 
-      subscriber = Subscriber.find_by(user_id: user, certificate_id: certificate, profile_id: profile)
+      user = User.find_by(email: email) || User.create(email: email, full_name: name, user_name: user_name, password: rand(11111111..99999999))
+
+      subscriber = Subscriber.find_by(user_id: user.id, certificate_id: certificate.id, profile_id: profile.id)
 
       unless subscriber
         subscriber = Subscriber.create(user: user, certificate: certificate, profile: profile)

@@ -4,6 +4,7 @@ pt-BR:
       image: Imagem em tamanho 845x597 px, formatos PNG, JPEG de qualidade total
     subscriber:
       file_html: <br/><b><u>OBSERVAÇÕES!</u></b><br/>
+                 - <b>Revise o conteúdo das planilhas antes de importar os dados</b><br/>
                  - Os tipos de arquivos suportados são <b>csv, ods, xls, xlsx</b><br/>
                  - O arquivo não deve conter cabeçalho. Os campos devem seguir a ordem <b>E-MAIL, NOME [,TEMA]</b><br/>
                  - O Campo <b>TEMA</b> é utilizado nos perfis <b>palestrante, professor e instrutor</b><br/>
