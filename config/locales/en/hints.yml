@@ -14,5 +14,7 @@ en:
         leave_blank: leave it blank if you don't want to change it
         characters_minimum: characters minimum
       current_password: we need your current password to confirm your changes
+      waiting_confirmation: Currently waiting confirmation for
+      user_name: You will be allowed to update their name only once. Be careful.
     credit:
       quality: After confirming the operation, you will be redirected to PagSeguro website to make payment of their credits

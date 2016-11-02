@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :issues, only: [:index, :update]
   resources :credits, only: [:index, :new, :create, :show]
   resources :validates, only: [:new, :create, :show]
+  resources :usernames, only: [:new, :update]
 
   devise_for :users, controllers: {registrations: 'registrations'}
 

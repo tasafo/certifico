@@ -14,5 +14,7 @@ pt-BR:
         leave_blank: deixe em branco se você não quiser mudá-la
         characters_minimum: caracteres no mínimo
       current_password: precisamos de sua senha atual para confirmar as alterações
+      waiting_confirmation: Atualmente aguardando confirmação para
+      user_name: Será permitido atualizar seu nome apenas uma vez. Tenha cuidado.
     credit:
       quantity: Após confirmar a operação, você será redirecionado para o site do PagSeguro para efetuar o pagamento de seus créditos

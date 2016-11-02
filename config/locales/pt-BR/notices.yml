@@ -18,3 +18,4 @@ pt-BR:
     zero_credit: Valor do crédito não definido
     insufficient_credits: Seus créditos são insuficientes
     invalid_email: "E-mail inválido: %{email}"
+    name_chagend: Seu nome já foi atualizado!

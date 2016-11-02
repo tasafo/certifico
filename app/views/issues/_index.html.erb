@@ -1,3 +1,5 @@
+<%= link_to "#{t('title.action.edit')} #{t('mongoid.attributes.user.full_name')}", new_username_path, class: 'btn btn-primary' unless current_user.name_changed %>
+
 <table class="table table-hover table-responsive">
   <thead>
     <tr>

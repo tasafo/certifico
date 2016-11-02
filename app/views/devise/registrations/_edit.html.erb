@@ -3,7 +3,7 @@
     <%= f.input :user_name, required: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <p><%= t('hint.user.waiting_confirmation') %>: <%= resource.unconfirmed_email %></p>
     <% end %>
 
     <%= f.input :password, autocomplete: "off", hint: t('hint.user.password.leave_blank'), required: false %>

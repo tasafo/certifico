@@ -1,0 +1,6 @@
+<%= simple_form_for(@user, url: url) do |f| %>
+  <%= f.input :full_name, autofocus: true, hint: t('hint.user.user_name') %>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= link_to t('title.action.back'), issues_path, class: 'btn btn-default' %>
+<% end %>

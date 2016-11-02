@@ -18,3 +18,4 @@ en:
     zero_credit: Credit value not set
     insufficient_credits: Their credits are insufficient
     invalid_email: "Invalid e-mail: %{email}"
+    name_chagend: Your name has been updated!
