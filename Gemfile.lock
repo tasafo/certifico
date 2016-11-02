@@ -170,7 +170,6 @@ GEM
       mongoid (>= 3.0, < 7.0)
     multi_json (1.12.1)
     netrc (0.11.0)
-    newrelic_rpm (3.16.2.321)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -360,7 +359,6 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mongoid!
   mongoid-slug!
-  newrelic_rpm
   pagseguro-oficial
   prawn
   prawn-table

@@ -72,6 +72,6 @@ end
 
 group :production do
   gem 'unicorn'
-  gem 'newrelic_rpm'
+#  gem 'newrelic_rpm'
   gem 'rails_12factor'
 end
