@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :certificates do
-    resources :subscribers, only: [:new, :create, :edit, :update]
+    resources :subscribers, only: [:index, :new, :create, :edit, :update]
     resources :import_subscribers, only: [:new, :create]
   end
 

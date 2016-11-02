@@ -3,5 +3,5 @@
   <%= f.input :file, as: :file, hint: t('hint.subscriber.file_html') %>
 
   <%= f.submit "#{t('title.action.import')} #{t('title.models.subscribers')}", class: 'btn btn-primary' %>
-  <%= link_to t('title.action.back'), certificate_path(@certificate), class: 'btn btn-default' %>
+  <%= link_to t('title.action.back'), certificate_subscribers_path(@certificate), class: 'btn btn-default' %>
 <% end %>

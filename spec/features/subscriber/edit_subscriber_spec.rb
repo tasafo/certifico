@@ -22,8 +22,8 @@ describe 'Edit subscriber', js: true do
       click_button 'Atualizar Inscrito'
     end
 
-    it 'redirects to the certificate page' do
-      expect(current_path).to eql(certificate_path(certificate))
+    it 'redirects to the subscribers page' do
+      expect(current_path).to eql(certificate_subscribers_path(certificate))
     end
 
     it 'displays success message' do

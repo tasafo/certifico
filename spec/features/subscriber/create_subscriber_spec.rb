@@ -12,7 +12,7 @@ describe 'Create subscriber', js: true do
       login_as user
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Novo Inscrito'
 
       fill_in 'E-mail', with: 'carlos@mail.com'
@@ -23,8 +23,8 @@ describe 'Create subscriber', js: true do
       click_button 'Criar Inscrito'
     end
 
-    it 'redirects to the certificate page' do
-      expect(current_path).to eql(certificate_path(certificate))
+    it 'redirects to the subscribers page' do
+      expect(current_path).to eql(certificate_subscribers_path(certificate))
     end
 
     it 'displays success message' do
@@ -37,7 +37,7 @@ describe 'Create subscriber', js: true do
       login_as user
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Novo Inscrito'
 
       click_button 'Criar Inscrito'

@@ -1,8 +1,11 @@
 class SubscribersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_certificate_and_profiles, only: [:new, :edit, :create, :update]
+  before_action :set_certificate_and_profiles, only: [:index, :new, :edit, :create, :update]
   before_action :set_subscriber, only: [:edit, :update]
   before_action :authorization, only: [:edit]
+
+  def index
+  end
 
   def new
     check_credits certificate_path(@certificate)
@@ -23,7 +26,7 @@ class SubscribersController < ApplicationController
     @subscriber.user = user if user
 
     if @subscriber.user.save && @subscriber.save
-      redirect_to certificate_path(@certificate),
+      redirect_to certificate_subscribers_path(@certificate),
         notice: t('notice.created', model: t('mongoid.models.subscriber'))
     else
       render :new
@@ -32,7 +35,7 @@ class SubscribersController < ApplicationController
 
   def update
     if @subscriber.update(subscriber_params)
-      redirect_to certificate_path(@certificate),
+      redirect_to certificate_subscribers_path(@certificate),
         notice: t('notice.updated', model: t('mongoid.models.subscriber'))
     else
       message = @subscriber.errors.messages[:user_id][0]

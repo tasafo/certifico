@@ -16,7 +16,7 @@ class ImportSubscribersController < ApplicationController
         alert: e.message and return
     end
 
-    redirect_to certificate_path(params[:certificate_id]),
+    redirect_to certificate_subscribers_path(params[:certificate_id]),
       notice: t('notice.imported', model: t('title.models.subscribers'))
   end
 

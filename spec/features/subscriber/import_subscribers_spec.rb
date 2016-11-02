@@ -19,7 +19,7 @@ describe 'Import subscribers', js: true do
       login_as paul
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Importar Inscritos'
 
       select 'participante', from: 'subscriber_profile_id'
@@ -28,8 +28,8 @@ describe 'Import subscribers', js: true do
       click_button 'Importar Inscritos'
     end
 
-    it 'redirects to the certificate page' do
-      expect(current_path).to eql(certificate_path(certificate))
+    it 'redirects to the subscribers page' do
+      expect(current_path).to eql(certificate_subscribers_path(certificate))
     end
 
     it 'displays success message' do
@@ -42,7 +42,7 @@ describe 'Import subscribers', js: true do
       login_as paul
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Importar Inscritos'
 
       select 'voluntário', from: 'subscriber_profile_id'
@@ -51,8 +51,8 @@ describe 'Import subscribers', js: true do
       click_button 'Importar Inscritos'
     end
 
-    it 'redirects to the certificate page' do
-      expect(current_path).to eql(certificate_path(certificate))
+    it 'redirects to the subscribers page' do
+      expect(current_path).to eql(certificate_subscribers_path(certificate))
     end
 
     it 'displays success message' do
@@ -65,7 +65,7 @@ describe 'Import subscribers', js: true do
       login_as paul
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Importar Inscritos'
 
       select 'organizador', from: 'subscriber_profile_id'
@@ -74,8 +74,8 @@ describe 'Import subscribers', js: true do
       click_button 'Importar Inscritos'
     end
 
-    it 'redirects to the certificate page' do
-      expect(current_path).to eql(certificate_path(certificate))
+    it 'redirects to the subscribers page' do
+      expect(current_path).to eql(certificate_subscribers_path(certificate))
     end
 
     it 'displays success message' do
@@ -88,7 +88,7 @@ describe 'Import subscribers', js: true do
       login_as paul
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Importar Inscritos'
 
       select 'palestrante', from: 'subscriber_profile_id'
@@ -97,8 +97,8 @@ describe 'Import subscribers', js: true do
       click_button 'Importar Inscritos'
     end
 
-    it 'redirects to the certificate page' do
-      expect(current_path).to eql(certificate_path(certificate))
+    it 'redirects to the subscribers page' do
+      expect(current_path).to eql(certificate_subscribers_path(certificate))
     end
 
     it 'displays success message' do
@@ -111,13 +111,13 @@ describe 'Import subscribers', js: true do
       login_as paul
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Importar Inscritos'
 
       click_button 'Importar Inscritos'
     end
 
-    it 'redirects to the certificate page' do
+    it 'redirects to the import subscriber page' do
       expect(current_path).to eql(new_certificate_import_subscriber_path(certificate))
     end
 
@@ -131,7 +131,7 @@ describe 'Import subscribers', js: true do
       login_as paul
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Importar Inscritos'
 
       select 'participante', from: 'subscriber_profile_id'
@@ -139,7 +139,7 @@ describe 'Import subscribers', js: true do
       click_button 'Importar Inscritos'
     end
 
-    it 'redirects to the certificate page' do
+    it 'redirects to the import subscriber page' do
       expect(current_path).to eql(new_certificate_import_subscriber_path(certificate))
     end
 
@@ -153,7 +153,7 @@ describe 'Import subscribers', js: true do
       login_as paul
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Importar Inscritos'
 
       select 'participante', from: 'subscriber_profile_id'
@@ -162,7 +162,7 @@ describe 'Import subscribers', js: true do
       click_button 'Importar Inscritos'
     end
 
-    it 'redirects to the certificate page' do
+    it 'redirects to the import subscriber page' do
       expect(current_path).to eql(new_certificate_import_subscriber_path(certificate))
     end
 
@@ -176,7 +176,7 @@ describe 'Import subscribers', js: true do
       login_as paul
 
       click_link 'Certificados'
-      click_link 'Exibir'
+      click_link 'Inscritos'
       click_link 'Importar Inscritos'
 
       select 'participante', from: 'subscriber_profile_id'
@@ -185,7 +185,7 @@ describe 'Import subscribers', js: true do
       click_button 'Importar Inscritos'
     end
 
-    it 'redirects to the certificate page' do
+    it 'redirects to the import subscriber page' do
       expect(current_path).to eql(new_certificate_import_subscriber_path(certificate))
     end
 
