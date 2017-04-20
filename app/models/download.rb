@@ -4,4 +4,5 @@ class Download
 
   belongs_to :user
   belongs_to :certificate
+  belongs_to :subscriber
 end

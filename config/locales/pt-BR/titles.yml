@@ -49,3 +49,5 @@ pt-BR:
       resend_instructions: Reenviar instruções de confirmação
     unlock:
       resend_instructions: Reenviar instruções de desbloqueio
+    subscriber:
+      downloads: Downloads

@@ -9,7 +9,7 @@ describe 'Buy credits', js: true do
     before do
       login_as user
 
-      click_link 'Créditos (10)'
+      click_link 'Créditos 10'
       click_link 'Comprar Crédito'
 
       fill_in 'Quantidade', with: 10
@@ -26,7 +26,7 @@ describe 'Buy credits', js: true do
     before do
       login_as user
 
-      click_link 'Créditos (10)'
+      click_link 'Créditos 10'
       click_link 'Comprar Crédito'
 
       fill_in 'Quantidade', with: -1

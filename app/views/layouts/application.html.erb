@@ -21,7 +21,7 @@
               <li class="<%= request.fullpath.include?(templates_path) ? 'active' : '' %>"><%= link_to t('menu.templates'), templates_path %></li>
               <li class="<%= request.fullpath.include?(certificates_path) ? 'active' : '' %>"><%= link_to t('menu.certificates'), certificates_path %></li>
               <li class="<%= request.fullpath.include?(issues_path) ? 'active' : '' %>"><%= link_to t('menu.issues'), issues_path %></li>
-              <li class="<%= request.fullpath.include?(credits_path) ? 'active' : '' %>"><%= link_to "#{t('menu.credits')} (#{current_user.current_credits})", credits_path %></li>
+              <li class="<%= request.fullpath.include?(credits_path) ? 'active' : '' %>"><%= link_to "#{t('menu.credits')} <span class='badge'>#{current_user.current_credits}</span>".html_safe, credits_path %></li>
               <li class="<%= request.fullpath.include?(edit_user_registration_path) ? 'active' : '' %>"><%= link_to t('menu.update_account'), edit_user_registration_path %></li>
               <li><%= link_to t('menu.validate'), new_validate_path %></li>
               <li><%= link_to t('menu.sign.out'), destroy_user_session_path, method: :delete %></li>

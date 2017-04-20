@@ -1,7 +1,7 @@
 class SubscribersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_certificate_and_profiles, only: [:index, :new, :edit, :create, :update]
-  before_action :set_subscriber, only: [:edit, :update]
+  before_action :set_certificate_and_profiles, only: [:index, :new, :edit, :create, :update, :destroy]
+  before_action :set_subscriber, only: [:edit, :update, :destroy]
   before_action :authorization, only: [:edit]
 
   def index
@@ -49,6 +49,18 @@ class SubscribersController < ApplicationController
         render :edit
       end
     end
+  end
+
+  def destroy
+    begin
+      @subscriber.destroy
+
+      notice = t('notice.destroyed', model: t('mongoid.models.subscriber'))
+    rescue Mongoid::Errors::DeleteRestriction
+      notice = t('notice.delete.restriction.subscriber')
+    end
+
+    redirect_to certificate_subscribers_path(@certificate), notice: notice
   end
 
   private

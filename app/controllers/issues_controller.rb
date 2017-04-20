@@ -12,11 +12,11 @@ class IssuesController < ApplicationController
       certificate_title = subscriber.certificate.title.parameterize
       profile_name = subscriber.profile.name.parameterize
 
-      Download.create(user: current_user, certificate: subscriber.certificate)
+      Download.create(subscriber: subscriber)
 
       send_data GenerateCertificate.new(subscriber).save,
                 filename: "certificar-me_#{user_name}_#{certificate_title}_#{profile_name}.pdf",
-                type: "application/pdf"
+                type: "application/pdf" and return
     end
   end
 end

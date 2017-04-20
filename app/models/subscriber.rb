@@ -7,6 +7,7 @@ class Subscriber
   belongs_to :user
   belongs_to :profile
   belongs_to :certificate
+  has_many   :downloads, dependent: :restrict
 
   accepts_nested_attributes_for :user
 
@@ -19,7 +20,11 @@ class Subscriber
   end
 
   after_create do
-    self.certificate.user.update(current_credits: self.certificate.user.current_credits-1)
+    self.certificate.user.update(current_credits: self.certificate.user.current_credits - 1)
+  end
+
+  after_destroy do
+    self.certificate.user.update(current_credits: self.certificate.user.current_credits + 1)
   end
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
