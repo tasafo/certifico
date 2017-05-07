@@ -5,12 +5,11 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      #database: certificar_me_development
+      database: certificar_me_development
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
-      #hosts:
-      #  - localhost:27017
-      uri: <%= ENV['MONGODB_URI_DEVELOPMENT'] %>
+      hosts:
+        - <%= ENV['MONGODB_HOST'] %>
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
@@ -134,10 +133,9 @@ development:
 test:
   clients:
     default:
-      #database: certificar_me_test
-      #hosts:
-      #  - localhost:27017
-      uri: <%= ENV['MONGODB_URI_TEST'] %>
+      database: certificar_me_test
+      hosts:
+        - <%= ENV['MONGODB_HOST'] %>
       options:
         read:
           mode: :primary
