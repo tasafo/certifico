@@ -8,7 +8,7 @@ class Credit
   field :paid_at,     type: DateTime
   field :gateway,     type: String, default: 'pagseguro'
   field :transaction, type: String
-  field :method,      type: String
+  field :payment_method, type: String
   field :status,      type: String, default: '0'
 
   validates_presence_of :quantity, :price, :gateway, :status

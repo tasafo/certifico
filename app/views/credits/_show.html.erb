@@ -17,8 +17,8 @@
       <td><%= @credit.gateway %></td>
     </tr>
     <tr>
-      <th><%= t('mongoid.attributes.credit.method') %></th>
-      <td><%= PagseguroCodes.method(@credit.method) %></td>
+      <th><%= t('mongoid.attributes.credit.payment_method') %></th>
+      <td><%= PagseguroCodes.payment_method(@credit.payment_method) %></td>
     </tr>
     <tr>
       <th><%= t('mongoid.attributes.credit.created_at') %></th>

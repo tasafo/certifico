@@ -6,7 +6,7 @@
       <th><%= t('mongoid.attributes.credit.quantity') %></th>
       <th><%= t('mongoid.attributes.credit.price') %></th>
       <th><%= t('mongoid.attributes.credit.total') %></th>
-      <th><%= t('mongoid.attributes.credit.method') %></th>
+      <th><%= t('mongoid.attributes.credit.payment_method') %></th>
       <th><%= t('mongoid.attributes.credit.created_at') %></th>
       <th><%= t('mongoid.attributes.credit.status') %></th>
       <th><%= t('mongoid.attributes.credit.paid_at') %></th>
@@ -20,7 +20,7 @@
         <td><%= credit.quantity %></td>
         <td><%= number_with_precision(credit.price, precision: 2) %></td>
         <td><%= number_with_precision(credit.quantity * credit.price, precision: 2) %></td>
-        <td><%= PagseguroCodes.method(credit.method) %></td>
+        <td><%= PagseguroCodes.payment_method(credit.payment_method) %></td>
         <td><%= I18n.l(credit.created_at, format: :datetime) %></td>
         <td><%= PagseguroCodes.status(credit.status) %></td>
         <td><%= I18n.l(credit.paid_at, format: :datetime) unless credit.paid_at.nil? %></td>

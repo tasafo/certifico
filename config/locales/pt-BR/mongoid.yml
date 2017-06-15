@@ -53,7 +53,7 @@ pt-BR:
         paid_at: Pago em
         created_at: Criado em
         transaction: Transação
-        method: Método
+        payment_method: Método de pagamento
         status: Situação
         gateway: Meio
       history:

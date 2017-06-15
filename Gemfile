@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.3.3'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  "https://github.com/#{repo_name}.git"
+end
+
+ruby '2.4.1'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails', '~> 5.0'
@@ -20,8 +25,8 @@ gem 'turbolinks', '~> 5.x'
 
 gem 'jbuilder', '~> 2.0'
 
-gem 'mongoid', github: 'mongodb/mongoid'
-gem 'mongoid-slug', github: 'digitalplaywright/mongoid-slug'
+gem 'mongoid', '~> 6.1'
+gem 'mongoid-slug'
 
 gem 'devise'
 gem 'devise-i18n'
@@ -43,7 +48,7 @@ gem 'pagseguro-oficial'
 #gem 'sinatra', require: false
 #gem 'slim'
 
-gem 'airbrake', '4.3.4'
+gem 'airbrake', '~> 6.1'
 
 gem 'rack-cors', require: 'rack/cors'
 

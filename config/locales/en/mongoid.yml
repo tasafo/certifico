@@ -52,7 +52,7 @@ en:
         paid_at: Paid at
         created_at: Created at
         transaction: Transaction
-        method: Method
+        payment_method: Payment Method
         status: Status
         gateway: Gateway
       history:

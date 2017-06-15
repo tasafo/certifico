@@ -16,7 +16,7 @@ class Admin::NotificationsController < ApplicationController
 
         credit.update(
           transaction: transaction.code,
-          method: transaction.payment_method.type_id,
+          payment_method: transaction.payment_method.type_id,
           status: status_id,
           fee: fee_amount
         )

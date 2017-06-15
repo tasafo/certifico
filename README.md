@@ -10,7 +10,7 @@ Gerencie seus certificados online
 
 ### Instalando o Ruby
 
-    rvm install 2.3.1
+    rvm install 2.4.1
 
 ### Usamos o MongoDB, então instala ele lá!
 

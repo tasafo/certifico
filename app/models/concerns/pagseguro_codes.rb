@@ -25,7 +25,7 @@ class PagseguroCodes
     TRANSACTION_STATUS[code]
   end
 
-  def self.method(code)
+  def self.payment_method(code)
     PAYMENT_METHOD[code]
   end
 end
