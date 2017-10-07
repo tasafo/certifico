@@ -23,7 +23,7 @@ test:
   stage: test
   script:
   - apt-get update -qy
-  - apt-get install -y nodejs qt5-default libqt5webkit5-dev
+  - apt-get install -y nodejs qt5-default libqt5webkit5-dev xvfb
   - bundle install --path vendor
   - bundle exec rails db:create RAILS_ENV=test
   - bundle exec rails spec
