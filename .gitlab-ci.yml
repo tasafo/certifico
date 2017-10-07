@@ -26,7 +26,7 @@ test:
   - apt-get install -y nodejs qt5-default libqt5webkit5-dev xvfb
   - bundle install --path vendor
   - bundle exec rails db:create RAILS_ENV=test
-  - bundle exec rails spec
+  - xvfb-run -a bundle exec rails spec
 
 production:
   stage: deploy
