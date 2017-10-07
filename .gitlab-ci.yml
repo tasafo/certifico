@@ -9,12 +9,14 @@ stages:
   - test
   - deploy
 
+before_script:
+  - bundle install --path /cache
+
 build:
   stage: build
   script:
   - apt-get update -qy
   - apt-get install -y nodejs qt5-default libqt5webkit5-dev
-  - bundle install --path /cache
 
 test:
   stage: test
