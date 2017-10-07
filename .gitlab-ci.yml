@@ -13,7 +13,7 @@ variables:
   PAGSEGURO_EMAIL: "user@mail.com"
   PAGSEGURO_ENV: "sandbox"
   RETURN_URL: "http://localhost:3000"
-  MONGODB_HOST: "127.0.0.1:27017"
+  MONGODB_HOST: "mongo"
 
 stages:
   - test
