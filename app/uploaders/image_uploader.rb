@@ -4,6 +4,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include Cloudinary::CarrierWave
 
+  cloudinary_transformation transformation: [
+    { width: 845, height: 597, crop: :limit }
+  ] unless Rails.env.test?
+
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog

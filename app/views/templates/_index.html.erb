@@ -15,7 +15,7 @@
       <tr>
         <td><%= template.name %></td>
         <td><span class="badge" style="color: <%= template.font_color %>"><%= template.font_color %></span></td>
-        <td><%= cl_image_tag(template.image, width: 50, height: 50) %></td>
+        <td><%= show_image(template, template.name) %></td>
         <td><%= link_to t('title.action.show'), template, class: 'btn btn-info' %></td>
         <td><%= link_to t('title.action.edit'), edit_template_path(template), class: 'btn btn-success' %></td>
         <td><%= link_to t('title.action.destroy'), template, class: 'btn btn-danger', method: :delete, data: { confirm: t('title.action.are_you_sure') } %></td>

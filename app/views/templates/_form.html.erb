@@ -2,8 +2,15 @@
   <%= f.input :name, autofocus: true %>
   <%= f.input :font_color %>
 
+  <%= show_image(@template, @template.name) %>
   <%= f.input :image_cache, as: :hidden %>
   <%= f.input :image, as: :file, hint: t('hint.template.image') %>
+
+  <% if @template.name? %>
+    <%= f.check_box :remove_image %>
+    <%= "#{t('title.action.destroy')} #{t('mongoid.attributes.template.image')}" %>
+    <br /><br />
+  <% end %>
 
   <%= f.button :submit, class: 'btn btn-primary' %>
   <%= link_to t('title.action.back'), templates_path, class: 'btn btn-default' %>

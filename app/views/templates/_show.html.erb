@@ -10,7 +10,7 @@
     </tr>
     <tr>
       <th><%= t('mongoid.attributes.template.image') %></th>
-      <td><%= cl_image_tag(@template.image, width: 450, height: 250) %></td>
+      <td><%= show_image(@template, @template.name, '450x250') %></td>
     </tr>
   </tbody>
 </table>

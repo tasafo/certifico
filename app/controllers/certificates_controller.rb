@@ -56,15 +56,8 @@ class CertificatesController < ApplicationController
 
   def certificate_params
     params.require(:certificate).permit(
-      :title,
-      :initial_date,
-      :final_date,
-      :workload,
-      :local,
-      :site,
-      :image,
-      :template_id,
-      :category_id
+      :title, :initial_date, :final_date, :workload, :local,
+      :site, :image, :remove_image, :template_id, :category_id
     )
   end
 

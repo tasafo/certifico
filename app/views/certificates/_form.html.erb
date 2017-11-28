@@ -8,8 +8,15 @@
   <%= f.input :local %>
   <%= f.input :site %>
 
+  <%= show_image(@certificate, @certificate.title) %>
   <%= f.input :image_cache, as: :hidden %>
   <%= f.input :image, as: :file %>
+
+  <% if @certificate.title? %>
+    <%= f.check_box :remove_image %>
+    <%= "#{t('title.action.destroy')} #{t('mongoid.attributes.certificate.image')}" %>
+    <br /><br />
+  <% end %>
 
   <%= f.button :submit, class: 'btn btn-primary' %>
   <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>

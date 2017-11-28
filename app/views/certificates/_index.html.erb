@@ -23,7 +23,7 @@
         <td><%= certificate.initial_date %></td>
         <td><%= certificate.final_date %></td>
         <td><%= certificate.workload %></td>
-        <td><%= cl_image_tag(certificate.image, width: 50, height: 50) %></td>
+        <td><%= show_image(certificate, certificate.title) %></td>
         <td><%= link_to t('title.action.show'), certificate, class: 'btn btn-info' %></td>
         <td><%= link_to t('title.models.subscribers'), certificate_subscribers_path(certificate), class: 'btn btn-warning' %></td>
         <td><%= link_to t('title.action.edit'), edit_certificate_path(certificate), class: 'btn btn-success' %></td>
