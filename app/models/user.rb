@@ -42,6 +42,7 @@ class User
 
   field :current_credits,   type: Integer, default: 5
   field :name_changed,      type: Boolean, default: false
+  field :admin,             type: Boolean, default: false
 
   slug :user_name
 
