@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :certificate do
     trait :future do
       title 'O que será do futuro no passado?'

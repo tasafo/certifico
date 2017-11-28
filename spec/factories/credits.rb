@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :credit do
     quantity 10
     price 1.0

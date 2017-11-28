@@ -110,10 +110,28 @@ if Rails.env.development?
 
   credit_param = CreditParameter.create(price: 2)
 
-  admin_user = User.create(email: 'admin@sandbox.pagseguro.com.br', password: '123456', full_name: 'Administrador do Sistema', user_name: 'admin')
-  luiz_user = User.create(email: 'luiz@sandbox.pagseguro.com.br', password: '123456', full_name: 'Luiz Sanches', user_name: 'luiz')
+  admin_user = User.create(
+    email: 'admin@sandbox.pagseguro.com.br',
+    password: '123456',
+    full_name: 'Administrador do Sistema',
+    user_name: 'admin',
+    admin: true
+  )
 
-  credit = admin_user.credits.create(quantity: 500, price: credit_param.price, status: '0', payment_method: '2')
+  luiz_user = User.create(
+    email: 'luiz@sandbox.pagseguro.com.br',
+    password: '123456',
+    full_name: 'Luiz Sanches',
+    user_name: 'luiz'
+  )
+
+  credit = admin_user.credits.create(
+    quantity: 500,
+    price: credit_param.price,
+    status: '0',
+    payment_method: '2'
+  )
+
   credit.histories.create(status: '0')
 
   credit.update(paid_at: DateTime.now, status: '3')
@@ -124,8 +142,25 @@ if Rails.env.development?
   vaam_template = admin_user.templates.create(name: 'VAAM 2009', font_color: '#000000')
   mare_template = admin_user.templates.create(name: 'Maré 2009', font_color: '#ffffff')
 
-  vaam_certificate = admin_user.certificates.create(template: vaam_template, category: category, title: 'Visão Ágil Academic Leaders 2009', initial_date: '2009-05-19', final_date: '2009-05-19', workload: '8', local: 'auditório do IESAM, Belém - Pará')
-  mare_certificate = admin_user.certificates.create(template: mare_template, category: category, title: 'Maré de Agilidade Belém 2009', initial_date: '2009-11-19', final_date: '2009-11-19', workload: '8', local: 'auditório do CESUPA, Belém - Pará')
+  vaam_certificate = admin_user.certificates.create(
+    template: vaam_template,
+    category: category,
+    title: 'Visão Ágil Academic Leaders 2009',
+    initial_date: '2009-05-19',
+    final_date: '2009-05-19',
+    workload: '8',
+    local: 'auditório do IESAM, Belém - Pará'
+  )
+
+  mare_certificate = admin_user.certificates.create(
+    template: mare_template,
+    category: category,
+    title: 'Maré de Agilidade Belém 2009',
+    initial_date: '2009-11-19',
+    final_date: '2009-11-19',
+    workload: '8',
+    local: 'auditório do CESUPA, Belém - Pará'
+  )
 
   participant = Profile.find_by(name: 'participante')
   speaker = Profile.find_by(name: 'palestrante')

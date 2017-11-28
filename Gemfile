@@ -8,7 +8,7 @@ end
 ruby '2.4.2'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
-gem 'rails', '~> 5.0'
+gem 'rails', '~> 5.1'
 gem 'rails-i18n'
 
 gem 'sass-rails', '~> 5.0'
@@ -32,9 +32,8 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'simple_form'
 
-gem 'cloudinary'
-gem 'carrierwave'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'cloudinary'
 
 gem 'prawn'
 gem 'prawn-table'
@@ -44,18 +43,19 @@ gem 'roo-xls'
 
 gem 'pagseguro-oficial'
 
-#gem 'sidekiq'
-#gem 'sinatra', require: false
-#gem 'slim'
+gem 'sidekiq'
+gem 'sinatra', require: false
 
 gem 'airbrake', '~> 6.1'
 
 gem 'rack-cors', require: 'rack/cors'
 
+gem 'puma'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'pry-rails'
 end
@@ -68,7 +68,6 @@ group :test do
 end
 
 group :development do
-  gem 'thin'
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
@@ -76,7 +75,5 @@ group :development do
 end
 
 group :production do
-  gem 'unicorn'
-#  gem 'newrelic_rpm'
-  gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end

@@ -1,6 +1,8 @@
-#require 'sidekiq/web'
+require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  root to: 'home#index'
+
   resources :certificates do
     resources :subscribers
     resources :import_subscribers, only: [:new, :create]
@@ -16,8 +18,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :notifications, only: [:create]
-    #mount Sidekiq::Web, at: '/sidekiq'
-  end
 
-  root to: 'home#index'
+    authenticate :user, lambda { |user| user.admin? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+  end
 end

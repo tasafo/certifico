@@ -45,7 +45,7 @@ RSpec.configure do |config|
 
   config.include SpecHelpers
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.include Capybara::DSL
 

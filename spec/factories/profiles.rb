@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :profile do
     trait :participant do
       name 'participante'

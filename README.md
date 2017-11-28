@@ -10,7 +10,7 @@ Gerencie seus certificados online
 
 ### Instalando o Ruby
 
-    rvm install 2.4.1
+    rvm install 2.4.2
 
 ### Usamos o MongoDB, então instala ele lá!
 
@@ -20,9 +20,9 @@ Gerencie seus certificados online
 
     sudo apt-get install redis-server
 
-### Instala também a biblioteca webkit, que é uma dependência do capybara-webkit
+### Instala também a biblioteca webkit, que é uma dependência do capybara-webkit (https://github.com/thoughtbot/capybara-webkit)
 
-    sudo apt-get install qt5-default libqt5webkit5-dev
+    sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
 
 ### MailCatcher (http://mailcatcher.me)
 
@@ -54,7 +54,7 @@ Agora espera...
 
 ### Agora é só rodar e brincar!
 
-    foreman start web
+    foreman start
 
 ### Em seu navegador, abra o endereço abaixo para testar a aplicação
 
