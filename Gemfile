@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.4.3'
+ruby '2.5.0'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails', '~> 5.1'
@@ -41,8 +41,6 @@ gem 'prawn-table'
 gem 'roo'
 gem 'roo-xls'
 
-gem 'pagseguro-oficial'
-
 gem 'sidekiq'
 gem 'sinatra', require: false
 
@@ -61,17 +59,18 @@ group :development, :test do
 end
 
 group :test do
-  gem 'simplecov', require: false
+  gem 'simplecov', '0.16.1', require: false
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'selenium-webdriver'
+  gem 'codeclimate-test-reporter'
 end
 
 group :development do
   gem 'web-console'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end
 
 group :production do
