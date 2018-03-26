@@ -1,4 +1,4 @@
-# Certificar.me
+# Certifico
 
 Gerencie seus certificados online
 
@@ -10,7 +10,7 @@ Gerencie seus certificados online
 
 ### Instalando o Ruby
 
-    rvm install 2.4.2
+    rvm install 2.5.0
 
 ### Usamos o MongoDB, então instala ele lá!
 
@@ -42,7 +42,7 @@ Agora espera...
 
 ### Depois roda esse comando para adicionar uns dados no banco
 
-    rake db:seed
+    rails db:seed
 
 ### Se você estiver executando outra aplicação que utilize o sidekiq, é melhor rodar o comando
 
@@ -74,4 +74,4 @@ Agora espera...
 
 ## Licença
 
-O Certificar.me é liberado sob a [MIT License](http://www.opensource.org/licenses/MIT).
+O Certifico é liberado sob a [MIT License](http://www.opensource.org/licenses/MIT).

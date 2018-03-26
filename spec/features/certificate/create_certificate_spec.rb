@@ -21,7 +21,7 @@ describe 'Create certificate', js: true do
       fill_in 'Local', with: 'Centro de Convenções da PUC-RS, Porto Alegre-RS'
       fill_in 'Site', with: 'http://fisl.org/10'
 
-      attach_file('Imagem', 'app/assets/images/vaam_template.jpg')
+      attach_file('Imagem', 'spec/support/assets/images/vaam_template.jpg')
 
       click_button 'Criar Certificado'
     end

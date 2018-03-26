@@ -16,7 +16,7 @@ require 'rails/test_unit/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module CertificarMe
+module Certifico
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -24,13 +24,6 @@ module CertificarMe
     Prawn::Font::AFM.hide_m17n_warning = true
 
     config.active_job.queue_adapter = :sidekiq
-
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '/admin/notifications', headers: :any, methods: [:post]
-      end
-    end
 
     config.time_zone = 'Brasilia'
   end

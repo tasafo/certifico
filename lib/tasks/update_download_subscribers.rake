@@ -1,5 +1,5 @@
 namespace :db do
-  namespace :certificar_me do
+  namespace :certifico do
     desc 'Updates download subscribers'
     task :update_download_subscribers => :environment do
       Download.all.each do |download|

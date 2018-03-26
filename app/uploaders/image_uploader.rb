@@ -2,11 +2,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-  include Cloudinary::CarrierWave unless Rails.env.test?
+  include Cloudinary::CarrierWave if Rails.env.production?
 
   cloudinary_transformation transformation: [
     { width: 845, height: 597, crop: :limit }
-  ] unless Rails.env.test?
+  ] if Rails.env.production?
 
   def extension_white_list
     %w(png jpg jpeg)

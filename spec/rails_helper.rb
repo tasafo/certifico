@@ -64,6 +64,10 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.after(:suite) do
+    FileUtils.rm_rf("#{Rails.root}/public/uploads/tmp")
+  end
+
   Mongoid.logger.level = Logger::INFO
 
   I18n.locale = 'pt-BR'
