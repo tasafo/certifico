@@ -19,14 +19,6 @@ class Subscriber
     self.theme = nil unless self.profile.has_theme?
   end
 
-  after_create do
-    self.certificate.user.update(current_credits: self.certificate.user.current_credits - 1)
-  end
-
-  after_destroy do
-    self.certificate.user.update(current_credits: self.certificate.user.current_credits + 1)
-  end
-
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   def self.import(certificate, profile_id, sheet)
@@ -35,8 +27,6 @@ class Subscriber
 
     sheet.each do |line|
       email, name = line[0], line[1]
-
-      break if certificate.user.current_credits <= 0
 
       unless email.match(VALID_EMAIL_REGEX)
         result = I18n.t('notice.invalid_email', email: email)

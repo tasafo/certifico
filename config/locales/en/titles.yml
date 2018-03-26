@@ -5,7 +5,6 @@ en:
       templates: Templates
       certificates: Certificates
       subscribers: Subscribers
-      credits: Credits
     action:
       new: New
       new2: New

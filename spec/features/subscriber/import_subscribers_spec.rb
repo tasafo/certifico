@@ -9,13 +9,9 @@ describe 'Import subscribers', js: true do
   let!(:category)         { create(:category, :event) }
   let!(:template)         { create(:template, :fisl, user: paul) }
   let!(:certificate)      { create(:certificate, :future, user: paul, category: category, template: template) }
-  let!(:credit_parameter) { create(:credit_parameter) }
-  let!(:credit)           { create(:credit, user: paul) }
 
   context 'participants with valid data' do
     before do
-      credit.update(paid_at: DateTime.now)
-
       login_as paul
 
       click_link 'Certificados'

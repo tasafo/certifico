@@ -40,7 +40,6 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  field :current_credits,   type: Integer, default: 5
   field :name_changed,      type: Boolean, default: false
   field :admin,             type: Boolean, default: false
 
@@ -49,7 +48,6 @@ class User
   has_many :templates
   has_many :certificates
   has_many :subscribers
-  has_many :credits
   has_many :downloads
 
   validates_presence_of :email, :full_name, :user_name

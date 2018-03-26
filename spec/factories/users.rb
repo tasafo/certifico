@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :user do
     password '123456'
-    current_credits 10
 
     trait :paul do
       email 'paul@example.org'

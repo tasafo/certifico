@@ -3,12 +3,10 @@ class ImportSubscribersController < ApplicationController
   before_action :set_certificate_and_profiles, only: [:new, :create]
 
   def new
-    check_credits certificate_path(@certificate)
     @subscriber = Subscriber.new
   end
 
   def create
-    check_credits certificate_path(@certificate)
     begin
       SpreadSheet.import(@certificate, params[:subscriber])
     rescue Exception => e

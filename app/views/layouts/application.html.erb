@@ -2,7 +2,7 @@
 <html lang="<%= I18n.locale %>">
   <head>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <title>certificar.me</title>
+    <title>Certifico</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,7 +12,7 @@
       <div class="navbar-inner">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/">certificar.me</a>
+            <a class="navbar-brand" href="/">Certifico</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -21,7 +21,6 @@
               <li class="<%= request.fullpath.include?(templates_path) ? 'active' : '' %>"><%= link_to t('menu.templates'), templates_path %></li>
               <li class="<%= request.fullpath.include?(certificates_path) ? 'active' : '' %>"><%= link_to t('menu.certificates'), certificates_path %></li>
               <li class="<%= request.fullpath.include?(issues_path) ? 'active' : '' %>"><%= link_to t('menu.issues'), issues_path %></li>
-              <li class="<%= request.fullpath.include?(credits_path) ? 'active' : '' %>"><%= link_to "#{t('menu.credits')} <span class='badge'>#{current_user.current_credits}</span>".html_safe, credits_path %></li>
               <li class="<%= request.fullpath.include?(edit_user_registration_path) ? 'active' : '' %>"><%= link_to t('menu.update_account'), edit_user_registration_path %></li>
               <li><%= link_to t('menu.validate'), new_validate_path %></li>
               <li><%= link_to t('menu.sign.out'), destroy_user_session_path, method: :delete %></li>
@@ -56,7 +55,7 @@
 
     <footer class="footer">
       <div class="container">
-        <p>Copyright 2016 <a href="https://nomadetec.com.br">Nômade Tecnologia</a></p>
+        <p>&copy; <%= link_to 'Tá safo!', 'https://tasafo.org' %> 2016.</p>
       </div>
     </footer>
 

@@ -7,8 +7,6 @@ pt-BR:
       subscriber: Inscrito
       category: Categoria
       profile: Perfil
-      credit: Crédito
-      history: Histórico
 
     attributes:
       user:
@@ -46,17 +44,3 @@ pt-BR:
         preposition: Preposição
       profile:
         name: Nome
-      credit:
-        quantity: Quantidade
-        price: Preço
-        total: Total
-        paid_at: Pago em
-        created_at: Criado em
-        transaction: Transação
-        payment_method: Método de pagamento
-        status: Situação
-        gateway: Meio
-      history:
-        notification: Notificação
-        status: Situação
-        created_at: Criado em

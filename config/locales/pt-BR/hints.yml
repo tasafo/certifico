@@ -16,5 +16,3 @@ pt-BR:
       current_password: precisamos de sua senha atual para confirmar as alterações
       waiting_confirmation: Atualmente aguardando confirmação para
       user_name: Será permitido atualizar seu nome apenas uma vez. Tenha cuidado.
-    credit:
-      quantity: Após confirmar a operação, você será redirecionado para o site do PagSeguro para efetuar o pagamento de seus créditos

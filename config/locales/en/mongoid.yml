@@ -7,8 +7,6 @@ en:
       subscriber: Subscriber
       category: Category
       profile: Profile
-      credit: Credit
-      history: History
 
     attributes:
       user:
@@ -45,17 +43,3 @@ en:
         preposition: Preposition
       profile:
         name: Name
-      credit:
-        quantity: Quantity
-        price: Price
-        total: Total
-        paid_at: Paid at
-        created_at: Created at
-        transaction: Transaction
-        payment_method: Payment Method
-        status: Status
-        gateway: Gateway
-      history:
-        notification: Notification
-        status: Status
-        created_at: Created at

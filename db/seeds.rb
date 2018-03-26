@@ -108,10 +108,8 @@ end
 if Rails.env.development?
   I18n.locale = 'pt-BR'
 
-  credit_param = CreditParameter.create(price: 2)
-
   admin_user = User.create(
-    email: 'admin@sandbox.pagseguro.com.br',
+    email: 'admin@mail.com',
     password: '123456',
     full_name: 'Administrador do Sistema',
     user_name: 'admin',
@@ -119,28 +117,23 @@ if Rails.env.development?
   )
 
   luiz_user = User.create(
-    email: 'luiz@sandbox.pagseguro.com.br',
+    email: 'luiz@mail.com',
     password: '123456',
     full_name: 'Luiz Sanches',
     user_name: 'luiz'
   )
 
-  credit = admin_user.credits.create(
-    quantity: 500,
-    price: credit_param.price,
-    status: '0',
-    payment_method: '2'
-  )
-
-  credit.histories.create(status: '0')
-
-  credit.update(paid_at: DateTime.now, status: '3')
-  credit.histories.create(status: '3')
-
   category = Category.first
 
-  vaam_template = admin_user.templates.create(name: 'VAAM 2009', font_color: '#000000')
-  mare_template = admin_user.templates.create(name: 'Maré 2009', font_color: '#ffffff')
+  vaam_template = admin_user.templates.create(
+    name: 'VAAM 2009',
+    font_color: '#000000',
+    image: File.new('spec/support/assets/images/vaam_template.jpg')
+  )
+  mare_template = admin_user.templates.create(
+    name: 'Maré 2009',
+    font_color: '#ffffff'
+  )
 
   vaam_certificate = admin_user.certificates.create(
     template: vaam_template,
