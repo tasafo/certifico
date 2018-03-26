@@ -1,0 +1,38 @@
+dist: trusty
+sudo: false
+language: ruby
+rvm:
+- 2.5.0
+branches:
+  only:
+  - master
+env:
+  global:
+  - MONGODB_HOST=localhost:27017
+  - REDIS_URL=redis://localhost:6379
+  - WEB_CONCURRENCY=0
+services:
+- mongodb
+- redis-server
+addons:
+  apt:
+    packages:
+    - qt5-default
+    - libqt5webkit5-dev
+    - gstreamer1.0-plugins-base
+    - gstreamer1.0-tools
+    - gstreamer1.0-x
+    - xvfb
+    - libmagickwand-dev
+  code_climate:
+    repo_token: 4c5b0e4b934016b13845feddd59144cbf1a75d7db38495c8b5c534c900e6ee55
+script:
+- sudo sh -c "dbus-uuidgen > /etc/machine-id"
+- xvfb-run -a bundle exec rails spec
+after_success:
+- bundle exec codeclimate-test-reporter
+deploy:
+  provider: heroku
+  app: certificar-me
+  api_key:
+    secure: ZYLDvYkg3mFUJfoc0hF7FrBwV+E6ka8ZgkbRXjaUXqd1w++D3goN+h8vMi0UUN9JwQEjHZAj0/FIV9iXMRpLDR/Ak6Au/t6Wwh3bUPOnZLSSUqNjwkPmVuZ/pI2tNPsCQgzqB4BaQ/33C4/HRsmax0EogY0J2GxInfkKCcWPY35ahf/1s3xnXbXlmgNFH9r3unxp4nwJdm7v9BRdCntaAB3XKKSEW3idSciiWL7isiIpInOS1G15LaZtAhnKPz6JURM2cjHdZkX+7lG61sVDliMuTuZ+imt0TdlRuYNl7CBA1o/1H4jygIDbwYpRJuaRznJuVfZEM7/WS8cRGKz9DSEcqQt20F2feDU4JtkBUnNAD4y9TCkQ6ALo8XH4Q9C0FiTzDID5ZokTET/Nmj6nRzxeSdskUluGoKLLzhxO4as2K2d7lBqafnQExpc7dgd/0hGU31cQDsytQAde7P4a+kxNIsTw/pizlWPSstC8jqsLaR0AYOeu8/DWSDKGsb5/iu6P0q1iA480/LFik+wgW6PJkrpWpR6H4EJu675Mu+dG3JmLZtRPjVmBRCVBCrt9q9Zl7qQRdVPOMHvZcZ2yUelG8Rf8x+zAjODkBfV77+eBcWk6ecJdxHwQgngRhbl47T2ZU3ePsRBJTLtgKHznlcru1Bu4YtnA4jv0tHliMjo=
