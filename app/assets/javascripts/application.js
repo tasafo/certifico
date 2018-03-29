@@ -18,5 +18,4 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
 //= require bootstrap-colorpicker
-//= require turbolinks
 //= require_tree .

@@ -21,8 +21,6 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-colorpicker-rails'
 
-gem 'turbolinks', '~> 5.x'
-
 gem 'jbuilder', '~> 2.0'
 
 gem 'mongoid', '~> 6.1'
