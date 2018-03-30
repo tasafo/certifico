@@ -35,7 +35,7 @@ describe Subscriber, 'validations' do
 
   context 'when searching by user name or email' do
     it 'must find subscribers' do
-      expect(Subscriber.search(params, certificate).count).to eq(1)
+      expect(Subscriber.search(params, certificate)[:count]).to eq(1)
     end
   end
 end

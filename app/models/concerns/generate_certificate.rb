@@ -11,7 +11,7 @@ class GenerateCertificate
     @subscriber = subscriber
     @certificate = subscriber.certificate
     @link = "#{ENV['RETURN_URL']}/validates/#{@subscriber.id}"
-    image = ImageCertificate.new(certificate).download
+    image = ImageCertificate.new(certificate).get_image
     PDF_OPTIONS[:background] = image unless image.nil?
   end
 

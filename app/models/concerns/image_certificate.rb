@@ -7,26 +7,31 @@ class ImageCertificate
     @certificate = certificate
   end
 
-  def download
-    if Rails.env.production?
-      url = certificate.template.image_url
+  def get_image
+    url = certificate.template.image_url
 
-      return nil if url.nil?
+    return nil if url.nil?
 
-      image_file = "#{Rails.root}/tmp/#{certificate.id}"
+    image_file = ENV['CLOUDINARY_URL'].nil? ? "#{Rails.root}/public/#{url}" : "#{Rails.root}/tmp/#{certificate.id}"
 
-      image_path = url.sub("http://res.cloudinary.com", "")
+    download_image(image_file) unless ENV['CLOUDINARY_URL'].nil?
 
-      Net::HTTP.start( 'res.cloudinary.com' ) { |http|
-        resp = http.get( image_path )
-        open( image_file, 'wb' ) { |file|
-          file.write(resp.body)
-        }
-      }
+    image_file
+  end
 
-      image_file
-    else
-      File.join(Rails.root, 'spec/support/assets/images/vaam_template.jpg')
+  private
+
+  def download_image(image_file)
+    address = 'res.cloudinary.com'
+
+    image_path = url.sub("http://#{address}", "")
+
+    Net::HTTP.start(address) do |http|
+      resp = http.get(image_path)
+
+      open(image_file, 'wb') do |file|
+        file.write(resp.body)
+      end
     end
   end
 end
