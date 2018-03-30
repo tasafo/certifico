@@ -54,7 +54,8 @@ class User
   validates_length_of :email, maximum: 100
   validates_length_of :full_name, maximum: 100
   validates_length_of :user_name, maximum: 50
+  validates_uniqueness_of :email
 
-  index({ email: 1 }, { background: true })
+  index({ email: 1 }, { unique: true, background: true })
   index({ user_name: 1 }, { background: true })
 end

@@ -21,6 +21,9 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-colorpicker-rails'
 
+gem 'kaminari'
+gem 'kaminari-mongoid'
+
 gem 'jbuilder', '~> 2.0'
 
 gem 'mongoid', '~> 6.1'
@@ -31,7 +34,7 @@ gem 'devise-i18n'
 gem 'simple_form'
 
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
-gem 'cloudinary'
+gem 'carrierwave-i18n'
 
 gem 'prawn'
 gem 'prawn-table'
@@ -43,8 +46,6 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 
 gem 'airbrake', '~> 6.1'
-
-gem 'rack-cors', require: 'rack/cors'
 
 gem 'puma'
 
@@ -72,5 +73,6 @@ group :development do
 end
 
 group :production do
+  gem 'cloudinary'
   gem 'newrelic_rpm'
 end

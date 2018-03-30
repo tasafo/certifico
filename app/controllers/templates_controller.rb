@@ -4,7 +4,7 @@ class TemplatesController < ApplicationController
   before_action :authorization, only: [:show, :edit]
 
   def index
-    @templates = current_user.templates
+    @templates = current_user.templates.page(params[:page]).per(10)
   end
 
   def show

@@ -22,4 +22,6 @@ class Certificate
   belongs_to :category
   has_many :subscribers, dependent: :restrict
   has_many :downloads
+
+  scope :with_relations, -> { includes(:user, :template, :category) }
 end

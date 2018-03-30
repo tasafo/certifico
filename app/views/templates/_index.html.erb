@@ -1,5 +1,9 @@
 <%= link_to "#{t('title.action.new')} #{t('mongoid.models.template')}", new_template_path, class: 'btn btn-primary' %>
 
+<br/>
+<%= paginate @templates %>
+<hr/>
+
 <table class="table table-hover table-responsive">
   <thead>
     <tr>

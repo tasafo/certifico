@@ -18,6 +18,10 @@ pt-BR:
       import: Importar
       buy: Comprar
       validate: Validar
+      all: todos
+      search: Buscar
+      search_for: Buscar por
+      name_or_email: nome ou e-mail
     certificate:
       certify_that: Certificamos que
       attended: participou
@@ -34,7 +38,8 @@ pt-BR:
         hour: hora
         hours: horas
       validate: Validação de certificado
-    issue: Emissão
+      issued: emitidos
+    issued: Emissão
     user:
       cancel_count: Cancelar a minha conta
       unhappy: Infeliz?

@@ -138,7 +138,7 @@ if Rails.env.development?
   vaam_certificate = admin_user.certificates.create(
     template: vaam_template,
     category: category,
-    title: 'Visão Ágil Academic Leaders 2009',
+    title: 'Visão Ágil Academic Meeting 2009',
     initial_date: '2009-05-19',
     final_date: '2009-05-19',
     workload: '8',

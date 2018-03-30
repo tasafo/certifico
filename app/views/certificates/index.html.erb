@@ -1,2 +1,2 @@
 <%= render partial: 'index', layout: 'shared/form', locals: { cols: 12,
-  title: t('title.models.certificates') } %>
+  title: "#{@certificates.size} #{t('title.models.certificates')}"} %>

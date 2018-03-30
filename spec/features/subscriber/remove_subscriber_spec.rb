@@ -9,7 +9,7 @@ describe 'Remove subscriber', js: true do
   let!(:certificate) { create(:certificate, :future, user: user, category: category, template: template) }
 
   context 'without delete restriction' do
-    let!(:subscriber)  { create(:subscriber, user: user, certificate: certificate, profile: participant) }
+    let!(:subscriber) { create(:subscriber, user: user, certificate: certificate, profile: participant) }
 
     before do
       login_as user

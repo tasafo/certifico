@@ -4,7 +4,7 @@ class CertificatesController < ApplicationController
   before_action :authorization, only: [:show, :edit]
 
   def index
-    @certificates = current_user.certificates
+    @certificates = current_user.certificates.with_relations.page(params[:page]).per(10)
   end
 
   def show

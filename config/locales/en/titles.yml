@@ -18,6 +18,10 @@ en:
       import: Import
       buy: Buy
       validate: Validate
+      all: all
+      search: Search
+      search_for: Search for
+      name_or_email: name or email
     certificate:
       certify_that: We certify that
       attended: attended
@@ -34,6 +38,7 @@ en:
         hour: hour
         hours: hours
       validate: Certificate Validation
+      issued: issued
     issue: Issue
     user:
       cancel_count: Cancel my account

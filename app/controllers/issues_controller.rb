@@ -2,6 +2,7 @@ class IssuesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @subscribers = current_user.subscribers.with_relations.page(params[:page]).per(10)
   end
 
   def update

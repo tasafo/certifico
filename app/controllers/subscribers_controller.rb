@@ -5,10 +5,16 @@ class SubscribersController < ApplicationController
   before_action :authorization, only: [:edit]
 
   def index
+    subscribers = Subscriber.search(params, @certificate)
+
+    @subscribers = Kaminari.paginate_array(subscribers[:records]).page(params[:page]).per(20)
+
+    @subscribers_count = subscribers[:count]
   end
 
   def new
     @subscriber = Subscriber.new
+
     @subscriber.user = User.new
   end
 
@@ -16,12 +22,13 @@ class SubscribersController < ApplicationController
   end
 
   def create
-    @subscriber = Subscriber.new(subscriber_params)
-    @subscriber.certificate = @certificate
-    @subscriber.user.password = rand(11111111..99999999)
+    @subscriber = @certificate.subscribers.new(subscriber_params)
 
     user = User.find_by(email: @subscriber.user.email)
+
     @subscriber.user = user if user
+
+    @subscriber.user.password = rand(11111111..99999999) unless user
 
     if @subscriber.user.save && @subscriber.save
       redirect_to certificate_subscribers_path(@certificate),
@@ -73,6 +80,7 @@ class SubscribersController < ApplicationController
 
   def set_certificate_and_profiles
     @certificate = current_user.certificates.find(params[:certificate_id])
+
     @profiles = Profile.all.by_name
   end
 

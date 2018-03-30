@@ -1,5 +1,9 @@
 <%= link_to "#{t('title.action.edit')} #{t('mongoid.attributes.user.full_name')}", new_username_path, class: 'btn btn-primary' unless current_user.name_changed %>
 
+<br/>
+<%= paginate @subscribers %>
+<hr/>
+
 <table class="table table-hover table-responsive">
   <thead>
     <tr>
@@ -14,7 +18,7 @@
   </thead>
 
   <tbody>
-    <% current_user.subscribers.each do |subscriber| %>
+    <% @subscribers.each do |subscriber| %>
       <tr>
         <td><%= subscriber.certificate.title %></td>
         <td><%= subscriber.profile.name %></td>
