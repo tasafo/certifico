@@ -33,3 +33,8 @@ body {
 .footer-links li:first-child {
   padding-left: 0;
 }
+
+.border-with-shadow {
+  border:1px solid #ddd;
+  box-shadow: 10px 10px 8px #888888;
+}
