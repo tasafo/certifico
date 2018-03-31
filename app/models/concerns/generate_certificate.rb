@@ -10,7 +10,7 @@ class GenerateCertificate
   def initialize(subscriber)
     @subscriber = subscriber
     @certificate = subscriber.certificate
-    @link = "#{ENV['RETURN_URL']}/validates/#{@subscriber.id}"
+    @link = "#{ENV['VALIDATES_URL']}/validates/#{@subscriber.id}"
     image = ImageCertificate.new(certificate).get_image
     PDF_OPTIONS[:background] = image unless image.nil?
   end
@@ -65,7 +65,7 @@ class GenerateCertificate
   end
 
   def certificate_theme
-    if subscriber.profile.has_theme? && !subscriber.theme.empty?
+    if subscriber.profile.has_theme? && !subscriber.theme.blank?
       " #{I18n.t('title.certificate.theme')} \"#{subscriber.theme}\"."
     else
       '.'

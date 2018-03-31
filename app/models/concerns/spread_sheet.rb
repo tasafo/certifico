@@ -5,7 +5,7 @@ class SpreadSheet
     profile_id = subscriber[:profile_id]
     file = subscriber[:file]
 
-    if subscriber[:profile_id].empty?
+    if subscriber[:profile_id].blank?
       raise "#{I18n.t('mongoid.attributes.subscriber.profile_id')} #{I18n.t('notice.import.was_not_selected')}"
     elsif subscriber[:file].nil?
       raise "#{I18n.t('mongoid.attributes.subscriber.file')} #{I18n.t('notice.import.was_not_selected')}"
