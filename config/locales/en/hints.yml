@@ -1,7 +1,6 @@
 en:
   hint:
-    template:
-      image: Image size 845x597 px, full quality PNG, JPEG format
+    image: Maximum size image of %{size} pixels. Permitted PNG and JPEG formats
     subscriber:
       file_html: <br/><b><u>COMMENTS!</u></b><br/>
                  - <b>Review the contents of the spreadsheet before you import the data</b><br/>

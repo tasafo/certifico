@@ -39,6 +39,7 @@ en:
         hours: hours
       validate: Certificate Validation
       issued: issued
+      generated: generated
     issue: Issue
     user:
       cancel_count: Cancel my account

@@ -4,6 +4,8 @@ module ApplicationHelper
   end
 
   def https(url)
+    return '' if url.nil?
+
     change = url[0, 2] == '//' ? '//' : 'http://'
 
     url.gsub(change, 'https://')

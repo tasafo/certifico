@@ -39,6 +39,7 @@ pt-BR:
         hours: horas
       validate: Validação de certificado
       issued: emitidos
+      generated: gerados
     issued: Emissão
     user:
       cancel_count: Cancelar a minha conta

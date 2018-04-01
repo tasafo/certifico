@@ -16,6 +16,8 @@ class Certificate
 
   validates_presence_of :title, :initial_date, :final_date, :workload, :local
   validates_length_of :title, maximum: 100
+  validates_format_of :site,
+    with: /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/
 
   belongs_to :user
   belongs_to :template

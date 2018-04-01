@@ -29,8 +29,8 @@
         <td><%= certificate.workload %></td>
         <td><%= show_image(certificate, certificate.title) %></td>
         <td><%= link_to t('title.action.show'), certificate, class: 'btn btn-info' %></td>
-        <td><%= link_to t('title.models.subscribers'), certificate_subscribers_path(certificate), class: 'btn btn-warning' %></td>
         <td><%= link_to t('title.action.edit'), edit_certificate_path(certificate), class: 'btn btn-success' %></td>
+        <td><%= link_to t('title.models.subscribers'), certificate_subscribers_path(certificate), class: 'btn btn-warning' %></td>
         <td><%= link_to t('title.action.destroy'), certificate, class: 'btn btn-danger', method: :delete, data: { confirm: t('title.action.are_you_sure') } %></td>
       </tr>
     <% end %>

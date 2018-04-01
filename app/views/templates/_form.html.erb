@@ -4,7 +4,7 @@
 
   <%= show_image(@template, @template.name) %>
   <%= f.input :image_cache, as: :hidden %>
-  <%= f.input :image, as: :file, hint: t('hint.template.image') %>
+  <%= f.input :image, as: :file, hint: t('hint.image', size: '845x597') %>
 
   <% if @template.name? %>
     <%= f.check_box :remove_image %>

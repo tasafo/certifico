@@ -1,7 +1,6 @@
 pt-BR:
   hint:
-    template:
-      image: Imagem em tamanho 845x597 px, formatos PNG, JPEG de qualidade total
+    image: Imagem no tamanho máximo de %{size} pixels. Formatos permitidos PNG e JPEG
     subscriber:
       file_html: <br/><b><u>OBSERVAÇÕES!</u></b><br/>
                  - <b>Revise o conteúdo das planilhas antes de importar os dados</b><br/>
