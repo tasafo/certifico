@@ -51,6 +51,11 @@ class ImportBackup
   end
 
   def self.run
+    if ENV['IMPORT_ASSETS_URL'].blank?
+      puts "Error: import assets url not set."
+      return
+    end
+
     create_dirs
 
     download_asset('data', 'events.csv')
