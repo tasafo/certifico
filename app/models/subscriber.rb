@@ -12,7 +12,7 @@ class Subscriber
   accepts_nested_attributes_for :user
 
   validates_presence_of :certificate_id, :profile_id
-  validates_uniqueness_of :user, scope: [:profile, :certificate]
+  validates_uniqueness_of :user, scope: [:profile, :certificate, :theme]
   validates_length_of :theme, maximum: 100
 
   scope :with_relations, -> { includes(:user, :profile, :certificate, :downloads) }
@@ -56,15 +56,20 @@ class Subscriber
 
       user_name = email.split('@')[0].gsub('.', '')
 
-      user = User.find_by(email: email) || User.create(email: email, full_name: name, user_name: user_name, password: rand(11111111..99999999))
+      user = User.find_by(email: email)
 
-      subscriber = Subscriber.find_by(user: user, certificate: certificate, profile: profile)
+      user = User.create(
+        email: email,
+        full_name: name,
+        user_name: user_name,
+        password: rand(11111111..99999999)
+      ) unless user
 
-      unless subscriber
-        subscriber = Subscriber.create(user: user, certificate: certificate, profile: profile)
+      fields = { user: user, certificate: certificate, profile: profile }
 
-        subscriber.update(theme: line[2].to_s) if profile.has_theme
-      end
+      fields[:theme] = line[2] if profile.has_theme and !line[2].blank?
+
+      Subscriber.find_or_create_by(fields)
     end
 
     result
