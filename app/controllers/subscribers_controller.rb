@@ -57,15 +57,10 @@ class SubscribersController < ApplicationController
   end
 
   def destroy
-    begin
-      @subscriber.destroy
+    notice = t('notice.destroyed', model: t('mongoid.models.subscriber'))
 
-      notice = t('notice.destroyed', model: t('mongoid.models.subscriber'))
-    rescue Mongoid::Errors::DeleteRestriction
-      notice = t('notice.delete.restriction.subscriber')
-    end
-
-    redirect_to certificate_subscribers_path(@certificate), notice: notice
+    redirect_to certificate_subscribers_path(@certificate),
+      notice: notice if @subscriber.destroy
   end
 
   private

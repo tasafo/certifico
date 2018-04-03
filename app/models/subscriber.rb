@@ -7,7 +7,7 @@ class Subscriber
   belongs_to :user
   belongs_to :profile
   belongs_to :certificate
-  has_many   :downloads, dependent: :restrict
+  has_many   :downloads, dependent: :destroy
 
   accepts_nested_attributes_for :user
 

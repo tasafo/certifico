@@ -7,5 +7,5 @@ class Category
 
   validates_presence_of :name, :preposition
 
-  has_many :certificates
+  has_many :certificates, dependent: :restrict
 end

@@ -7,7 +7,7 @@ class Profile
 
   validates_presence_of :name
 
-  has_many :subscribers
+  has_many :subscribers, dependent: :restrict
 
   scope :by_name, -> { order_by(name: :asc) }
 end
