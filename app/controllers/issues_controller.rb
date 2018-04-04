@@ -6,18 +6,26 @@ class IssuesController < ApplicationController
   end
 
   def update
-    subscriber = current_user.subscribers.find(params[:id])
+    generate(current_user.subscribers.find(params[:id]), true)
+  end
 
-    if subscriber
-      user_name = current_user.full_name.parameterize
-      certificate_title = subscriber.certificate.title.parameterize
-      profile_name = subscriber.profile.name.parameterize
+  def destroy
+    generate(Subscriber.find(params[:id]), false)
+  end
 
-      Download.create(subscriber: subscriber)
+  private
 
-      send_data GenerateCertificate.new(subscriber).save,
-                filename: "certifico_#{user_name}_#{certificate_title}_#{profile_name}.pdf",
-                type: "application/pdf" and return
-    end
+  def generate(subscriber, register_download)
+    return unless subscriber
+
+    user_name = subscriber.user.full_name.parameterize
+    certificate_title = subscriber.certificate.title.parameterize
+    profile_name = subscriber.profile.name.parameterize
+
+    Download.create(subscriber: subscriber) if register_download
+
+    send_data GenerateCertificate.new(subscriber).save,
+              filename: "certifico_#{user_name}_#{certificate_title}_#{profile_name}.pdf",
+              type: "application/pdf"
   end
 end

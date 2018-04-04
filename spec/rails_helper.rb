@@ -49,6 +49,8 @@ RSpec.configure do |config|
 
   config.include Capybara::DSL
 
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
   Capybara.javascript_driver = :webkit
 
   Capybara::Webkit.configure do |config|

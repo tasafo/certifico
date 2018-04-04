@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :templates
-  resources :issues, only: [:index, :update]
+  resources :issues, only: [:index, :update, :destroy]
   resources :validates, only: [:new, :create, :show]
   resources :usernames, only: [:new, :update]
 

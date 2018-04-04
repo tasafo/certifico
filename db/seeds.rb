@@ -130,9 +130,10 @@ if Rails.env.development?
     font_color: '#000000',
     image: File.new('spec/support/assets/images/vaam_template.jpg')
   )
+
   mare_template = admin_user.templates.create(
     name: 'Maré 2009',
-    font_color: '#ffffff'
+    font_color: '#000000'
   )
 
   vaam_certificate = admin_user.certificates.create(
@@ -142,7 +143,8 @@ if Rails.env.development?
     initial_date: '2009-05-19',
     final_date: '2009-05-19',
     workload: '8',
-    local: 'auditório do IESAM, Belém - Pará'
+    local: 'auditório do IESAM, Belém - Pará',
+    image: File.new('spec/support/assets/images/vaam_template.jpg')
   )
 
   mare_certificate = admin_user.certificates.create(
@@ -159,8 +161,7 @@ if Rails.env.development?
   speaker = Profile.find_by(name: 'palestrante')
   organizer = Profile.find_by(name: 'organizador')
 
+  luiz_user.subscribers.create(certificate: vaam_certificate, profile: organizer)
   luiz_user.subscribers.create(certificate: vaam_certificate, profile: speaker, theme: 'Slackware Linux')
   luiz_user.subscribers.create(certificate: mare_certificate, profile: participant)
-
-  admin_user.subscribers.create(certificate: vaam_certificate, profile: organizer)
 end

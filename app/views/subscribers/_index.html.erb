@@ -27,7 +27,7 @@
       <th><%= t('mongoid.attributes.user.email') %></th>
       <th><%= t('mongoid.attributes.subscriber.profile_id') %></th>
       <th><%= t('mongoid.attributes.subscriber.theme') %></th>
-      <th><%= t('mongoid.title.subscriber.downloads') %></th>
+      <th class="text-center"><%= t('mongoid.title.subscriber.downloads') %></th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -40,6 +40,7 @@
         <td><%= subscriber.profile.name %></td>
         <td><%= subscriber.theme %></td>
         <td class="text-center"><span class="badge"><%= subscriber.downloads.size %></span></td>
+        <td><%= link_to t('title.action.show'), issue_path(subscriber), id: "generate_#{subscriber.id}", class: 'btn btn-info', method: :delete %></td>
         <td><%= link_to t('title.action.edit'), edit_certificate_subscriber_path(@certificate, subscriber), class: 'btn btn-success' %></td>
         <td><%= link_to t('title.action.destroy'), certificate_subscriber_path(@certificate, subscriber), class: 'btn btn-danger', method: :delete, data: { confirm: t('title.action.are_you_sure') } %></td>
       </tr>
