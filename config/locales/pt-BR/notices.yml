@@ -9,8 +9,9 @@ pt-BR:
       other: "Não foi possível salvar %{resource}: %{count} erros."
     delete:
       restriction:
-        template: Não é possível remover o modelo por causa de certificados dependentes.
-        certificate: Não é possível remover o certificado por causa de inscritos dependentes.
+        templates: Não é possível remover o modelo devido o mesmo possuir certificados.
+        certificates: Não é possível remover o certificado devido o mesmo possuir inscritos.
+        registrations: Não é possível remover o usuário devido o mesmo possuir modelos, certificados ou inscritos.
     not_found: "%{model} não foi encontrado(a)."
     unsupported_file: Arquivo não suportado
     import:

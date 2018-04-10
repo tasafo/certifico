@@ -39,7 +39,7 @@ describe 'Remove template', js: true do
     end
 
     it 'displays error message' do
-      expect(page).to have_content('Não é possível remover o modelo por causa de certificados dependentes.')
+      expect(page).to have_content('Não é possível remover o modelo devido o mesmo possuir certificados.')
     end
   end
 end

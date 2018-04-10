@@ -37,13 +37,9 @@ class CertificatesController < ApplicationController
   end
 
   def destroy
-    begin
-      @certificate.destroy
+    @certificate.destroy
 
-      notice = t('notice.destroyed', model: t('mongoid.models.certificate'))
-    rescue Mongoid::Errors::DeleteRestriction
-      notice = t('notice.delete.restriction.certificate')
-    end
+    notice = t('notice.destroyed', model: t('mongoid.models.certificate'))
 
     redirect_to certificates_path, notice: notice
   end

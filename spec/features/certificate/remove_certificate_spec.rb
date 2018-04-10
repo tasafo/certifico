@@ -41,7 +41,7 @@ describe 'Remove certificate', js: true do
     end
 
     it 'displays error message' do
-      expect(page).to have_content('Não é possível remover o certificado por causa de inscritos dependentes.')
+      expect(page).to have_content('Não é possível remover o certificado devido o mesmo possuir inscritos.')
     end
   end
 end

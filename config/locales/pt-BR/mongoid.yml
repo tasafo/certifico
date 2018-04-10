@@ -7,7 +7,6 @@ pt-BR:
       subscriber: Inscrito
       category: Categoria
       profile: Perfil
-
     attributes:
       user:
         full_name: Nome completo

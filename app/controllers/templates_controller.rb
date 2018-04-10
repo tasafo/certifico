@@ -37,13 +37,9 @@ class TemplatesController < ApplicationController
   end
 
   def destroy
-    begin
-      @template.destroy
+    @template.destroy
 
-      notice = t('notice.destroyed', model: t('mongoid.models.template'))
-    rescue Mongoid::Errors::DeleteRestriction
-      notice = t('notice.delete.restriction.template')
-    end
+    notice = t('notice.destroyed', model: t('mongoid.models.template'))
 
     redirect_to templates_path, notice: notice
   end
