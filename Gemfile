@@ -8,7 +8,7 @@ end
 ruby '2.5.0'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
-gem 'rails', '~> 5.1'
+gem 'rails', '5.1.6'
 gem 'rails-i18n'
 
 gem 'sass-rails', '~> 5.0'
@@ -60,7 +60,7 @@ end
 group :test do
   gem 'simplecov', '0.16.1', require: false
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', github: 'thoughtbot/capybara-webkit'
   gem 'selenium-webdriver'
   gem 'codeclimate-test-reporter'
 end
