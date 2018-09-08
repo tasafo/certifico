@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.5.0'
+ruby '2.5.1'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails', '5.1.6'
@@ -60,7 +60,7 @@ end
 group :test do
   gem 'simplecov', '0.16.1', require: false
   gem 'capybara'
-  gem 'capybara-webkit', github: 'thoughtbot/capybara-webkit'
+  gem 'capybara-webkit', github: 'thoughtbot/capybara-webkit', branch: 'master'
   gem 'selenium-webdriver'
   gem 'codeclimate-test-reporter'
 end
