@@ -8,7 +8,7 @@ end
 ruby '2.5.3'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
-gem 'rails', '5.1.6'
+gem 'rails', '5.1.6.1'
 gem 'rails-i18n'
 
 gem 'sass-rails', '~> 5.0'
@@ -73,6 +73,6 @@ group :development do
 end
 
 group :production do
-  gem 'cloudinary'
+  gem 'cloudinary', '1.9.1'
   gem 'newrelic_rpm'
 end
