@@ -8,7 +8,7 @@ end
 ruby '2.5.3'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
-gem 'rails', '5.1.6.1'
+gem 'rails', '5.2.2'
 gem 'rails-i18n'
 
 gem 'sass-rails', '~> 5.0'
@@ -26,7 +26,7 @@ gem 'kaminari-mongoid'
 
 gem 'jbuilder', '~> 2.0'
 
-gem 'mongoid', '~> 6.1'
+gem 'mongoid', '~> 7.0'
 gem 'mongoid-slug'
 
 gem 'devise'
@@ -48,6 +48,8 @@ gem 'sinatra', require: false
 gem 'airbrake', '~> 6.1'
 
 gem 'puma'
+
+gem 'bootsnap'
 
 group :development, :test do
   gem 'byebug', platform: :mri

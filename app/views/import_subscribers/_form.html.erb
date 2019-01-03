@@ -1,5 +1,5 @@
 <%= simple_form_for @subscriber, url: url do |f| %>
-  <%= f.association :profile, collection: @profiles %>
+  <%= f.input :profile_id, collection: @profiles %>
   <%= f.input :file, as: :file, hint: t('hint.subscriber.file_html') %>
 
   <%= f.submit "#{t('title.action.import')} #{t('title.models.subscribers')}", class: 'btn btn-primary' %>

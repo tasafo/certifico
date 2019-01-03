@@ -1,6 +1,7 @@
 class CertificatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :create, :edit, :update]
   before_action :authorization, only: [:show, :edit]
 
   def index
@@ -39,15 +40,23 @@ class CertificatesController < ApplicationController
   def destroy
     @certificate.destroy
 
-    notice = t('notice.destroyed', model: t('mongoid.models.certificate'))
-
-    redirect_to certificates_path, notice: notice
+    if @certificate.errors.blank?
+      redirect_to certificates_path,
+        notice: t('notice.destroyed', model: t('mongoid.models.certificate'))
+    else
+      redirect_to certificate_path(@certificate),
+        notice: t('notice.delete.restriction.certificates')
+    end
   end
 
   private
 
   def set_certificate
     @certificate = current_user.certificates.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all.by_name
   end
 
   def certificate_params

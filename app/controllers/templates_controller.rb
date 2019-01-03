@@ -39,9 +39,13 @@ class TemplatesController < ApplicationController
   def destroy
     @template.destroy
 
-    notice = t('notice.destroyed', model: t('mongoid.models.template'))
-
-    redirect_to templates_path, notice: notice
+    if @template.errors.blank?
+      redirect_to templates_path,
+        notice: t('notice.destroyed', model: t('mongoid.models.template'))
+    else
+      redirect_to template_path(@template),
+        notice: t('notice.delete.restriction.templates')
+    end
   end
 
   private

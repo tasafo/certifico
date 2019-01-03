@@ -36,8 +36,8 @@ describe 'Remove certificate', js: true do
       click_with_alert "Remover"
     end
 
-    it 'redirects to the certificates page' do
-      expect(current_path).to eql(certificates_path)
+    it 'redirects to the certificate page' do
+      expect(current_path).to eql(certificate_path(certificate))
     end
 
     it 'displays error message' do

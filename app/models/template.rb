@@ -15,5 +15,5 @@ class Template
   validates_length_of :font_color, maximum: 7
 
   belongs_to :user
-  has_many :certificates, dependent: :restrict
+  has_many :certificates, dependent: :restrict_with_error
 end

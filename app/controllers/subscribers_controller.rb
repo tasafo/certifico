@@ -57,10 +57,12 @@ class SubscribersController < ApplicationController
   end
 
   def destroy
-    notice = t('notice.destroyed', model: t('mongoid.models.subscriber'))
+    @subscriber.destroy
 
-    redirect_to certificate_subscribers_path(@certificate),
-      notice: notice if @subscriber.destroy
+    if @subscriber.errors.blank?
+      redirect_to certificate_subscribers_path(@certificate),
+        notice: t('notice.destroyed', model: t('mongoid.models.subscriber'))
+    end
   end
 
   private

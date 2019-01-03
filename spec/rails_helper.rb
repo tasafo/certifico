@@ -3,8 +3,8 @@ require 'simplecov'
 SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] ||= 'test'
-require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
+require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'database_cleaner'

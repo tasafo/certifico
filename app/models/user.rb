@@ -45,9 +45,9 @@ class User
 
   slug :user_name
 
-  has_many :templates, dependent: :restrict
-  has_many :certificates, dependent: :restrict
-  has_many :subscribers, dependent: :restrict
+  has_many :templates, dependent: :restrict_with_error
+  has_many :certificates, dependent: :restrict_with_error
+  has_many :subscribers, dependent: :restrict_with_error
   has_many :downloads
 
   validates_presence_of :email, :full_name, :user_name

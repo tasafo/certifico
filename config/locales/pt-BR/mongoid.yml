@@ -28,8 +28,8 @@ pt-BR:
         local: Local
         site: Site
         image: Imagem
-        template: Modelo
-        category: Categoria
+        template_id: Modelo
+        category_id: Categoria
       subscriber:
         id: Código
         theme: Tema

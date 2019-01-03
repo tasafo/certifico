@@ -34,8 +34,8 @@ describe 'Remove template', js: true do
       click_with_alert "Remover"
     end
 
-    it 'redirects to the templates page' do
-      expect(current_path).to eql(templates_path)
+    it 'redirects to the template page' do
+      expect(current_path).to eql(template_path(template))
     end
 
     it 'displays error message' do

@@ -7,5 +7,7 @@ class Category
 
   validates_presence_of :name, :preposition
 
-  has_many :certificates, dependent: :restrict
+  has_many :certificates, dependent: :restrict_with_error
+
+  scope :by_name, -> { order_by(name: :asc) }
 end
