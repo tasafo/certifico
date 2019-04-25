@@ -64,7 +64,6 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit', github: 'thoughtbot/capybara-webkit', branch: 'master'
   gem 'selenium-webdriver'
-  gem 'codeclimate-test-reporter'
 end
 
 group :development do

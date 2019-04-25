@@ -11,6 +11,7 @@ env:
   - MONGODB_HOST=localhost:27017
   - REDIS_URL=redis://localhost:6379
   - WEB_CONCURRENCY=0
+  - CC_TEST_REPORTER_ID=4c5b0e4b934016b13845feddd59144cbf1a75d7db38495c8b5c534c900e6ee55
 services:
 - mongodb
 - redis-server
@@ -24,13 +25,15 @@ addons:
     - gstreamer1.0-x
     - xvfb
     - libmagickwand-dev
-  code_climate:
-    repo_token: 4c5b0e4b934016b13845feddd59144cbf1a75d7db38495c8b5c534c900e6ee55
+before_script:
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- ./cc-test-reporter before-build
 script:
 - sudo sh -c "dbus-uuidgen > /etc/machine-id"
 - xvfb-run -a bundle exec rails spec
-after_success:
-- bundle exec codeclimate-test-reporter
+after_script:
+- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 deploy:
   provider: heroku
   app: certifico
