@@ -15,3 +15,5 @@ coverage/
 public/uploads/
 .env
 start-servers.sh
+cc-test-reporter
+vendor/bundle/
