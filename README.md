@@ -1,32 +1,28 @@
-# Certifico
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/50541fba39cd88576d9f/maintainability)](https://codeclimate.com/github/tasafo/certifico/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/50541fba39cd88576d9f/test_coverage)](https://codeclimate.com/github/tasafo/certifico/test_coverage) [![Build Status](https://travis-ci.org/tasafo/certifico.svg?branch=master)](https://travis-ci.org/tasafo/certifico) [![security](https://hakiri.io/github/tasafo/certifico/master.svg)](https://hakiri.io/github/tasafo/certifico/master)
+
+# Certifico
 
 Gerencie seus certificados online
 
 ## E como eu instalo isso no meu Ubuntu?
 
-### Aconselhamos você a usar o gerenciador de versões Ruby (http://rvm.io)
+### Aconselhamos você a usar o gerenciador de versões [Ruby](http://rvm.io)
 
     curl -sSL https://get.rvm.io | bash -s stable
 
 ### Instalando o Ruby
 
-    rvm install 2.5.0
+    rvm install 2.6.3
 
-### Usamos o MongoDB, então instala ele lá!
+### Inicia os bancos de dados [MongoDB](https://www.mongodb.com/) e [Redis](https://redis.io/) instalados via [Docker compose](https://docs.docker.com/compose/)
 
-    sudo apt-get install mongodb
+    docker-compose up
 
-### Usamos o Redis-Server, então instala ele lá!
-
-    sudo apt-get install redis-server
-
-### Instala também a biblioteca webkit, que é uma dependência do capybara-webkit (https://github.com/thoughtbot/capybara-webkit)
+### Instala também a biblioteca webkit, que é uma dependência do [capybara-webkit](https://github.com/thoughtbot/capybara-webkit)
 
     sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
 
-### MailCatcher (http://mailcatcher.me)
+### [MailCatcher](http://mailcatcher.me)
 
 #### Instale o MailCatcher para testar o envio de e-mails localmente.
 
@@ -40,7 +36,9 @@ Gerencie seus certificados online
 
     bundle install
 
-Agora espera...
+### Copie o exemplo e depois edite o arquivo de configurações
+
+    cp .env-development .env
 
 ### Depois roda esse comando para adicionar uns dados no banco
 
