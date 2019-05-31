@@ -45,7 +45,7 @@ gem 'roo-xls'
 gem 'sidekiq'
 gem 'sinatra', require: false
 
-gem 'airbrake', '~> 6.1'
+gem 'airbrake', '~> 9.2'
 
 gem 'puma'
 
