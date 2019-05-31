@@ -281,7 +281,7 @@ GEM
     rspec-support (3.8.0)
     ruby-ole (1.2.12.2)
     ruby_dep (1.5.0)
-    rubyzip (1.2.2)
+    rubyzip (1.2.3)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -296,7 +296,7 @@ GEM
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
-    selenium-webdriver (3.142.2)
+    selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     sidekiq (5.2.7)
