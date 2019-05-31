@@ -74,6 +74,6 @@ group :development do
 end
 
 group :production do
-  gem 'cloudinary', '1.9.1'
+  gem 'cloudinary', '1.11.1'
   gem 'newrelic_rpm'
 end
