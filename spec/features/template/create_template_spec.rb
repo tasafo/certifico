@@ -12,7 +12,7 @@ describe 'Create template', js: true do
 
       fill_in 'Nome', with: 'Modelo de certificado'
       fill_in 'Cor da fonte', with: '#000000'
-      attach_file('Imagem', 'spec/support/assets/images/vaam_template.jpg')
+      attach_file('Imagem', "#{Rails.root}/spec/support/assets/images/vaam_template.jpg")
 
       click_button 'Criar Modelo'
     end
@@ -33,7 +33,7 @@ describe 'Create template', js: true do
       click_link 'Modelos'
       click_link 'Novo Modelo'
 
-      attach_file('Imagem', 'public/robots.txt')
+      attach_file('Imagem', "#{Rails.root}/public/robots.txt")
 
       click_button 'Criar Modelo'
     end

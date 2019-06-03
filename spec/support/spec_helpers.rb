@@ -10,18 +10,9 @@ module SpecHelpers
     click_button 'Entrar'
   end
 
-  def webkit?
-    [:webkit, :webkit_debug].include? Capybara.current_driver
-  end
-
   def click_with_alert(target)
-    if webkit?
+    page.accept_alert do
       page.click_link target
-      page.evaluate_script('window.confirm = function() { return true; }')
-    else
-      page.accept_alert do
-        page.click_link target
-      end
     end
   end
 end

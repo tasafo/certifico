@@ -7,6 +7,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'capybara/cuprite'
 require 'database_cleaner'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -41,7 +42,7 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  config.order = 'random'
+  config.order = :random
 
   config.include SpecHelpers
 
@@ -51,15 +52,15 @@ RSpec.configure do |config|
 
   config.include Devise::Test::ControllerHelpers, type: :controller
 
-  Capybara.javascript_driver = :webkit
-
-  Capybara::Webkit.configure do |config|
-    config.block_unknown_urls
+  Capybara.register_driver :cuprite do |app|
+    Capybara::Cuprite::Driver.new(app, headless: true)
   end
+
+  Capybara.javascript_driver = :cuprite
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.orm = 'mongoid'
+    DatabaseCleaner.orm = :mongoid
   end
 
   config.before(:each) do

@@ -18,9 +18,9 @@ Gerencie seus certificados online
 
     docker-compose up
 
-### Instala também a biblioteca webkit, que é uma dependência do [capybara-webkit](https://github.com/thoughtbot/capybara-webkit)
+### Instala o chromium para executar os testes de aceitação
 
-    sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
+    sudo apt-get install chromium-browser
 
 ### [MailCatcher](http://mailcatcher.me)
 

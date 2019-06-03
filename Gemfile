@@ -62,8 +62,7 @@ end
 group :test do
   gem 'simplecov', '0.16.1', require: false
   gem 'capybara'
-  gem 'capybara-webkit', github: 'thoughtbot/capybara-webkit', branch: 'master'
-  gem 'selenium-webdriver'
+  gem 'cuprite'
 end
 
 group :development do

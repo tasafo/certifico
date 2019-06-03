@@ -20,7 +20,7 @@ describe 'Edit certificate', js: true do
       fill_in 'Local', with: 'Centro de Convenções da PUC-RS, Porto Alegre-RS'
       fill_in 'Site', with: 'http://fisl.org/10'
 
-      attach_file('Imagem', 'spec/support/assets/images/vaam_template.jpg')
+      attach_file('Imagem', "#{Rails.root}/spec/support/assets/images/vaam_template.jpg")
 
       click_button 'Atualizar Certificado'
     end
