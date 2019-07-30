@@ -1,3 +1,5 @@
 /spec
 /coverage
 /doc
+.bundle/
+vendor/bundle

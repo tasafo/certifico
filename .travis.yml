@@ -1,32 +1,26 @@
-dist: xenial
+dist: bionic
 sudo: false
 language: ruby
-rvm:
-- 2.6.3
-branches:
-  only:
-  - master
-env:
-  global:
-  - MONGODB_HOST=localhost:27017
-  - REDIS_URL=redis://localhost:6379
-  - WEB_CONCURRENCY=0
+rvm: 2.6.3
 services:
 - mongodb
 - redis-server
-before_install:
-- "echo 'gem: --no-document' > ~/.gemrc"
-- "echo '--colour' > ~/.rspec"
+cache:
+  bundler: true
+bundler_args: --without production
 before_script:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
 - ./cc-test-reporter before-build
 script:
 - bundle exec rails spec
-after_script:
+after_success:
 - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 deploy:
   provider: heroku
   app: certifico
+  skip_cleanup: true
+  on:
+    branch: master
   api_key:
     secure: CHv4NuLA7c/xSOOOR3ofIBOFUf5CbVfXjHfQC+LbcndmPmxinqkp0CeY/KfqGfrL9JHm+RnUEg3aJzHL0ZpjL15KmaFDip2W4cMe/e5pYyklSrRoUFIeHBBI0OOtZqzK1NM2Gqk5HefOCtQiHJG2TyMArnZ30x/G/1Fobfj7Trg1zA9at90WbShcDxZTm00C7mHClmjAKOG1dl8hJVWKYW/khtM/xys0/J2f7/xNZgGffgKMB4gWTyDjT0ntdKyY/2P4aQHIm8hfgdTPeHNdq9v4cj7/zS6KMDFS0sERxgeFh4lq6Eq5aQAFr39da6yu8ikcT3czMq+l43C237BuwLSF10yRkyZmGYkFaT7OVVrvVbKMfZYKIUtPhYusDX3UzMGF5xsqtJbMaJ1Aa3xIAw3XQxV3UIYc6jgVozJU+YovQz6GrQaogm2qu866zltGaecDu2DYg7U9V993jM0IAlSao3yaxP98kdSRJDaV4VQ3YGiV4FCbEM7x8tA/Omo+rFCsjAUIRNfrAXsCCivRyLTkjXv4fZazTd23+aZBsOp1ZcuvLxussgI12JS8aWPahDCjLAofANcEJIMmYm4doxibjUjozGd1KHhgCjaV+H4m7u/+IO1zsytdvj7igONEDJwcwX5HbbhjzZKLYfMG7LXDfH5MbbmmOSiSgYVXJh4=

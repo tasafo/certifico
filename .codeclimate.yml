@@ -26,9 +26,16 @@ exclude_paths:
 - public/**/*
 - spec/**/*
 - vendor/**/*
+- .codeclimate.yml
+- .env-*
+- .gitignore
+- .rspec
+- .slugignore
+- .travis.yml
 - Gemfile
 - Gemfile.lock
 - Procfile
 - README.md
 - Rakefile
 - config.ru
+- docker-compose.yml
