@@ -45,8 +45,6 @@ gem 'roo-xls'
 gem 'sidekiq'
 gem 'sinatra', require: false
 
-gem 'airbrake', '~> 6.1'
-
 gem 'puma'
 
 gem 'bootsnap'
@@ -74,5 +72,4 @@ end
 
 group :production do
   gem 'cloudinary', '1.9.1'
-  gem 'newrelic_rpm'
 end
