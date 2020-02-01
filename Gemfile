@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.6.3'
+ruby '2.6.5'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails', '~> 5.2'
@@ -53,7 +53,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '1.7.0'
   gem 'pry-rails'
 end
 
