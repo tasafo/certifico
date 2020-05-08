@@ -12,7 +12,7 @@ Gerencie seus certificados online
 
 ### Instalando o Ruby
 
-    rvm install 2.6.3
+    rvm install 2.6.6
 
 ### Inicia os bancos de dados [MongoDB](https://www.mongodb.com/) e [Redis](https://redis.io/) instalados via [Docker compose](https://docs.docker.com/compose/)
 

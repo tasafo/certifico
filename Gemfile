@@ -5,10 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.6.5'
+ruby '2.6.6'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 6.0'
 gem 'rails-i18n'
 
 gem 'sass-rails', '~> 5.0'
