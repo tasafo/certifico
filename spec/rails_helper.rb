@@ -53,7 +53,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
 
   Capybara.register_driver :cuprite do |app|
-    Capybara::Cuprite::Driver.new(app, headless: true)
+    Capybara::Cuprite::Driver.new(app, headless: true, timeout: 30)
   end
 
   Capybara.javascript_driver = :cuprite
