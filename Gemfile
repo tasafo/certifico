@@ -49,6 +49,8 @@ gem 'puma'
 
 gem 'bootsnap'
 
+gem 'webpacker'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
