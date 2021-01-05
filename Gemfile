@@ -73,5 +73,5 @@ group :development do
 end
 
 group :production do
-  gem 'cloudinary', '1.9.1'
+  gem 'cloudinary', '1.18.1'
 end
