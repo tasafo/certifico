@@ -1,10 +1,9 @@
 dist: bionic
-sudo: false
 language: ruby
 rvm: 2.6.6
 services:
 - mongodb
-- redis-server
+- redis
 cache:
   bundler: true
 bundler_args: --without production
@@ -19,7 +18,7 @@ after_success:
 deploy:
   provider: heroku
   app: certifico
-  skip_cleanup: true
+  cleanup: true
   on:
     branch: master
   api_key:
