@@ -1,4 +1,4 @@
-so: linux
+os: linux
 dist: focal
 language: ruby
 rvm: 2.6.6
