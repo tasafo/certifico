@@ -1,42 +1,42 @@
 categories = {
   pt_BR: [
-    { name: 'evento', preposition: 'do' },
-    { name: 'encontro', preposition: 'do' },
-    { name: 'simpósio', preposition: 'do' },
-    { name: 'seminário', preposition: 'do' },
-    { name: 'congresso', preposition: 'do' },
-    { name: 'fórum', preposition: 'do' },
-    { name: 'curso', preposition: 'do' },
-    { name: 'conferência', preposition: 'da' },
-    { name: 'semana', preposition: 'da' },
-    { name: 'feira', preposition: 'da' },
-    { name: 'oficina', preposition: 'da' }
+    { name: 'Evento', preposition: 'do' },
+    { name: 'Encontro', preposition: 'do' },
+    { name: 'Simpósio', preposition: 'do' },
+    { name: 'Seminário', preposition: 'do' },
+    { name: 'Congresso', preposition: 'do' },
+    { name: 'Fórum', preposition: 'do' },
+    { name: 'Curso', preposition: 'do' },
+    { name: 'Conferência', preposition: 'da' },
+    { name: 'Semana', preposition: 'da' },
+    { name: 'Feira', preposition: 'da' },
+    { name: 'Oficina', preposition: 'da' }
   ],
   en: [
-    { name: 'event', preposition: 'the' },
-    { name: 'meeting', preposition: 'the' },
-    { name: 'symposium', preposition: 'the' },
-    { name: 'seminar', preposition: 'the' },
-    { name: 'congress', preposition: 'the' },
-    { name: 'forum', preposition: 'the' },
-    { name: 'course', preposition: 'the' },
-    { name: 'conference', preposition: 'the' },
-    { name: 'week', preposition: 'the' },
-    { name: 'fair', preposition: 'the' },
-    { name: 'workshop', preposition: 'the' }
+    { name: 'Event', preposition: 'the' },
+    { name: 'Meeting', preposition: 'the' },
+    { name: 'Symposium', preposition: 'the' },
+    { name: 'Seminar', preposition: 'the' },
+    { name: 'Congress', preposition: 'the' },
+    { name: 'Forum', preposition: 'the' },
+    { name: 'Course', preposition: 'the' },
+    { name: 'Conference', preposition: 'the' },
+    { name: 'Week', preposition: 'the' },
+    { name: 'Fair', preposition: 'the' },
+    { name: 'Workshop', preposition: 'the' }
   ],
   es: [
-    { name: 'evento', preposition: 'en el' },
-    { name: 'reunión', preposition: 'en el' },
-    { name: 'simposio', preposition: 'en el' },
-    { name: 'seminario', preposition: 'en el' },
-    { name: 'congreso', preposition: 'en el' },
-    { name: 'foro', preposition: 'en el' },
-    { name: 'curso', preposition: 'en el' },
-    { name: 'conferencia', preposition: 'a la' },
-    { name: 'semana', preposition: 'a la' },
-    { name: 'feria', preposition: 'a la' },
-    { name: 'taller', preposition: 'a la' }
+    { name: 'Evento', preposition: 'en el' },
+    { name: 'Reunión', preposition: 'en el' },
+    { name: 'Simposio', preposition: 'en el' },
+    { name: 'Seminario', preposition: 'en el' },
+    { name: 'Congreso', preposition: 'en el' },
+    { name: 'Foro', preposition: 'en el' },
+    { name: 'Curso', preposition: 'en el' },
+    { name: 'Conferencia', preposition: 'a la' },
+    { name: 'Semana', preposition: 'a la' },
+    { name: 'Feria', preposition: 'a la' },
+    { name: 'Taller', preposition: 'a la' }
   ]
 }
 
@@ -59,34 +59,37 @@ end
 
 profiles = {
   pt_BR: [
-    { name: 'organizador', has_theme: false },
+    { name: 'organização', has_theme: false },
     { name: 'palestrante', has_theme: true },
     { name: 'participante', has_theme: false },
     { name: 'congressista', has_theme: false },
-    { name: 'coordenador', has_theme: true },
-    { name: 'instrutor', has_theme: false },
-    { name: 'professor', has_theme: false },
-    { name: 'voluntário', has_theme: false }
+    { name: 'coordenação', has_theme: true },
+    { name: 'tutoria', has_theme: false },
+    { name: 'docente', has_theme: false },
+    { name: 'voluntariado', has_theme: false },
+    { name: 'mediação', has_theme: false }
   ],
   en: [
-    { name: 'organizer' },
+    { name: 'organization' },
     { name: 'speaker' },
     { name: 'participant' },
     { name: 'congressman' },
-    { name: 'coordinator' },
-    { name: 'instructor' },
+    { name: 'coordination' },
+    { name: 'tutoring' },
     { name: 'teacher' },
-    { name: 'voluntary' }
+    { name: 'volunteering' },
+    { name: 'mediation' }
   ],
   es: [
-    { name: 'organizador' },
+    { name: 'organización' },
     { name: 'orador' },
     { name: 'partícipe' },
     { name: 'congresista' },
-    { name: 'coordinador' },
-    { name: 'entrenador' },
-    { name: 'profesor' },
-    { name: 'voluntario' }
+    { name: 'coordinación' },
+    { name: 'tutoría' },
+    { name: 'profesorado' },
+    { name: 'voluntariado' },
+    { name: 'mediación' }
   ]
 }
 
@@ -159,7 +162,7 @@ if Rails.env.development?
 
   participant = Profile.find_by(name: 'participante')
   speaker = Profile.find_by(name: 'palestrante')
-  organizer = Profile.find_by(name: 'organizador')
+  organizer = Profile.find_by(name: 'organização')
 
   luiz_user.subscribers.create(certificate: vaam_certificate,
                                profile: organizer)
