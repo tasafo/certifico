@@ -8,8 +8,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     { width: 845, height: 597, crop: :limit }
   ] unless ENV['CLOUDINARY_URL'].nil?
 
-  def extension_whitelist
-    %w(png jpg jpeg)
+  def extension_allowlist
+    %w[png jpg jpeg]
   end
 
   def store_dir

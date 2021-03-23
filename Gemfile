@@ -5,10 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.6.6'
+ruby '2.7.2'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
-gem 'rails', '~> 6.0'
+gem 'rails', '~> 6.1'
 gem 'rails-i18n'
 
 gem 'sass-rails', '~> 5.0'
@@ -26,7 +26,7 @@ gem 'kaminari-mongoid'
 
 gem 'jbuilder', '~> 2.0'
 
-gem 'mongoid', '~> 7.0'
+gem 'mongoid', '7.2.1'
 gem 'mongoid-slug'
 
 gem 'devise'
