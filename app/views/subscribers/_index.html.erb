@@ -56,6 +56,12 @@
         <td><%= link_to t('title.action.show'), issue_path(subscriber), id: "generate_#{subscriber.id}", class: 'btn btn-info', method: :delete %></td>
         <td><%= link_to t('title.action.edit'), edit_certificate_subscriber_path(@certificate, subscriber), class: 'btn btn-success' %></td>
         <td><%= link_to t('title.action.destroy'), certificate_subscriber_path(@certificate, subscriber), class: 'btn btn-danger', method: :delete, data: { confirm: t('title.action.are_you_sure') } %></td>
+        <td>
+          <%= form_tag(certificate_send_by_email_path(@certificate), method: :post, class: "form-inline") do %>
+            <%= submit_tag("#{t('title.action.send')} #{t('mongoid.models.certificate')}", class: 'btn btn-warning', data: { confirm: t('title.action.are_you_sure') }) %>
+            <%= hidden_field_tag 'subscriber_id', subscriber.id %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

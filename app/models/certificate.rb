@@ -27,4 +27,9 @@ class Certificate
   has_many :downloads
 
   scope :with_relations, -> { includes(:user, :template, :category) }
+
+  def self.send_by_email(subscriber_id)
+    CertificateMailer.with(subscriber_id: subscriber_id)
+                     .with_attachment.deliver_later
+  end
 end

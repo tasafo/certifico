@@ -3,11 +3,16 @@ class SendByEmailsController < ApplicationController
   before_action :set_certificate, only: [:create]
 
   def create
-    subscribers = Subscriber.search(params, @certificate)[:records]
+    subscriber_id = params[:subscriber_id]
 
-    subscribers.each do |subscriber|
-      CertificateMailer.with(subscriber_id: subscriber.id.to_s)
-                       .with_attachment.deliver_later
+    if subscriber_id
+      Certificate.send_by_email(subscriber_id)
+    else
+      subscribers = Subscriber.search(params, @certificate)[:records]
+
+      subscribers.each do |subscriber|
+        Certificate.send_by_email(subscriber.id.to_s)
+      end
     end
 
     redirect_to certificate_subscribers_path(@certificate),

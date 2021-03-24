@@ -18,4 +18,4 @@ pt-BR:
       was_not_selected: não foi selecionado
     invalid_email: "E-mail inválido: %{email}"
     name_chagend: Seu nome já foi atualizado!
-    certificates_sent: Os certificados foram enviados com sucesso!
+    certificates_sent: Certificado(s) enviado(s) com sucesso!
