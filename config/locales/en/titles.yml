@@ -18,6 +18,9 @@ en:
       import: Import
       buy: Buy
       validate: Validate
+      send: Send
+      send_confirm: Do you confirm the sending of the %{count} selected certificates?
+      filter: Filter
       all: all
       search: Search
       search_for: Search for

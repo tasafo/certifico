@@ -2,9 +2,9 @@ class GenerateCertificate
   attr_accessor :subscriber, :certificate, :link
 
   PDF_OPTIONS = {
-    page_size:   "A4",
+    page_size: 'A4',
     page_layout: :landscape,
-    margin:      [40, 75]
+    margin: [40, 75]
   }
 
   def initialize(subscriber)
@@ -17,6 +17,10 @@ class GenerateCertificate
 
   def save
     pdf.render
+  end
+
+  def render(file_name)
+    pdf.render_file file_name
   end
 
   def pdf
@@ -65,8 +69,10 @@ class GenerateCertificate
   end
 
   def certificate_theme
-    if subscriber.profile.has_theme? && !subscriber.theme.blank?
-      " #{I18n.t('title.certificate.theme')} \"#{subscriber.theme}\"."
+    theme = subscriber.theme
+
+    if subscriber.profile.has_theme? && !theme.blank?
+      " #{I18n.t('title.certificate.theme')} \"#{theme}\"."
     else
       '.'
     end

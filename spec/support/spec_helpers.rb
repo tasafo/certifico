@@ -12,7 +12,7 @@ module SpecHelpers
 
   def click_with_alert(target)
     page.accept_alert do
-      page.click_link target
+      page.click_on target
     end
   end
 end

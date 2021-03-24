@@ -17,3 +17,4 @@ en:
       was_not_selected: was not selected
     invalid_email: "Invalid e-mail: %{email}"
     name_chagend: Your name has been updated!
+    certificates_sent: The certificates have been sent successfully!

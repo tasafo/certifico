@@ -18,6 +18,9 @@ pt-BR:
       import: Importar
       buy: Comprar
       validate: Validar
+      send: Enviar
+      send_confirm: Você confirma o envio de %{count} certificado(s) selecionado(s)?
+      filter: Filtrar
       all: todos
       search: Buscar
       search_for: Buscar por

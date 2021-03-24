@@ -5,15 +5,16 @@ Rails.application.routes.draw do
 
   resources :certificates do
     resources :subscribers
-    resources :import_subscribers, only: [:new, :create]
+    resources :import_subscribers, only: %i[new create]
+    resource :send_by_email, only: %i[create]
   end
 
   resources :templates
-  resources :issues, only: [:index, :update, :destroy]
-  resources :validates, only: [:new, :create, :show]
-  resources :usernames, only: [:new, :update]
+  resources :issues, only: %i[index update destroy]
+  resources :validates, only: %i[new create show]
+  resources :usernames, only: %i[new update]
 
-  devise_for :users, controllers: {registrations: 'registrations'}
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   namespace :admin do
     authenticate :user, lambda { |user| user.admin? } do

@@ -26,6 +26,6 @@ class IssuesController < ApplicationController
 
     send_data GenerateCertificate.new(subscriber).save,
               filename: "certifico_#{user_name}_#{certificate_title}_#{profile_name}.pdf",
-              type: "application/pdf"
+              type: 'application/pdf'
   end
 end
