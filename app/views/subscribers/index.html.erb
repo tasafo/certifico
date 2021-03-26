@@ -1,2 +1,5 @@
-<%= render partial: 'index', layout: 'shared/form', locals: { cols: 12,
-  title: "#{t('mongoid.models.certificate')} #{@certificate.category.preposition} #{@certificate.category.name} #{@certificate.title} - #{@subscribers_count} #{t('title.models.subscribers')}" } %>
+<%= render partial: 'index', layout: 'shared/form',
+           locals: {
+             cols: 12,
+             title: "#{t('mongoid.models.certificate')} #{@certificate.category.preposition} #{@certificate.category.name} #{@certificate.title} - #{@subscribers_count} #{t('title.models.subscribers')}"
+           } %>

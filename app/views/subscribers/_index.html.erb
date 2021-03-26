@@ -24,8 +24,10 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <%= link_to "#{t('title.action.new')} #{t('mongoid.models.subscriber')}", new_certificate_subscriber_path(@certificate), class: 'btn btn-primary' %>
-    <%= link_to "#{t('title.action.import')} #{t('title.models.subscribers')}", new_certificate_import_subscriber_path(@certificate), class: 'btn btn-primary' %>
+    <%= link_to "#{t('title.action.new')} #{t('mongoid.models.subscriber')}",
+                new_certificate_subscriber_path(@certificate), class: 'btn btn-primary' %>
+    <%= link_to "#{t('title.action.import')} #{t('title.models.subscribers')}",
+                new_certificate_import_subscriber_path(@certificate), class: 'btn btn-primary' %>
     <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-primary' %>
   </div>
 </div>
@@ -41,7 +43,7 @@
       <th><%= t('mongoid.attributes.subscriber.profile_id') %></th>
       <th><%= t('mongoid.attributes.subscriber.theme') %></th>
       <th class="text-center"><%= t('mongoid.title.subscriber.downloads') %></th>
-      <th colspan="2"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -52,14 +54,45 @@
         <td><%= subscriber.user.email %></td>
         <td><%= subscriber.profile.name %></td>
         <td><%= subscriber.theme %></td>
-        <td class="text-center"><span class="badge"><%= subscriber.downloads.size %></span></td>
-        <td><%= link_to t('title.action.show'), issue_path(subscriber), id: "generate_#{subscriber.id}", class: 'btn btn-info', method: :delete %></td>
-        <td><%= link_to t('title.action.edit'), edit_certificate_subscriber_path(@certificate, subscriber), class: 'btn btn-success' %></td>
-        <td><%= link_to t('title.action.destroy'), certificate_subscriber_path(@certificate, subscriber), class: 'btn btn-danger', method: :delete, data: { confirm: t('title.action.are_you_sure') } %></td>
+        <td class="text-center">
+          <span class="badge"><%= subscriber.downloads.size %></span>
+        </td>
         <td>
-          <%= form_tag(certificate_send_by_email_path(@certificate), method: :post, class: "form-inline") do %>
-            <%= submit_tag("#{t('title.action.send')} #{t('mongoid.models.certificate')}", class: 'btn btn-warning', data: { confirm: t('title.action.are_you_sure') }) %>
+          <%= link_to issue_path(subscriber), title: "#{t('title.action.generate')}/#{t('title.action.show')} #{t('mongoid.models.certificate')}",
+                      id: "generate_#{subscriber.id}", class: 'btn btn-info',
+                      method: :delete do %>
+            <i class="glyphicon glyphicon-download-alt"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_certificate_subscriber_path(@certificate, subscriber),
+                      title: "#{t('title.action.edit')} #{t('mongoid.attributes.subscriber.profile')}/#{t('mongoid.attributes.subscriber.theme')}", class: 'btn btn-success' do %>
+            <i class="glyphicon glyphicon-pencil"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to certificate_subscriber_path(@certificate, subscriber),
+                      title: t('title.action.destroy'),
+                      class: 'btn btn-danger', method: :delete,
+                      data: { confirm: t('title.action.are_you_sure') } do %>
+            <i class="glyphicon glyphicon-trash"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= form_tag(certificate_send_by_email_path(@certificate), method: :post, class: 'form-inline') do %>
+            <%= button_tag type: 'submit', class: 'btn btn-warning',
+                           title: "#{t('title.action.send')} #{t('mongoid.models.certificate')}",
+                           data: { confirm: t('title.action.are_you_sure') } do %>
+              <i class="glyphicon glyphicon-send"></i>
+            <% end %>
             <%= hidden_field_tag 'subscriber_id', subscriber.id %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_username_path(subscriber.user, back_to: certificate_subscribers_path(@certificate), subscriber_id: subscriber.id),
+                      title: "#{t('title.action.edit')} #{t('mongoid.attributes.user.full_name')}",
+                      id: "edit_username_#{subscriber.id}", class: 'btn btn-primary' do %>
+            <i class="glyphicon glyphicon-user"></i>
           <% end %>
         </td>
       </tr>

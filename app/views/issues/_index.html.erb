@@ -1,4 +1,6 @@
-<%= link_to "#{t('title.action.edit')} #{t('mongoid.attributes.user.full_name')}", new_username_path, class: 'btn btn-primary' unless current_user.name_changed %>
+<%= link_to "#{t('title.action.edit')} #{t('mongoid.attributes.user.full_name')}",
+            edit_username_path(current_user, back_to: issues_path),
+            class: 'btn btn-primary' unless current_user.name_changed %>
 
 <br/>
 <%= paginate @subscribers %>
@@ -26,7 +28,11 @@
         <td><%= subscriber.certificate.final_date %></td>
         <td><%= subscriber.certificate.workload %></td>
         <td><%= subscriber.certificate.local %></td>
-        <td><%= link_to t('title.action.generate'), issue_path(subscriber), id: "generate_#{subscriber.id}", class: 'btn btn-success', method: :patch %></td>
+        <td>
+          <%= link_to t('title.action.generate'),
+                      issue_path(subscriber), id: "generate_#{subscriber.id}",
+                      class: 'btn btn-success', method: :patch %>
+        </td>
       </tr>
     <% end %>
   </tbody>

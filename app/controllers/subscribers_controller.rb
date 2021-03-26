@@ -1,13 +1,14 @@
 class SubscribersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_certificate_and_profiles, only: [:index, :new, :edit, :create, :update, :destroy]
-  before_action :set_subscriber, only: [:edit, :update, :destroy]
-  before_action :authorization, only: [:edit]
+  before_action :set_certificate_and_profiles, only: %i[index new edit create update destroy]
+  before_action :set_subscriber, only: %i[edit update destroy]
+  before_action :authorization, only: %i[edit]
 
   def index
     subscribers = Subscriber.search(params, @certificate)
 
-    @subscribers = Kaminari.paginate_array(subscribers[:records]).page(params[:page]).per(20)
+    @subscribers = Kaminari.paginate_array(subscribers[:records])
+                           .page(params[:page]).per(20)
 
     @subscribers_count = subscribers[:count]
   end
@@ -18,8 +19,7 @@ class SubscribersController < ApplicationController
     @subscriber.user = User.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @subscriber = @certificate.subscribers.new(subscriber_params)
@@ -28,11 +28,11 @@ class SubscribersController < ApplicationController
 
     @subscriber.user = user if user
 
-    @subscriber.user.password = rand(11111111..99999999) unless user
+    @subscriber.user.password = rand(111_111_11..999_999_99) unless user
 
     if @subscriber.user.save && @subscriber.save
       redirect_to certificate_subscribers_path(@certificate),
-        notice: t('notice.created', model: t('mongoid.models.subscriber'))
+                  notice: t('notice.created', model: t('mongoid.models.subscriber'))
     else
       render :new
     end
@@ -41,13 +41,13 @@ class SubscribersController < ApplicationController
   def update
     if @subscriber.update(subscriber_params)
       redirect_to certificate_subscribers_path(@certificate),
-        notice: t('notice.updated', model: t('mongoid.models.subscriber'))
+                  notice: t('notice.updated', model: t('mongoid.models.subscriber'))
     else
       message = @subscriber.errors.messages[:user_id][0]
 
       if message
         redirect_to edit_certificate_subscriber_path(@certificate, @subscriber),
-          alert: "#{t('mongoid.models.profile')} #{message}"
+                    alert: "#{t('mongoid.models.profile')} #{message}"
       else
         set_subscriber
 
@@ -61,7 +61,7 @@ class SubscribersController < ApplicationController
 
     if @subscriber.errors.blank?
       redirect_to certificate_subscribers_path(@certificate),
-        notice: t('notice.destroyed', model: t('mongoid.models.subscriber'))
+                  notice: t('notice.destroyed', model: t('mongoid.models.subscriber'))
     end
   end
 
@@ -71,7 +71,7 @@ class SubscribersController < ApplicationController
     params.require(:subscriber).permit(
       :profile_id,
       :theme,
-      user_attributes: [:email, :full_name, :user_name]
+      user_attributes: %i[email full_name user_name]
     )
   end
 
@@ -87,6 +87,7 @@ class SubscribersController < ApplicationController
 
   def authorization
     redirect_to certificate_path(@certificate),
-      notice: t('notice.not_found', model: t('mongoid.models.subscriber')) and return if @subscriber.nil?
+                notice: t('notice.not_found',
+                model: t('mongoid.models.subscriber')) and return if @subscriber.nil?
   end
 end

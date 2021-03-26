@@ -14,4 +14,4 @@ en:
         characters_minimum: characters minimum
       current_password: we need your current password to confirm your changes
       waiting_confirmation: Currently waiting confirmation for
-      user_name: You will be allowed to update their name only once. Be careful.
+      user_name: You will be allowed to update their name only once. Be careful!

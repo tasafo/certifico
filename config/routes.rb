@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :templates
   resources :issues, only: %i[index update destroy]
   resources :validates, only: %i[new create show]
-  resources :usernames, only: %i[new update]
+  resources :usernames, only: %i[edit update]
 
   devise_for :users, controllers: { registrations: 'registrations' }
 

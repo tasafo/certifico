@@ -2,30 +2,26 @@ class IssuesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @subscribers = current_user.subscribers.with_relations.page(params[:page]).per(10)
+    @subscribers = current_user.subscribers.with_relations
+                               .page(params[:page]).per(10)
   end
 
   def update
-    generate(current_user.subscribers.find(params[:id]), true)
+    subscriber = current_user.subscribers.find(params[:id])
+    file_name = subscriber.generate(true)
+    download_certificate(subscriber, file_name)
   end
 
   def destroy
-    generate(Subscriber.find(params[:id]), false)
+    subscriber = Subscriber.find(params[:id])
+    file_name = subscriber.generate(false)
+    download_certificate(subscriber, file_name)
   end
 
   private
 
-  def generate(subscriber, register_download)
-    return unless subscriber
-
-    user_name = subscriber.user.full_name.parameterize
-    certificate_title = subscriber.certificate.title.parameterize
-    profile_name = subscriber.profile.name.parameterize
-
-    Download.create(subscriber: subscriber) if register_download
-
+  def download_certificate(subscriber, file_name)
     send_data GenerateCertificate.new(subscriber).save,
-              filename: "certifico_#{user_name}_#{certificate_title}_#{profile_name}.pdf",
-              type: 'application/pdf'
+              filename: file_name, type: 'application/pdf'
   end
 end

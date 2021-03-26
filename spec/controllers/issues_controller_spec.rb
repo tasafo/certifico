@@ -20,50 +20,29 @@ describe IssuesController, type: :controller do
     end
   end
 
-  context 'Generate pdf file for user' do
+  context 'Generate pdf file for' do
     let(:pdf_string)  { GenerateCertificate.new(subscriber).save }
-    let(:pdf_options) {
-      {
-        filename: "certifico_paulo-moura_o-que-sera-do-futuro-no-passado_participante.pdf",
-        type: 'application/pdf'
-      }
-    }
+    let(:file_name)   { 'certifico_paulo-moura_o-que-sera-do-futuro-no-passado_participante.pdf' }
+    let(:pdf_options) { { filename: file_name, type: 'application/pdf' } }
+    let(:params)      { { id: subscriber.id } }
 
     before do
       expect(@controller).to receive(:send_data)
         .with(pdf_string, pdf_options)
+
+      sign_in user
     end
 
-    it "streams the result as a pdf file" do
-      sign_in user
+    context 'user' do
+      it 'streams the result as a pdf file' do
+        patch :update, params: params.merge(format: 'html')
+      end
+    end
 
-      params = { id: subscriber.id }
-
-      patch :update, params: params.merge(format: 'html')
+    context 'admin' do
+      it 'streams the result as a pdf file' do
+        delete :destroy, params: params.merge(format: 'html')
+      end
     end
   end
-
-  context 'Generate pdf file for admin' do
-    let(:pdf_string)  { GenerateCertificate.new(subscriber).save }
-    let(:pdf_options) {
-      {
-        filename: "certifico_paulo-moura_o-que-sera-do-futuro-no-passado_participante.pdf",
-        type: 'application/pdf'
-      }
-    }
-
-    before do
-      expect(@controller).to receive(:send_data)
-        .with(pdf_string, pdf_options)
-    end
-
-    it "streams the result as a pdf file" do
-      sign_in user
-
-      params = { id: subscriber.id }
-
-      delete :destroy, params: params.merge(format: 'html')
-    end
-  end
-
 end

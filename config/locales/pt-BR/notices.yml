@@ -17,5 +17,6 @@ pt-BR:
     import:
       was_not_selected: não foi selecionado
     invalid_email: "E-mail inválido: %{email}"
-    name_chagend: Seu nome já foi atualizado!
+    name_chaged: O nome já foi atualizado!
     certificates_sent: Certificado(s) enviado(s) com sucesso!
+    unauthorized: Você não possui permissão para essa operação

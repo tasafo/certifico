@@ -1,0 +1,6 @@
+<%= render partial: 'form', layout: 'shared/form',
+           locals: {
+             cols: 6, user: @user, url: username_path(@user),
+             title: "#{t('title.action.editing')} #{t('mongoid.models.user')}",
+             back_to: @back_to
+           } %>

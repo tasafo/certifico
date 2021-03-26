@@ -76,4 +76,14 @@ class Subscriber
 
     result
   end
+
+  def generate(register_download)
+    user_name = user.full_name.parameterize
+    certificate_title = certificate.title.parameterize
+    profile_name = profile.name.parameterize
+
+    Download.create(subscriber: self) if register_download
+
+    "certifico_#{user_name}_#{certificate_title}_#{profile_name}.pdf"
+  end
 end
