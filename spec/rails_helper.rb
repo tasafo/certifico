@@ -8,7 +8,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/cuprite'
-require 'database_cleaner'
+require 'database_cleaner-mongoid'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -59,12 +59,11 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :cuprite
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.orm = :mongoid
+    DatabaseCleaner[:mongoid].strategy = :deletion
   end
 
   config.before(:each) do
-    DatabaseCleaner.clean
+    DatabaseCleaner[:mongoid].clean
   end
 
   config.after(:suite) do

@@ -55,13 +55,13 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'database_cleaner', '1.7.0'
+  gem 'database_cleaner-mongoid', '2.0.1'
 end
 
 group :test do
-  gem 'simplecov', '0.16.1', require: false
-  gem 'capybara'
-  gem 'cuprite'
+  gem 'simplecov', '0.21.2', require: false
+  gem 'capybara', '3.35.3'
+  gem 'cuprite', '0.13'
 end
 
 group :development do
