@@ -21,7 +21,7 @@ describe 'Sign up', js: true do
     end
 
     it 'displays success message' do
-      expect(page).to have_content('Login efetuado com sucesso.')
+      expect(page).to have_content('Você realizou seu registro com sucesso.')
     end
   end
 

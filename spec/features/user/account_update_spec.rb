@@ -20,7 +20,7 @@ describe 'Account update', js: true do
     end
 
     it 'displays success message' do
-      expect(page).to have_content('Sua conta foi atualizada com sucesso.')
+      expect(page).to have_content('A sua conta foi atualizada com sucesso.')
     end
   end
 end

@@ -20,7 +20,7 @@ describe 'Sign in', js: true do
     end
 
     it 'displays greeting message' do
-      expect(page).to have_content('Login efetuado com sucesso!')
+      expect(page).to have_content('Login efetuado com sucesso.')
     end
   end
 

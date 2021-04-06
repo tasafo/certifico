@@ -56,6 +56,8 @@ RSpec.configure do |config|
     Capybara::Cuprite::Driver.new(app, headless: true, timeout: 30)
   end
 
+  Capybara.server = :puma, { Silent: true }
+
   Capybara.javascript_driver = :cuprite
 
   config.before(:suite) do
