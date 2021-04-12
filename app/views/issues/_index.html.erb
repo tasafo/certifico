@@ -1,5 +1,5 @@
 <%= link_to "#{t('title.action.edit')} #{t('mongoid.attributes.user.full_name')}",
-            edit_username_path(current_user, back_to: issues_path),
+            edit_username_path(current_user),
             class: 'btn btn-primary' unless current_user.name_changed %>
 
 <br/>

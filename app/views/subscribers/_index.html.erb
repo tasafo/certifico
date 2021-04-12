@@ -89,7 +89,7 @@
           <% end %>
         </td>
         <td>
-          <%= link_to edit_username_path(subscriber.user, back_to: certificate_subscribers_path(@certificate), subscriber_id: subscriber.id),
+          <%= link_to edit_username_path(subscriber.user, subscriber_id: subscriber.id),
                       title: "#{t('title.action.edit')} #{t('mongoid.attributes.user.full_name')}",
                       id: "edit_username_#{subscriber.id}", class: 'btn btn-primary' do %>
             <i class="glyphicon glyphicon-user"></i>

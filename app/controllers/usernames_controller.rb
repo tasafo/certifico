@@ -8,7 +8,7 @@ class UsernamesController < ApplicationController
     @user.name_changed = true
 
     if @user.update(user_params)
-      redirect_to params[:back_to], notice: t('notice.updated', model: t('mongoid.models.user'))
+      redirect_to @back_to, notice: t('notice.updated', model: t('mongoid.models.user'))
     else
       render :edit
     end
@@ -18,7 +18,7 @@ class UsernamesController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-    @back_to = params[:back_to].to_s
+    @back_to = session[:back_to].to_s
     @subscriber_id = params[:subscriber_id]
 
     name_changed?
@@ -30,7 +30,7 @@ class UsernamesController < ApplicationController
   end
 
   def name_changed?
-    redirect_to params[:back_to], alert: t('notice.name_chaged') and return if @user.name_changed
+    redirect_to @back_to, alert: t('notice.name_chaged') and return if @user.name_changed
   end
 
   def permission?

@@ -2,6 +2,8 @@ class IssuesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    session[:back_to] = issues_path
+
     @subscribers = current_user.subscribers.with_relations
                                .page(params[:page]).per(10)
   end

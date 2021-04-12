@@ -1,8 +1,6 @@
 <%= simple_form_for(@user, url: url) do |f| %>
   <%= f.input :full_name, autofocus: true, hint: t('hint.user.user_name'), maxlength: 100 %>
 
-  <%= hidden_field_tag 'back_to', @back_to %>
-
   <%= hidden_field_tag 'subscriber_id', @subscriber_id %>
 
   <%= f.button :submit, class: 'btn btn-primary' %>

@@ -5,6 +5,8 @@ class SubscribersController < ApplicationController
   before_action :authorization, only: %i[edit]
 
   def index
+    session[:back_to] = certificate_subscribers_path(@certificate)
+
     subscribers = Subscriber.search(params, @certificate)
 
     @subscribers = Kaminari.paginate_array(subscribers[:records])
