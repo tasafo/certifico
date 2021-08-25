@@ -26,7 +26,7 @@ gem 'kaminari-mongoid'
 
 gem 'jbuilder', '~> 2.0'
 
-gem 'mongoid', '7.2.1'
+gem 'mongoid', '7.3.2'
 gem 'mongoid-slug'
 
 gem 'devise'
