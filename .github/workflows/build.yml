@@ -1,0 +1,52 @@
+name: Build
+
+on: [push]
+
+env:
+  CI: "true"
+  NODE_VERSION: 16.13.0
+  APP_NAME: certifico
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: sounerd/alpine-mongo
+        ports: ["27017:27017"]
+        options: >-
+          --health-cmd mongo
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:6.0.12-alpine
+        ports: ["6379:6379"]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby version
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: Get npm cache directory path
+      id: npm-cache-dir-path
+      run: echo "::set-output name=dir::$(npm get cache)-${{ env.APP_NAME }}"
+    - uses: actions/cache@v2
+      id: npm-cache
+      with:
+        path: ${{ steps.npm-cache-dir-path.outputs.dir }}
+        key: npm-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          npm-
+    - name: Build and test
+      run: |
+        bundle exec rails spec
+    - name: Publish code coverage
+      uses: paambaati/codeclimate-action@v3.0.0
+      env:
+        CC_TEST_REPORTER_ID: 4c5b0e4b934016b13845feddd59144cbf1a75d7db38495c8b5c534c900e6ee55
+      with:
+        coverageLocations: ${{github.workspace}}/coverage/coverage.xml:cobertura

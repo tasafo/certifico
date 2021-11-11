@@ -31,7 +31,6 @@ exclude_paths:
 - .gitignore
 - .rspec
 - .slugignore
-- .travis.yml
 - Gemfile
 - Gemfile.lock
 - Procfile

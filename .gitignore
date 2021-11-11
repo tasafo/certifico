@@ -10,14 +10,12 @@
 !/log/.keep
 !/tmp/.keep
 .byebug_history
-.ruby-*
+.ruby-gemset
 coverage/
 public/uploads/
 .env
 start-servers.sh
-cc-test-reporter
 vendor/bundle/
-
 /public/packs
 /public/packs-test
 /node_modules

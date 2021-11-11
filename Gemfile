@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.7.3'
+ruby RUBY_VERSION
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails', '~> 6.1'
@@ -26,7 +26,7 @@ gem 'kaminari-mongoid'
 
 gem 'jbuilder', '~> 2.0'
 
-gem 'mongoid', '7.3.2'
+gem 'mongoid', '7.3.3'
 gem 'mongoid-slug'
 
 gem 'devise'
@@ -60,6 +60,7 @@ end
 
 group :test do
   gem 'simplecov', '0.21.2', require: false
+  gem 'simplecov-cobertura', require: false
   gem 'capybara', '3.35.3'
   gem 'cuprite', '0.13'
 end
