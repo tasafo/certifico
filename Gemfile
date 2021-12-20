@@ -61,7 +61,7 @@ end
 group :test do
   gem 'simplecov', '0.21.2', require: false
   gem 'simplecov-cobertura', require: false
-  gem 'capybara', '3.35.3'
+  gem 'capybara', '3.36.0'
   gem 'cuprite', '0.13'
 end
 

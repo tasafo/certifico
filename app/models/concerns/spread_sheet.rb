@@ -1,18 +1,12 @@
 require 'roo'
 
 class SpreadSheet
-  def self.import(certificate, subscriber)
-    profile_id = subscriber[:profile_id]
-    file = subscriber[:file]
-
-    if subscriber[:profile_id].blank?
-      raise "#{I18n.t('mongoid.attributes.subscriber.profile_id')} #{I18n.t('notice.import.was_not_selected')}"
-    elsif subscriber[:file].nil?
-      raise "#{I18n.t('mongoid.attributes.subscriber.file')} #{I18n.t('notice.import.was_not_selected')}"
-    end
+  def self.import(certificate:, profile_id:, file:)
+    raise error_message('profile_id') if profile_id.blank?
+    raise error_message('file') if file.nil?
 
     begin
-      spreadsheet = open(file)
+      spreadsheet = open_sheet(file)
     rescue Exception => e
       raise e.message
     end
@@ -22,13 +16,20 @@ class SpreadSheet
     raise result unless result == true
   end
 
-  def self.open(file)
-    case File.extname(file.original_filename)
-    when ".csv" then Roo::CSV.new(file.path)
-    when ".ods" then Roo::OpenOffice.new(file.path)
-    when ".xls" then Roo::Excel.new(file.path)
-    when ".xlsx" then Roo::Excelx.new(file.path)
-    else raise "#{I18n.t('notice.unsupported_file')}: #{file.original_filename}"
+  def self.error_message(field)
+    "#{I18n.t("mongoid.attributes.subscriber.#{field}")} #{I18n.t('notice.import.was_not_selected')}"
+  end
+
+  def self.open_sheet(file)
+    file_path = file.path
+    filename = file.original_filename
+
+    case File.extname(filename)
+    when '.csv' then CSV.read(file_path)
+    when '.ods' then Roo::OpenOffice.new(file_path)
+    when '.xls' then Roo::Excel.new(file_path)
+    when '.xlsx' then Roo::Excelx.new(file_path)
+    else raise "#{I18n.t('notice.unsupported_file')}: #{filename}"
     end
   end
 end
