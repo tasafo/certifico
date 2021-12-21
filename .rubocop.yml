@@ -1,0 +1,7 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Bundler/OrderedGems:
+  Enabled: false
