@@ -1,4 +1,6 @@
 class Certificate
+  VALID_SITE_REGEX = %r{(^$)|(^(http|https)://[a-z0-9]+([\-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?/.*)?$)}
+
   include Mongoid::Document
   include Mongoid::Timestamps::Short
   include Mongoid::Slug
@@ -17,8 +19,7 @@ class Certificate
   validates_presence_of :template_id, :category_id, :title, :initial_date,
                         :final_date, :workload, :local
   validates_length_of :title, maximum: 100
-  validates_format_of :site,
-    with: /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/
+  validates_format_of :site, with: VALID_SITE_REGEX
 
   belongs_to :user
   belongs_to :template
@@ -28,7 +29,31 @@ class Certificate
 
   scope :with_relations, -> { includes(:user, :template, :category) }
 
-  def self.send_by_email(subscriber_id)
+  def destroy_image
+    image_file = image.file
+
+    FileImage.remove(image_file) if image_file
+  end
+
+  def template_image
+    CertificateTemplateImage.new(self).pull
+  end
+
+  def queue_emails(subscriber_id, params)
+    if subscriber_id
+      send_by_email(subscriber_id)
+    else
+      subscribers = Subscriber.search(params, self)[:records]
+
+      subscribers.each do |subscriber|
+        send_by_email(subscriber.id.to_s)
+      end
+    end
+  end
+
+  private
+
+  def send_by_email(subscriber_id)
     CertificateMailer.with(subscriber_id: subscriber_id)
                      .with_attachment.deliver_later
   end

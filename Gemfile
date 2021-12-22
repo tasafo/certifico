@@ -35,6 +35,7 @@ gem 'simple_form'
 
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'carrierwave-i18n'
+gem 'cloudinary', '1.21.0'
 
 gem 'prawn'
 gem 'prawn-table'
@@ -70,8 +71,4 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
-end
-
-group :production do
-  gem 'cloudinary', '1.18.1'
 end

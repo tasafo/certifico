@@ -1,22 +1,20 @@
 class CertificatesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_certificate, only: [:show, :edit, :update, :destroy]
-  before_action :set_categories, only: [:new, :create, :edit, :update]
-  before_action :authorization, only: [:show, :edit]
+  before_action :set_certificate, only: %i[show edit update destroy]
+  before_action :set_categories, only: %i[new create edit update]
+  before_action :authorization, only: %i[show edit]
 
   def index
     @certificates = current_user.certificates.with_relations.page(params[:page]).per(10)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @certificate = Certificate.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @certificate = Certificate.new(certificate_params)
@@ -30,6 +28,8 @@ class CertificatesController < ApplicationController
   end
 
   def update
+    @certificate.destroy_image if certificate_params[:image] || certificate_params[:remove_image] == '1'
+
     if @certificate.update(certificate_params)
       redirect_to @certificate, notice: t('notice.updated', model: t('mongoid.models.certificate'))
     else
@@ -38,14 +38,15 @@ class CertificatesController < ApplicationController
   end
 
   def destroy
+    @certificate.destroy_image
     @certificate.destroy
 
     if @certificate.errors.blank?
       redirect_to certificates_path,
-        notice: t('notice.destroyed', model: t('mongoid.models.certificate'))
+                  notice: t('notice.destroyed', model: t('mongoid.models.certificate'))
     else
       redirect_to certificate_path(@certificate),
-        notice: t('notice.delete.restriction.certificates')
+                  notice: t('notice.delete.restriction.certificates')
     end
   end
 
@@ -62,12 +63,14 @@ class CertificatesController < ApplicationController
   def certificate_params
     params.require(:certificate).permit(
       :title, :initial_date, :final_date, :workload, :local,
-      :site, :image, :remove_image, :template_id, :category_id
+      :site, :image, :image_cache, :remove_image, :template_id, :category_id
     )
   end
 
   def authorization
-    redirect_to certificates_path,
-      notice: t('notice.not_found', model: t('mongoid.models.certificate')) and return if @certificate.nil?
+    if @certificate.nil?
+      redirect_to certificates_path,
+                  notice: t('notice.not_found', model: t('mongoid.models.certificate')) and return
+    end
   end
 end

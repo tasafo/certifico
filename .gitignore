@@ -13,6 +13,7 @@
 .ruby-gemset
 coverage/
 public/uploads/
+public/tmp/
 .env
 start-servers.sh
 vendor/bundle/

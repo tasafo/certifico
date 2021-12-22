@@ -16,4 +16,10 @@ class Template
 
   belongs_to :user
   has_many :certificates, dependent: :restrict_with_error
+
+  def destroy_image
+    image_file = image.file
+
+    FileImage.remove(image_file) if image_file
+  end
 end

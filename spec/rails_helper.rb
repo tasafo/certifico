@@ -74,7 +74,7 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
-    FileUtils.rm_rf("#{Rails.root}/public/uploads/tmp")
+    FileUtils.rm_rf(Rails.root.join('public', 'tmp'))
   end
 
   Mongoid.logger.level = Logger::INFO

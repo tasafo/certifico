@@ -21,13 +21,13 @@ describe 'Create certificate', js: true do
       fill_in 'Local', with: 'Centro de Convenções da PUC-RS, Porto Alegre-RS'
       fill_in 'Site', with: 'http://fisl.org/10'
 
-      attach_file('Imagem', "#{Rails.root}/spec/support/assets/images/vaam_template.jpg")
+      attach_file('Imagem', Rails.root.join('spec', 'support', 'assets', 'images', 'vaam_template.jpg'))
 
       click_button 'Criar Certificado'
     end
 
     it 'redirects to the certificate page' do
-      expect(current_path).to match(%r[/certificates/\w+])
+      expect(current_path).to match(%r{/certificates/\w+})
     end
 
     it 'displays success message' do
@@ -42,7 +42,7 @@ describe 'Create certificate', js: true do
       click_link 'Certificados'
       click_link 'Novo Certificado'
 
-      attach_file('Imagem', "#{Rails.root}/public/robots.txt")
+      attach_file('Imagem', Rails.root.join('public', 'robots.txt'))
 
       click_button 'Criar Certificado'
     end

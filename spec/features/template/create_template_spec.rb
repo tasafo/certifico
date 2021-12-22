@@ -12,13 +12,13 @@ describe 'Create template', js: true do
 
       fill_in 'Nome', with: 'Modelo de certificado'
       fill_in 'Cor da fonte', with: '#000000'
-      attach_file('Imagem', "#{Rails.root}/spec/support/assets/images/vaam_template.jpg")
+      attach_file('Imagem', Rails.root.join('spec', 'support', 'assets', 'images', 'vaam_template.jpg'))
 
       click_button 'Criar Modelo'
     end
 
     it 'redirects to the template page' do
-      expect(current_path).to match(%r[/templates/\w+])
+      expect(current_path).to match(%r{/templates/\w+})
     end
 
     it 'displays success message' do
@@ -33,7 +33,7 @@ describe 'Create template', js: true do
       click_link 'Modelos'
       click_link 'Novo Modelo'
 
-      attach_file('Imagem', "#{Rails.root}/public/robots.txt")
+      attach_file('Imagem', Rails.root.join('public', 'robots.txt'))
 
       click_button 'Criar Modelo'
     end
