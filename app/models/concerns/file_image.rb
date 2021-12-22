@@ -1,12 +1,14 @@
 class FileImage
-  def self.template(template, image_url, cloudinary_ready)
+  def self.template(template, image_url)
     return nil unless image_url
 
     rails_root = Rails.root
 
-    return "#{rails_root.join('public').to_path}#{image_url}" unless cloudinary_ready
-
-    template_path(rails_root, template.id, image_url)
+    if CloudinaryReady.up?
+      template_path(rails_root, template.id, image_url)
+    else
+      "#{rails_root.join('public').to_path}#{image_url}"
+    end
   end
 
   def self.template_path(rails_root, template_id, image_url)

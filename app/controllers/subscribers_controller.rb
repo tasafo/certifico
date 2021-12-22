@@ -54,10 +54,10 @@ class SubscribersController < ApplicationController
   def destroy
     @subscriber.destroy
 
-    if @subscriber.errors.blank?
-      redirect_to certificate_subscribers_path(@certificate),
-                  notice: t('notice.destroyed', model: t('mongoid.models.subscriber'))
-    end
+    return unless @subscriber.errors.blank?
+
+    redirect_to certificate_subscribers_path(@certificate),
+                notice: t('notice.destroyed', model: t('mongoid.models.subscriber'))
   end
 
   private
@@ -80,9 +80,9 @@ class SubscribersController < ApplicationController
   end
 
   def authorization
-    unless @subscriber
-      redirect_to certificate_path(@certificate),
-                  notice: t('notice.not_found', model: t('mongoid.models.subscriber')) and return
-    end
+    return if @subscriber
+
+    redirect_to certificate_path(@certificate),
+                notice: t('notice.not_found', model: t('mongoid.models.subscriber')) and return
   end
 end

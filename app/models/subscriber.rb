@@ -43,12 +43,10 @@ class Subscriber
     CertificateGenerator.new(self)
   end
 
-  def certificate_file(register_download)
+  def certificate_file_name
     user_name = user.full_name.parameterize
     certificate_title = certificate.title.parameterize
     profile_name = profile.name.parameterize
-
-    downloads.create if register_download
 
     "certifico_#{user_name}_#{certificate_title}_#{profile_name}.pdf"
   end
@@ -104,21 +102,14 @@ class Subscriber
   def self.import_subscriber(sheet, certificate, profile)
     sheet.each do |line|
       email = line[0]
-      name = line[1]
-      theme = line[2]
 
       raise_invalid_email(email)
 
-      user_name = email.split('@').first.delete('.')
+      user = find_user(email: email, name: line[1], user_name: email.split('@').first.delete('.'))
 
-      user = find_user(email, name, user_name)
+      args = { user: user, certificate: certificate, profile: profile, theme: line[2] }
 
-      args = { user: user, certificate: certificate, profile: profile,
-               theme: theme }
-
-      fields = select_fields(**args)
-
-      Subscriber.find_or_create_by(fields)
+      Subscriber.find_or_create_by(select_fields(**args))
     end
   end
 
@@ -134,10 +125,12 @@ class Subscriber
     fields
   end
 
-  def self.find_user(email, name, user_name)
+  def self.find_user(email:, name:, user_name:)
     user = User.find_by(email: email)
+
     user ||= User.create(email: email, full_name: name, user_name: user_name,
                          password: rand(11_111_111..99_999_999))
+
     user
   end
 end

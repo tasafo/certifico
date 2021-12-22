@@ -61,9 +61,9 @@ class TemplatesController < ApplicationController
   end
 
   def authorization
-    unless @template
-      redirect_to templates_path,
-                  notice: t('notice.not_found', model: t('mongoid.models.template')) and return
-    end
+    return if @template
+
+    redirect_to templates_path,
+                notice: t('notice.not_found', model: t('mongoid.models.template')) and return
   end
 end

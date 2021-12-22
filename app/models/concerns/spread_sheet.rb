@@ -15,7 +15,7 @@ class SpreadSheet
 
   def self.import(certificate:, profile_id:, file:)
     raise error_message('profile_id') if profile_id.blank?
-    raise error_message('file') if file.nil?
+    raise error_message('file') if file.blank?
 
     begin
       spreadsheet = open_sheet(file)

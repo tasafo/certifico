@@ -10,14 +10,15 @@ class IssuesController < ApplicationController
 
   def update
     subscriber = current_user.subscribers.find(params[:id])
-    file_name = subscriber.certificate_file(true)
-    download_certificate(subscriber, file_name)
+    subscriber.downloads.create
+
+    download_certificate(subscriber, subscriber.certificate_file_name)
   end
 
   def destroy
     subscriber = Subscriber.find(params[:id])
-    file_name = subscriber.certificate_file(false)
-    download_certificate(subscriber, file_name)
+
+    download_certificate(subscriber, subscriber.certificate_file_name)
   end
 
   private

@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def https(url)
-    return '' if url.nil?
+    return '' unless url
 
     change = url[0, 2] == '//' ? '//' : 'http://'
 

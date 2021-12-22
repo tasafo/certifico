@@ -68,9 +68,9 @@ class CertificatesController < ApplicationController
   end
 
   def authorization
-    unless @certificate
-      redirect_to certificates_path,
-                  notice: t('notice.not_found', model: t('mongoid.models.certificate')) and return
-    end
+    return if @certificate
+
+    redirect_to certificates_path,
+                notice: t('notice.not_found', model: t('mongoid.models.certificate')) and return
   end
 end

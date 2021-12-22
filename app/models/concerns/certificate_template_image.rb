@@ -8,6 +8,6 @@ class CertificateTemplateImage
   def pull
     template = @certificate.template
 
-    FileImage.template(template, template.image_url, CloudinaryReady.up?)
+    FileImage.template(template, template.image_url)
   end
 end
