@@ -32,7 +32,7 @@ describe 'Edit subscriber', js: true do
   end
 
   context 'with profile existing' do
-    let!(:subscriber2)   { create(:subscriber, user: user, certificate: certificate, profile: organizer) }
+    let!(:subscriber2) { create(:subscriber, user: user, certificate: certificate, profile: organizer) }
 
     before do
       login_as user
@@ -56,7 +56,7 @@ describe 'Edit subscriber', js: true do
   end
 
   context 'without profile' do
-    let!(:subscriber2)   { create(:subscriber, user: user, certificate: certificate, profile: organizer) }
+    let!(:subscriber2) { create(:subscriber, user: user, certificate: certificate, profile: organizer) }
 
     before do
       login_as user
@@ -72,6 +72,22 @@ describe 'Edit subscriber', js: true do
 
     it 'redirects to the subscriber page' do
       expect(current_path).to eql(certificate_subscriber_path(certificate, subscriber2))
+    end
+  end
+
+  context 'without authorization' do
+    before do
+      login_as user
+
+      visit edit_certificate_subscriber_path(certificate, '1010101010101')
+    end
+
+    it 'redirects to the certificate page' do
+      expect(current_path).to eql(certificate_path(certificate))
+    end
+
+    it 'displays error message' do
+      expect(page).to have_content('Inscrito não foi encontrado')
     end
   end
 end

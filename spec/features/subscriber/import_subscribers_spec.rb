@@ -19,7 +19,7 @@ describe 'Import subscribers', js: true do
       click_link 'Importar Inscritos'
 
       select 'participante', from: 'subscriber_profile_id'
-      attach_file('Arquivo', "#{Rails.root}/spec/support/assets/spreadsheets/participants.csv")
+      attach_file('Arquivo', spreadsheets_file('participants.csv'))
 
       click_button 'Importar Inscritos'
     end
@@ -42,7 +42,7 @@ describe 'Import subscribers', js: true do
       click_link 'Importar Inscritos'
 
       select 'voluntário', from: 'subscriber_profile_id'
-      attach_file('Arquivo', "#{Rails.root}/spec/support/assets/spreadsheets/voluntaries.xlsx")
+      attach_file('Arquivo', spreadsheets_file('voluntaries.xlsx'))
 
       click_button 'Importar Inscritos'
     end
@@ -65,7 +65,7 @@ describe 'Import subscribers', js: true do
       click_link 'Importar Inscritos'
 
       select 'organizador', from: 'subscriber_profile_id'
-      attach_file('Arquivo', "#{Rails.root}/spec/support/assets/spreadsheets/organizers.ods")
+      attach_file('Arquivo', spreadsheets_file('organizers.ods'))
 
       click_button 'Importar Inscritos'
     end
@@ -88,7 +88,7 @@ describe 'Import subscribers', js: true do
       click_link 'Importar Inscritos'
 
       select 'palestrante', from: 'subscriber_profile_id'
-      attach_file('Arquivo', "#{Rails.root}/spec/support/assets/spreadsheets/speakers.xls")
+      attach_file('Arquivo', spreadsheets_file('speakers.xls'))
 
       click_button 'Importar Inscritos'
     end
@@ -153,7 +153,7 @@ describe 'Import subscribers', js: true do
       click_link 'Importar Inscritos'
 
       select 'participante', from: 'subscriber_profile_id'
-      attach_file('Arquivo', "#{Rails.root}/spec/support/assets/spreadsheets/unsupported_file.txt")
+      attach_file('Arquivo', spreadsheets_file('unsupported_file.txt'))
 
       click_button 'Importar Inscritos'
     end
@@ -176,7 +176,7 @@ describe 'Import subscribers', js: true do
       click_link 'Importar Inscritos'
 
       select 'participante', from: 'subscriber_profile_id'
-      attach_file('Arquivo', "#{Rails.root}/spec/support/assets/spreadsheets/invalid_participants.csv")
+      attach_file('Arquivo', spreadsheets_file('invalid_participants.csv'))
 
       click_button 'Importar Inscritos'
     end

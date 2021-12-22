@@ -7,15 +7,17 @@ plugins:
   rubocop:
     enabled: true
     channel: rubocop-1-23-0
+  reek:
+    enabled: true
   duplication:
     enabled: true
     config:
       languages:
       - ruby
 exclude_patterns:
-- "**/*.yml"
-- "**/*.js"
-- "**/*.json"
+- /*.yml
+- /*.js
+- /*.json
 - app/assets/**/*
 - app/config/locales/**/*
 - app/views/**/*
@@ -27,13 +29,14 @@ exclude_patterns:
 - public/**/*
 - spec/**/*
 - vendor/**/*
+- node_modules/**/*
 - .env-*
-- .gitignore
+- .git*
 - .rspec
 - .slugignore
-- Gemfile
-- Gemfile.lock
+- Gemfile*
 - Procfile
 - README.md
 - Rakefile
 - config.ru
+- babel.config.js

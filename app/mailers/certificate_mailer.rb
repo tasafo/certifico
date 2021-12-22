@@ -8,21 +8,20 @@ class CertificateMailer < ApplicationMailer
     certificate_category = certificate.category
     profile_name = @subscriber.profile.name
 
-    pdf_file = "#{Rails.root}/tmp/certifico_#{user_name}_"
-    pdf_file << "#{certificate_title.parameterize}_#{profile_name.parameterize}"
-    pdf_file << '.pdf'
+    file_name = "certifico_#{user_name}_#{certificate_title.parameterize}_"\
+                "#{profile_name.parameterize}.pdf"
+    pdf_file = Rails.root.join('tmp', 'certificates', file_name).to_path
 
-    GenerateCertificate.new(@subscriber).render(pdf_file)
+    @subscriber.create_certificate(pdf_file)
 
-    attachments[pdf_file.split('/').last] = File.read(pdf_file)
+    attachments[pdf_file.split(File::SEPARATOR).last] = File.read(pdf_file)
 
     File.delete(pdf_file) if File.exist?(pdf_file)
 
-    Download.create(subscriber: @subscriber)
-
-    subject = "#{t('mongoid.models.certificate')} "
-    subject << "#{certificate_category.preposition} "
-    subject << "#{certificate_category.name} #{certificate_title} (#{profile_name})"
+    subject = "#{t('mongoid.models.certificate')} "\
+              "#{certificate_category.preposition} "\
+              "#{certificate_category.name} #{certificate_title} "\
+              "(#{profile_name})"
 
     mail(to: @user.email, subject: subject)
   end

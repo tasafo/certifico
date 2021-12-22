@@ -45,4 +45,20 @@ describe 'Edit template', js: true do
       expect(page).to have_content('não pode ficar em branco')
     end
   end
+
+  context 'without authorization' do
+    before do
+      login_as user
+
+      visit edit_template_path('1010101010101')
+    end
+
+    it 'redirects to the templates page' do
+      expect(current_path).to eql(templates_path)
+    end
+
+    it 'displays error message' do
+      expect(page).to have_content('Modelo não foi encontrado')
+    end
+  end
 end

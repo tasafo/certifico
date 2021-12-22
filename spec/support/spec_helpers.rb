@@ -15,4 +15,8 @@ module SpecHelpers
       page.click_on target
     end
   end
+
+  def spreadsheets_file(file)
+    Rails.root.join('spec', 'support', 'assets', 'spreadsheets', file)
+  end
 end

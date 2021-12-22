@@ -20,7 +20,7 @@ describe 'Edit certificate', js: true do
       fill_in 'Local', with: 'Centro de Convenções da PUC-RS, Porto Alegre-RS'
       fill_in 'Site', with: 'http://fisl.org/10'
 
-      attach_file('Imagem', Rails.root.join('spec', 'support', 'assets', 'images', 'vaam_template.jpg'))
+      attach_file('Imagem', FileImage.dummy_template)
 
       click_button 'Atualizar Certificado'
     end
@@ -52,6 +52,22 @@ describe 'Edit certificate', js: true do
 
     it 'displays error messages' do
       expect(page).to have_content('não pode ficar em branco')
+    end
+  end
+
+  context 'without authorization' do
+    before do
+      login_as user
+
+      visit edit_certificate_path('1010101010101')
+    end
+
+    it 'redirects to the certificates page' do
+      expect(current_path).to eql(certificates_path)
+    end
+
+    it 'displays error message' do
+      expect(page).to have_content('Certificado não foi encontrado')
     end
   end
 end

@@ -10,7 +10,7 @@ describe 'Remove template', js: true do
 
       click_link 'Modelos'
 
-      click_with_alert "Remover"
+      click_with_alert 'Remover'
     end
 
     it 'redirects to the templates page' do
@@ -31,7 +31,7 @@ describe 'Remove template', js: true do
 
       click_link 'Modelos'
 
-      click_with_alert "Remover"
+      click_with_alert 'Remover'
     end
 
     it 'redirects to the template page' do

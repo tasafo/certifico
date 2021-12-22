@@ -4,17 +4,17 @@ class FileImage
 
     rails_root = Rails.root
 
-    return "#{rails_root}/public#{image_url}" unless cloudinary_ready
+    return "#{rails_root.join('public').to_path}#{image_url}" unless cloudinary_ready
 
     template_path(rails_root, template.id, image_url)
   end
 
   def self.template_path(rails_root, template_id, image_url)
-    directory = "#{rails_root}/tmp/templates"
+    directory = rails_root.join('tmp', 'templates').to_path
 
     Dir.mkdir(directory) unless File.exist?(directory)
 
-    template_file = "#{directory}/#{template_id}"
+    template_file = "#{directory}#{File::SEPARATOR}#{template_id}"
 
     download(image_url, template_file) unless File.exist?(template_file)
 
@@ -45,5 +45,9 @@ class FileImage
       file_path = file.path
       File.delete(file_path) if File.exist?(file_path)
     end
+  end
+
+  def self.dummy_template
+    Rails.root.join('spec', 'support', 'assets', 'images', 'vaam_template.jpg')
   end
 end

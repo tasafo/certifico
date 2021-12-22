@@ -1,23 +1,34 @@
 require 'roo'
 
 class SpreadSheet
+  def self.setup(params, certificate)
+    subscriber = params[:subscriber]
+
+    options = {
+      certificate: certificate,
+      profile_id: subscriber[:profile_id],
+      file: subscriber[:file]
+    }
+
+    import(**options)
+  end
+
   def self.import(certificate:, profile_id:, file:)
     raise error_message('profile_id') if profile_id.blank?
     raise error_message('file') if file.nil?
 
     begin
       spreadsheet = open_sheet(file)
-    rescue Exception => e
+    rescue StandardError => e
       raise e.message
     end
 
-    result = Subscriber.import(certificate, profile_id, spreadsheet)
-
-    raise result unless result == true
+    Subscriber.import(certificate, profile_id, spreadsheet)
   end
 
   def self.error_message(field)
-    "#{I18n.t("mongoid.attributes.subscriber.#{field}")} #{I18n.t('notice.import.was_not_selected')}"
+    "#{I18n.t("mongoid.attributes.subscriber.#{field}")} \
+    #{I18n.t('notice.import.was_not_selected')}"
   end
 
   def self.open_sheet(file)

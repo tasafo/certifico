@@ -1,28 +1,23 @@
 require 'csv'
 require 'net/https'
 
-=begin
-
-rails db:drop db:create db:seed
-rails db:certifico:import_backup
-
-rails db:mongoid:remove_indexes
-rails db:mongoid:create_indexes
-
-=end
+# rails db:drop db:create db:seed
+# rails db:certifico:import_backup
+# rails db:mongoid:remove_indexes
+# rails db:mongoid:create_indexes
 
 namespace :db do
   namespace :certifico do
     desc 'Import backup in .csv files'
-    task :import_backup => :environment do
+    task import_backup: :environment do
       ImportBackup.run
     end
   end
 end
 
 class ImportBackup
-  ASSET_PATH = "#{Rails.root}/tmp/import"
-  SEPARATOR = '#'
+  ASSET_PATH = "#{Rails.root}/tmp/import".freeze
+  SEPARATOR = '#'.freeze
 
   def self.download_asset(path, name)
     url = ENV['IMPORT_ASSETS_URL']
@@ -31,28 +26,28 @@ class ImportBackup
     image_path = "/assets/import/#{path}/#{image_file}"
     image_dest = "#{ASSET_PATH}/#{path}/#{image_file}"
 
-    unless File.exists?(image_dest)
-      Net::HTTP.start(url) do |http|
-        resp = http.get(image_path)
+    return if File.exist?(image_dest)
 
-        open(image_dest, 'wb') do |file|
-          file.write(resp.body)
-        end
+    Net::HTTP.start(url) do |http|
+      resp = http.get(image_path)
+
+      File.open(image_dest, 'wb') do |file|
+        file.write(resp.body)
       end
     end
   end
 
   def self.create_dirs
-    dirs = [ "#{ASSET_PATH}", "#{ASSET_PATH}/data", "#{ASSET_PATH}/logos", "#{ASSET_PATH}/templates" ]
+    dirs = [ASSET_PATH, "#{ASSET_PATH}/data", "#{ASSET_PATH}/logos", "#{ASSET_PATH}/templates"]
 
     dirs.each do |dir|
-      Dir.mkdir(dir) unless File.exists?(dir)
+      Dir.mkdir(dir) unless File.exist?(dir)
     end
   end
 
   def self.run
     if ENV['IMPORT_ASSETS_URL'].blank?
-      puts "Error: import assets url not set."
+      puts 'Error: import assets url not set.'
       return
     end
 
@@ -85,9 +80,9 @@ class ImportBackup
       site = site.gsub('tasafo.wordpress.com', 'tasafo.org')
 
       font_color = case text_color
-        when 'branco' then '#FFFFFF'
-        when 'preto' then '#000000'
-      end
+                   when 'branco' then '#FFFFFF'
+                   when 'preto' then '#000000'
+                   end
 
       type_name = type.split.last
       type_name = 'evento' if type_name == 'do'
@@ -102,7 +97,7 @@ class ImportBackup
 
       user = User.create(
         email: email,
-        password: rand(11111111..99999999),
+        password: rand(11_111_111..99_999_999),
         full_name: email.split('@')[0],
         user_name: email.split('@')[0]
       ) unless user
@@ -113,7 +108,7 @@ class ImportBackup
         image: File.new("#{ASSET_PATH}/templates/#{certificate_file}")
       )
 
-      certificate = user.certificates.create(
+      user.certificates.create(
         template: template,
         category: category,
         title: "#{id}#{SEPARATOR}#{name}",
@@ -143,7 +138,7 @@ class ImportBackup
 
       user = User.create(
         email: email,
-        password: rand(11111111..99999999),
+        password: rand(11_111_111..99_999_999),
         full_name: name,
         user_name: username
       ) unless user
@@ -175,7 +170,7 @@ class ImportBackup
 
       user = User.create(
         email: email,
-        password: rand(11111111..99999999),
+        password: rand(11_111_111..99_999_999),
         full_name: name,
         user_name: username
       ) unless user
@@ -185,16 +180,16 @@ class ImportBackup
       if certificate
         profiles.each do |profile|
           profile_select = case profile.strip
-            when 'organizador' then organizer
-            when 'palestrante' then speaker
-            else nil
-          end
+                           when 'organizador' then organizer
+                           when 'palestrante' then speaker
+                           else nil
+                           end
 
           certificate.subscribers.create(
             user: user,
             profile: profile_select,
             theme: theme
-          ) if certificate and profile_select
+          ) if certificate && profile_select
         end
       end
     end
@@ -207,9 +202,9 @@ class ImportBackup
   end
 
   def self.format_name(name)
-    no_cap = %w(e da de do das dos)
+    no_cap = %w[e da de do das dos]
 
-    name.downcase.split(' ').map { |word| no_cap.include?(word) ? word : word.capitalize }.join(' ')
+    name.downcase.split.map { |word| no_cap.include?(word) ? word : word.capitalize }.join(' ')
   end
 
   def self.format_username(name)

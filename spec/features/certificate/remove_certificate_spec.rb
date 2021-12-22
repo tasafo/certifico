@@ -12,7 +12,7 @@ describe 'Remove certificate', js: true do
 
       click_link 'Certificados'
 
-      click_with_alert "Remover"
+      click_with_alert 'Remover'
     end
 
     it 'redirects to the certificates page' do
@@ -33,7 +33,7 @@ describe 'Remove certificate', js: true do
 
       click_link 'Certificados'
 
-      click_with_alert "Remover"
+      click_with_alert 'Remover'
     end
 
     it 'redirects to the certificate page' do

@@ -19,71 +19,125 @@ class Subscriber
     includes(:user, :profile, :certificate, :downloads)
   end
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
   before_save do
     self.theme = nil unless profile.has_theme?
   end
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  before_create do
+    user_found = User.find_by(email: user.email)
+
+    if user_found
+      self.user = user_found
+    else
+      user.password = rand(111_111_11..999_999_99)
+    end
+  end
+
+  def send_certificate_by_email
+    CertificateMailer.with(subscriber_id: id.to_s).with_attachment.deliver_later
+  end
+
+  def generate_certificate
+    CertificateGenerator.new(self)
+  end
+
+  def certificate_file(register_download)
+    user_name = user.full_name.parameterize
+    certificate_title = certificate.title.parameterize
+    profile_name = profile.name.parameterize
+
+    downloads.create if register_download
+
+    "certifico_#{user_name}_#{certificate_title}_#{profile_name}.pdf"
+  end
+
+  def create_certificate(pdf_file)
+    directory = Rails.root.join('tmp', 'certificates').to_path
+    Dir.mkdir(directory) unless File.exist?(directory)
+
+    generate_certificate.render(pdf_file)
+
+    downloads.create
+  end
 
   def self.search(params, certificate)
-    conditions = { certificate: certificate }
+    filter = conditions(certificate, params[:profile], params[:search])
 
-    unless params[:profile].blank?
-      conditions[:profile] = Profile.find_by(name: params[:profile])
-    end
-
-    unless params[:search].blank?
-      user_ids = User.where(email: /#{params[:search]}/).pluck(:id)
-
-      user_ids += User.where(full_name: /#{params[:search]}/i).pluck(:id)
-
-      conditions['user_id'] = { '$in' => user_ids }
-    end
-
-    records = Subscriber.with_relations.where(conditions)
+    records = Subscriber.with_relations.where(filter)
                         .sort_by { |subscriber| subscriber.user.full_name }
 
     { records: records, count: records.size }
   end
 
-  def self.import(certificate, profile_id, sheet)
-    result = true
+  def self.conditions(certificate, profile, search)
+    conditions = { certificate: certificate }
 
+    conditions[:profile] = Profile.find_by(name: profile) unless profile.blank?
+
+    conditions['user_id'] = user_ids(search) unless search.blank?
+
+    conditions
+  end
+
+  def self.user_ids(search)
+    user_ids = User.where(email: /#{search}/).pluck(:id)
+
+    user_ids += User.where(full_name: /#{search}/i).pluck(:id)
+
+    { '$in' => user_ids }
+  end
+
+  def self.import(certificate, profile_id, sheet)
     profile = Profile.find(profile_id)
 
+    import_subscriber(sheet, certificate, profile)
+  end
+
+  def self.raise_invalid_email(email)
+    notice = I18n.t('notice.invalid_email', email: email)
+
+    raise notice unless email.match?(VALID_EMAIL_REGEX)
+  end
+
+  def self.import_subscriber(sheet, certificate, profile)
     sheet.each do |line|
       email = line[0]
       name = line[1]
+      theme = line[2]
 
-      unless email.match?(VALID_EMAIL_REGEX)
-        result = I18n.t('notice.invalid_email', email: email)
-        break
-      end
+      raise_invalid_email(email)
 
       user_name = email.split('@').first.delete('.')
 
-      user = User.find_by(email: email)
+      user = find_user(email, name, user_name)
 
-      user ||= User.create(email: email, full_name: name, user_name: user_name,
-                           password: rand(11_111_111..99_999_999))
+      args = { user: user, certificate: certificate, profile: profile,
+               theme: theme }
 
-      fields = { user: user, certificate: certificate, profile: profile }
-
-      fields[:theme] = line[2] if profile.has_theme && !line[2].blank?
+      fields = select_fields(**args)
 
       Subscriber.find_or_create_by(fields)
     end
-
-    result
   end
 
-  def generate(register_download)
-    user_name = user.full_name.parameterize
-    certificate_title = certificate.title.parameterize
-    profile_name = profile.name.parameterize
+  def self.select_fields(**args)
+    profile = args[:profile]
+    theme = args[:theme]
 
-    Download.create(subscriber: self) if register_download
+    fields = { user: args[:user], certificate: args[:certificate],
+               profile: profile }
 
-    "certifico_#{user_name}_#{certificate_title}_#{profile_name}.pdf"
+    fields[:theme] = theme if profile.has_theme && !theme.blank?
+
+    fields
+  end
+
+  def self.find_user(email, name, user_name)
+    user = User.find_by(email: email)
+    user ||= User.create(email: email, full_name: name, user_name: user_name,
+                         password: rand(11_111_111..99_999_999))
+    user
   end
 end

@@ -21,7 +21,7 @@ describe IssuesController, type: :controller do
   end
 
   context 'Generate pdf file for' do
-    let(:pdf_string)  { GenerateCertificate.new(subscriber).save }
+    let(:pdf_string)  { subscriber.generate_certificate.save }
     let(:file_name)   { 'certifico_paulo-moura_o-que-sera-do-futuro-no-passado_participante.pdf' }
     let(:pdf_options) { { filename: file_name, type: 'application/pdf' } }
     let(:params)      { { id: subscriber.id } }

@@ -8,13 +8,8 @@ class ImportSubscribersController < ApplicationController
 
   def create
     begin
-      options = {
-        certificate: @certificate,
-        profile_id: params[:subscriber][:profile_id],
-        file: params[:subscriber][:file]
-      }
-      SpreadSheet.import(**options)
-    rescue Exception => e
+      SpreadSheet.setup(params, @certificate)
+    rescue StandardError => e
       redirect_to new_certificate_import_subscriber_path(@certificate),
                   alert: e.message and return
     end

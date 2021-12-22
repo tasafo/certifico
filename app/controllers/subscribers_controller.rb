@@ -26,13 +26,7 @@ class SubscribersController < ApplicationController
   def create
     @subscriber = @certificate.subscribers.new(subscriber_params)
 
-    user = User.find_by(email: @subscriber.user.email)
-
-    @subscriber.user = user if user
-
-    @subscriber.user.password = rand(111_111_11..999_999_99) unless user
-
-    if @subscriber.user.save && @subscriber.save
+    if @subscriber.save
       redirect_to certificate_subscribers_path(@certificate),
                   notice: t('notice.created', model: t('mongoid.models.subscriber'))
     else
@@ -43,18 +37,17 @@ class SubscribersController < ApplicationController
   def update
     if @subscriber.update(subscriber_params)
       redirect_to certificate_subscribers_path(@certificate),
-                  notice: t('notice.updated', model: t('mongoid.models.subscriber'))
+                  notice: t('notice.updated', model: t('mongoid.models.subscriber')) and return
+    end
+
+    message = @subscriber.errors.messages[:user_id][0]
+
+    if message
+      redirect_to edit_certificate_subscriber_path(@certificate, @subscriber),
+                  alert: "#{t('mongoid.models.profile')} #{message}"
     else
-      message = @subscriber.errors.messages[:user_id][0]
-
-      if message
-        redirect_to edit_certificate_subscriber_path(@certificate, @subscriber),
-                    alert: "#{t('mongoid.models.profile')} #{message}"
-      else
-        set_subscriber
-
-        render :edit
-      end
+      set_subscriber
+      render :edit
     end
   end
 
@@ -71,8 +64,7 @@ class SubscribersController < ApplicationController
 
   def subscriber_params
     params.require(:subscriber).permit(
-      :profile_id,
-      :theme,
+      :profile_id, :theme,
       user_attributes: %i[email full_name user_name]
     )
   end
@@ -88,8 +80,9 @@ class SubscribersController < ApplicationController
   end
 
   def authorization
-    redirect_to certificate_path(@certificate),
-                notice: t('notice.not_found',
-                model: t('mongoid.models.subscriber')) and return if @subscriber.nil?
+    unless @subscriber
+      redirect_to certificate_path(@certificate),
+                  notice: t('notice.not_found', model: t('mongoid.models.subscriber')) and return
+    end
   end
 end

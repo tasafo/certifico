@@ -11,7 +11,7 @@ class ValidatesController < ApplicationController
       redirect_to validate_path(@subscriber.id)
     else
       redirect_to new_validate_path,
-        notice: t('notice.not_found', model: t('mongoid.models.certificate'))
+                  notice: t('notice.not_found', model: t('mongoid.models.certificate'))
     end
   end
 
@@ -20,7 +20,7 @@ class ValidatesController < ApplicationController
 
     unless @subscriber
       redirect_to root_path,
-        notice: t('notice.not_found', model: t('mongoid.models.certificate'))
+                  notice: t('notice.not_found', model: t('mongoid.models.certificate'))
     end
   end
 end

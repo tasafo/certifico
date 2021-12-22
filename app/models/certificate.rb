@@ -41,20 +41,13 @@ class Certificate
 
   def queue_emails(subscriber_id, params)
     if subscriber_id
-      send_by_email(subscriber_id)
+      subscriber_ = Subscriber.find(subscriber_id)
+
+      subscriber_&.send_certificate_by_email
     else
-      subscribers = Subscriber.search(params, self)[:records]
+      subscribers_ = Subscriber.search(params, self)[:records]
 
-      subscribers.each do |subscriber|
-        send_by_email(subscriber.id.to_s)
-      end
+      subscribers_.each(&:send_certificate_by_email)
     end
-  end
-
-  private
-
-  def send_by_email(subscriber_id)
-    CertificateMailer.with(subscriber_id: subscriber_id)
-                     .with_attachment.deliver_later
   end
 end
