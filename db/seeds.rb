@@ -131,7 +131,7 @@ if Rails.env.development?
   vaam_template = admin_user.templates.create(
     name: 'VAAM 2009',
     font_color: '#000000',
-    image: File.new(FileImage.dummy_template)
+    image: File.new(ImageFile.dummy_template)
   )
 
   mare_template = admin_user.templates.create(
@@ -147,7 +147,7 @@ if Rails.env.development?
     final_date: '2009-05-19',
     workload: '8',
     local: 'auditório do IESAM, Belém - Pará',
-    image: File.new(FileImage.dummy_template)
+    image: File.new(ImageFile.dummy_template)
   )
 
   mare_certificate = admin_user.certificates.create(

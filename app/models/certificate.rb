@@ -32,7 +32,7 @@ class Certificate
   def destroy_image
     image_file = image.file
 
-    FileImage.remove(image_file) if image_file
+    ImageFile.remove(image_file) if image_file
   end
 
   def template_image

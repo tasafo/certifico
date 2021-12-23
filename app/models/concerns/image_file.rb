@@ -1,4 +1,4 @@
-class FileImage
+class ImageFile
   def self.template(template, image_url)
     return nil unless image_url
 

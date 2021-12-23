@@ -12,7 +12,7 @@ describe 'Create template', js: true do
 
       fill_in 'Nome', with: 'Modelo de certificado'
       fill_in 'Cor da fonte', with: '#000000'
-      attach_file('Imagem', FileImage.dummy_template)
+      attach_file('Imagem', ImageFile.dummy_template)
 
       click_button 'Criar Modelo'
     end
