@@ -1,7 +1,7 @@
 <%= link_to "#{t('title.action.new')} #{t('mongoid.models.certificate')}", new_certificate_path, class: 'btn btn-primary' %>
 
 <br/>
-<%= paginate @certificates %>
+<%= render 'shared/paginate', pagy: @pagy %>
 <hr/>
 
 <table class="table table-hover table-responsive">
@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @certificates.each do |certificate| %>
+    <% @records.each do |certificate| %>
       <tr>
         <td><%= certificate.category.name %></td>
         <td><%= certificate.title %></td>

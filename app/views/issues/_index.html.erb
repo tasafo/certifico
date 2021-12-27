@@ -3,7 +3,7 @@
             class: 'btn btn-primary' unless current_user.name_changed %>
 
 <br/>
-<%= paginate @subscribers %>
+<%= render 'shared/paginate', pagy: @pagy %>
 <hr/>
 
 <table class="table table-hover table-responsive">
@@ -20,7 +20,7 @@
   </thead>
 
   <tbody>
-    <% @subscribers.each do |subscriber| %>
+    <% @records.each do |subscriber| %>
       <tr>
         <td><%= subscriber.certificate.title %></td>
         <td><%= subscriber.profile.name %></td>

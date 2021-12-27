@@ -7,12 +7,10 @@ class SubscribersController < ApplicationController
   def index
     session[:back_to] = certificate_subscribers_path(@certificate)
 
-    subscribers = Subscriber.search(params, @certificate)
-
-    @subscribers = Kaminari.paginate_array(subscribers[:records])
-                           .page(params[:page]).per(20)
-
-    @subscribers_count = subscribers[:count]
+    query = Subscriber.search(params, @certificate)
+    count = query[:count]
+    @pagy, @records = pagy(query[:records], count: count)
+    @subscribers_count = count
   end
 
   def new
@@ -61,6 +59,10 @@ class SubscribersController < ApplicationController
   end
 
   private
+
+  def pagy_get_items(array, pagy)
+    array[pagy.offset, pagy.items]
+  end
 
   def subscriber_params
     params.require(:subscriber).permit(

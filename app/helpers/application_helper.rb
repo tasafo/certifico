@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def show_image(model, alt, size = '50x50')
     image_tag(https(model.image.url), alt: alt, size: size) if model.image?
   end

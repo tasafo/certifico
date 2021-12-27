@@ -11,9 +11,11 @@
   </div>
 
   <div class="col-lg-4 text-right">
-    <% if @subscribers.size > 0 %>
+    <% if @subscribers_count.positive? %>
       <%= form_tag(certificate_send_by_email_path(@certificate), method: :post, class: "form-inline") do %>
-        <%= submit_tag("#{t('title.action.send')} #{t('title.models.certificates')}", class: 'btn btn-warning', data: { confirm: t('title.action.send_confirm', count: @subscribers.size) }) %>
+        <%= submit_tag("#{t('title.action.send')} #{t('title.models.certificates')}",
+                       class: 'btn btn-warning',
+                       data: { confirm: t('title.action.send_confirm', count: @subscribers_count) }) %>
         <%= hidden_field_tag 'profile', params[:profile] %>
       <% end %>
     <% end %>
@@ -32,7 +34,7 @@
   </div>
 </div>
 
-<%= paginate @subscribers %>
+<%= render 'shared/paginate', pagy: @pagy %>
 <hr/>
 
 <table class="table table-hover table-responsive">
@@ -48,7 +50,7 @@
   </thead>
 
   <tbody>
-    <% @subscribers.each do |subscriber| %>
+    <% @records.each do |subscriber| %>
       <tr>
         <td><%= subscriber.user.full_name %></td>
         <td><%= subscriber.user.email %></td>

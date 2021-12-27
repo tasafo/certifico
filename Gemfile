@@ -9,7 +9,7 @@ ruby RUBY_VERSION
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails', '~> 6.1'
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 6.0'
 
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.4.1'
@@ -21,8 +21,7 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-colorpicker-rails'
 
-gem 'kaminari'
-gem 'kaminari-mongoid'
+gem 'pagy'
 
 gem 'jbuilder', '~> 2.0'
 
@@ -57,6 +56,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'database_cleaner-mongoid', '2.0.1'
+  gem 'faker'
 end
 
 group :test do

@@ -109,7 +109,14 @@ profiles = {
 end
 
 if Rails.env.development?
+  records = 20
   I18n.locale = 'pt-BR'
+  Faker::Config.locale = I18n.locale
+
+  category = Category.first
+  participant = Profile.find_by(name: 'participante')
+  speaker = Profile.find_by(name: 'palestrante')
+  organizer = Profile.find_by(name: 'organização')
 
   admin_user = User.create(
     email: 'admin@mail.com',
@@ -119,55 +126,48 @@ if Rails.env.development?
     admin: true
   )
 
-  luiz_user = User.create(
-    email: 'luiz@mail.com',
-    password: '123456',
-    full_name: 'Luiz Sanches',
-    user_name: 'luiz'
-  )
-
-  category = Category.first
-
-  vaam_template = admin_user.templates.create(
-    name: 'VAAM 2009',
-    font_color: '#000000',
-    image: File.new(ImageFile.dummy_template)
-  )
-
   mare_template = admin_user.templates.create(
-    name: 'Maré 2009',
-    font_color: '#000000'
+    name: 'VAAM', font_color: '#000000',
+    image: File.new(ImageFile.dummy('templates', 'vaam.jpg'))
   )
 
-  vaam_certificate = admin_user.certificates.create(
-    template: vaam_template,
-    category: category,
-    title: 'Visão Ágil Academic Meeting 2009',
-    initial_date: '2009-05-19',
-    final_date: '2009-05-19',
-    workload: '8',
+  admin_user.certificates.create(
+    template: mare_template, category: category,
+    title: 'VAAM 2009',
+    initial_date: Date.today, final_date: Date.today, workload: '8',
     local: 'auditório do IESAM, Belém - Pará',
-    image: File.new(ImageFile.dummy_template)
+    image: File.new(ImageFile.dummy('certificates', 'vaam.jpg'))
   )
 
-  mare_certificate = admin_user.certificates.create(
-    template: mare_template,
-    category: category,
-    title: 'Maré de Agilidade Belém 2009',
-    initial_date: '2009-11-19',
-    final_date: '2009-11-19',
-    workload: '8',
-    local: 'auditório do CESUPA, Belém - Pará'
-  )
+  1.upto(records) do
+    name = Faker::Name.name
+    user_name = "#{name.split.first.parameterize}.#{name.split.last.parameterize}"
 
-  participant = Profile.find_by(name: 'participante')
-  speaker = Profile.find_by(name: 'palestrante')
-  organizer = Profile.find_by(name: 'organização')
+    User.create(email: "#{user_name}@mail.com", password: '123456',
+                full_name: name, user_name: user_name)
+  end
 
-  luiz_user.subscribers.create(certificate: vaam_certificate,
-                               profile: organizer)
-  luiz_user.subscribers.create(certificate: vaam_certificate,
-                               profile: speaker, theme: 'Slackware Linux')
-  luiz_user.subscribers.create(certificate: mare_certificate,
-                               profile: participant)
+  1.upto(records) do
+    name = Faker::ProgrammingLanguage.name
+
+    template = admin_user.templates.create(
+      name: name, font_color: '#000000',
+      image: File.new(ImageFile.dummy('templates', 'mare-de-agilidade.jpg'))
+    )
+
+    certificate = admin_user.certificates.create(
+      template: template, category: category,
+      title: "#{name} #{Date.today.year}",
+      initial_date: Date.today, final_date: Date.today, workload: '8',
+      local: 'auditório do CESUPA, Belém - Pará',
+      image: File.new(ImageFile.dummy('certificates', 'mare-de-agilidade.jpg'))
+    )
+
+    User.all.each do |user|
+      user.subscribers.create(certificate: certificate, profile: organizer)
+      user.subscribers.create(certificate: certificate, profile: speaker,
+                              theme: Faker::Computer.os)
+      user.subscribers.create(certificate: certificate, profile: participant)
+    end
+  end
 end

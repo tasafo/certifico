@@ -4,8 +4,9 @@ class IssuesController < ApplicationController
   def index
     session[:back_to] = issues_path
 
-    @subscribers = current_user.subscribers.with_relations
-                               .page(params[:page]).per(10)
+    query = current_user.subscribers.with_relations
+
+    @pagy, @records = pagy(query, count: query.count)
   end
 
   def update

@@ -4,7 +4,8 @@ class TemplatesController < ApplicationController
   before_action :authorization, only: %i[show edit]
 
   def index
-    @templates = current_user.templates.page(params[:page]).per(10)
+    query = current_user.templates
+    @pagy, @records = pagy(query, count: query.count)
   end
 
   def show; end

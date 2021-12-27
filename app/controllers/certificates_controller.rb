@@ -5,7 +5,8 @@ class CertificatesController < ApplicationController
   before_action :authorization, only: %i[show edit]
 
   def index
-    @certificates = current_user.certificates.with_relations.page(params[:page]).per(10)
+    query = current_user.certificates.with_relations
+    @pagy, @records = pagy(query, count: query.count)
   end
 
   def show; end

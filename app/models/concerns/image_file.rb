@@ -49,7 +49,7 @@ class ImageFile
     end
   end
 
-  def self.dummy_template
-    Rails.root.join('spec', 'support', 'assets', 'images', 'vaam_template.jpg')
+  def self.dummy(type, file)
+    Rails.root.join('spec', 'support', 'assets', 'images', type, file)
   end
 end

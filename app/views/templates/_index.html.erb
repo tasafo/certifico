@@ -1,7 +1,7 @@
 <%= link_to "#{t('title.action.new')} #{t('mongoid.models.template')}", new_template_path, class: 'btn btn-primary' %>
 
 <br/>
-<%= paginate @templates %>
+<%= render 'shared/paginate', pagy: @pagy %>
 <hr/>
 
 <table class="table table-hover table-responsive">
@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @templates.each do |template| %>
+    <% @records.each do |template| %>
       <tr>
         <td><%= template.name %></td>
         <td><span class="badge" style="color: <%= template.font_color %>"><%= template.font_color %></span></td>
