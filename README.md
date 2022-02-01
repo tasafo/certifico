@@ -1,7 +1,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/50541fba39cd88576d9f/maintainability)](https://codeclimate.com/github/tasafo/certifico/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/50541fba39cd88576d9f/test_coverage)](https://codeclimate.com/github/tasafo/certifico/test_coverage)
 [![Build](https://github.com/tasafo/certifico/actions/workflows/build.yml/badge.svg)](https://github.com/tasafo/certifico/actions/workflows/build.yml)
-[![security](https://hakiri.io/github/tasafo/certifico/master.svg)](https://hakiri.io/github/tasafo/certifico/master)
 
 # Certifico
 
