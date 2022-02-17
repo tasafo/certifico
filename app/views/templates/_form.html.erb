@@ -2,15 +2,19 @@
   <%= f.input :name, autofocus: true %>
   <%= f.input :font_color %>
 
-  <%= show_image(@template, @template.name) %>
-  <%= f.input :image_cache, as: :hidden %>
-  <%= f.input :image, as: :file, hint: t('hint.image', size: '845x597') %>
+  <div class="panel panel-success">
+    <div class="panel-heading"><%= t('hint.title.template') %></div>
+    <div class="panel-body">
+      <%= show_image(@template, @template.name) %>
+      <%= f.input :image_cache, as: :hidden %>
+      <%= f.input :image, as: :file, hint: t('hint.image', size: '845x597') %>
 
-  <% if @template.name? %>
-    <%= f.check_box :remove_image %>
-    <%= "#{t('title.action.destroy')} #{t('mongoid.attributes.template.image')}" %>
-    <br /><br />
-  <% end %>
+      <% if @template.name? %>
+        <%= f.check_box :remove_image %>
+        <%= label_tag "template_remove_image", "#{t('title.action.destroy')} #{t('mongoid.attributes.template.image')}" %>
+      <% end %>
+    </div>
+  </div>
 
   <%= f.button :submit, class: 'btn btn-primary' %>
   <%= link_to t('title.action.back'), templates_path, class: 'btn btn-default' %>

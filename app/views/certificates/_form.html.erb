@@ -6,17 +6,22 @@
   <%= f.input :final_date %>
   <%= f.input :workload %>
   <%= f.input :local %>
-  <%= f.input :site, as: :url, placeholder: 'Ex.: https://www.site.com' %>
 
-  <%= show_image(@certificate, @certificate.title) %>
-  <%= f.input :image_cache, as: :hidden %>
-  <%= f.input :image, as: :file, hint: t('hint.image', size: '300x150') %>
+  <div class="panel panel-success">
+    <div class="panel-heading"><%= t('hint.title.certificate') %></div>
+    <div class="panel-body">
+      <%= f.input :site, as: :url, placeholder: t('hint.site') %>
 
-  <% if @certificate.title? %>
-    <%= f.check_box :remove_image %>
-    <%= "#{t('title.action.destroy')} #{t('mongoid.attributes.certificate.image')}" %>
-    <br /><br />
-  <% end %>
+      <%= show_image(@certificate, @certificate.title) %>
+      <%= f.input :image_cache, as: :hidden %>
+      <%= f.input :image, as: :file, hint: t('hint.image', size: '300x150') %>
+
+      <% if @certificate.title? %>
+        <%= f.check_box :remove_image %>
+        <%= label_tag "certificate_remove_image", "#{t('title.action.destroy')} #{t('mongoid.attributes.certificate.image')}" %>
+      <% end %>
+    </div>
+  </div>
 
   <%= f.button :submit, class: 'btn btn-primary' %>
   <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>
