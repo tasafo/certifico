@@ -34,7 +34,7 @@ gem 'simple_form'
 
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'carrierwave-i18n'
-gem 'cloudinary', '1.21.0'
+gem 'cloudinary', '1.22.0'
 
 gem 'prawn'
 gem 'prawn-table'
