@@ -6,6 +6,7 @@ en:
       certificates: Certificates
       subscribers: Subscribers
     action:
+      actions: Actions
       new: New
       new2: New
       edit: Edit
@@ -20,11 +21,10 @@ en:
       validate: Validate
       send: Send
       send_confirm: Do you confirm the sending of the %{count} selected certificates?
-      filter: Filter
       all: all
       search: Search
-      search_for: Search for
-      name_or_email: name or email
+      search_for_name_or_email: Search for name or email
+      event_site: Event site
     certificate:
       certify_that: We certify that
       attended: attended
@@ -57,3 +57,12 @@ en:
       resend_instructions: Resend confirmation instructions
     unlock:
       resend_instructions: Resend unlock instructions
+    subscriber:
+      downloads: Downloads
+    home:
+      header: We help you organize and deliver their certificates
+      sub: What can I do
+      item_1: Create models with the background image of certificates
+      item_2: Create certificates based on existing models
+      item_3: Users can generate the certificates when you want, because we save
+      item_4: The bottom of each generated certificate comes with a link to validate it

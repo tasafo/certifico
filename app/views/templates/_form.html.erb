@@ -1,13 +1,13 @@
 <%= simple_form_for(@template) do |f| %>
   <%= f.input :name, autofocus: true %>
-  <%= f.input :font_color %>
+  <%= f.input :font_color, input_html: { type: 'color' } %>
 
-  <div class="panel panel-success">
-    <div class="panel-heading"><%= t('hint.title.template') %></div>
-    <div class="panel-body">
+  <div class="card">
+    <div class="card-header bg-success text-white"><%= t('hint.title.template') %></div>
+    <div class="card-body">
       <%= show_image(@template, @template.name) %>
       <%= f.input :image_cache, as: :hidden %>
-      <%= f.input :image, as: :file, hint: t('hint.image', size: '845x597') %>
+      <%= f.input :image, as: :file, hint: t('hint.image', size: '845x597'), input_html: { class: 'form-control' } %>
 
       <% if @template.name? %>
         <%= f.check_box :remove_image %>
@@ -16,6 +16,7 @@
     </div>
   </div>
 
+  <hr/>
   <%= f.button :submit, class: 'btn btn-primary' %>
-  <%= link_to t('title.action.back'), templates_path, class: 'btn btn-default' %>
+  <%= link_to t('title.action.back'), templates_path, class: 'btn btn-secondary' %>
 <% end %>

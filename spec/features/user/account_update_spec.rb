@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe 'Account update', js: true do
-  let!(:user)         { create(:user, :paul) }
+  let!(:user) { create(:user, :paul) }
 
   context 'with valid data' do
     before do
       login_as user
-
+      click_link 'Olá, paulo'
       click_link 'Atualizar conta'
 
       fill_in 'Nome de usuário', with: 'carlos'

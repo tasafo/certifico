@@ -12,7 +12,16 @@
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
 //
-// const images = require.context('../images', true)
+const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+import 'bootstrap/dist/css/bootstrap.min';
+import 'bootstrap-icons/font/bootstrap-icons';
+import '../stylesheets/custom';
+
+import {} from 'jquery-ujs';
+
+import 'bootstrap/dist/js/bootstrap.min';
+import '../src/vendor/datepicker';
+import '../src/vendor/inputmask';
+import '../src/subscribers';

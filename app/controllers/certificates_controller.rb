@@ -5,7 +5,7 @@ class CertificatesController < ApplicationController
   before_action :authorization, only: %i[show edit]
 
   def index
-    query = current_user.certificates.with_relations
+    query = current_user.certificates.with_relations.order(initial_date: :desc)
     @pagy, @records = pagy(query, count: query.count)
   end
 

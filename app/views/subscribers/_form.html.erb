@@ -1,18 +1,18 @@
 <%= simple_form_for @subscriber, url: url do |subscriber| %>
   <%= subscriber.simple_fields_for :user do |user| %>
     <% if form == 'new' %>
-      <%= user.input :email %>
+      <%= user.input :email, autofocus: true %>
       <%= user.input :user_name %>
       <%= user.input :full_name %>
     <% end %>
 
-    <%= subscriber.input :profile_id, collection: @profiles %>
+    <%= subscriber.input :profile_id, collection: @profiles, input_html: { class: 'form-select' } %>
 
     <% if form == 'new' || (form == 'edit' && @subscriber.profile.has_theme?) %>
       <%= subscriber.input :theme %>
     <% end %>
 
     <%= subscriber.button :submit, class: 'btn btn-primary' %>
-    <%= link_to t('title.action.back'), certificate_subscribers_path(@certificate), class: 'btn btn-default' %>
+    <%= link_to t('title.action.back'), certificate_subscribers_path(@certificate), class: 'btn btn-secondary' %>
   <% end %>
 <% end %>

@@ -57,8 +57,15 @@ RSpec.configure do |config|
 
   config.include Devise::Test::ControllerHelpers, type: :controller
 
+  options = {
+    headless: (ENV['BROWSER'] ? false : true),
+    pending_connection_errors: false,
+    timeout: 30,
+    url_whitelist: %w[127.0.0.1]
+  }
+
   Capybara.register_driver :cuprite do |app|
-    Capybara::Cuprite::Driver.new(app, headless: true, timeout: 30)
+    Capybara::Cuprite::Driver.new(app, options)
   end
 
   Capybara.server = :puma, { Silent: true }

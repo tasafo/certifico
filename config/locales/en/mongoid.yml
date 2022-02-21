@@ -23,8 +23,8 @@ en:
         image: Image
       certificate:
         title: Title
-        initial_date: Initial Date
-        final_date: Final Date
+        initial_date: Start
+        final_date: End
         workload: Workload
         local: Local
         site: Site

@@ -1,5 +1,5 @@
 <%= simple_form_for @subscriber, url: url do |f| %>
-  <%= f.input :id, autofocus: true, input_html: { maxlength: 30 } %>
+  <%= f.input :id, autofocus: true, required: true, input_html: { maxlength: 30 } %>
 
   <%= f.submit "#{t('title.action.validate')} #{t('mongoid.models.certificate')}", class: 'btn btn-primary' %>
 <% end %>

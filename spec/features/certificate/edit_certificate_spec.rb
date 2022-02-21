@@ -14,15 +14,13 @@ describe 'Edit certificate', js: true do
       click_link 'Editar'
 
       fill_in 'Título', with: 'Fórum Internacional de Software Livre 10.0'
-      fill_in 'Data de início', with: '10/10/2010'
-      fill_in 'Data de término', with: '13/10/2010'
-      fill_in 'Carga horária', with: '32'
+      fill_in 'Horas', with: '32'
       fill_in 'Local', with: 'Centro de Convenções da PUC-RS, Porto Alegre-RS'
       fill_in 'Site', with: 'http://fisl.org/10'
 
       attach_file('Imagem', ImageFile.dummy('certificates', 'vaam.jpg'))
 
-      click_button 'Atualizar Certificado'
+      find('.btn-submit').trigger('click')
     end
 
     it 'redirects to the certificate page' do
@@ -43,7 +41,7 @@ describe 'Edit certificate', js: true do
 
       fill_in 'Título', with: ''
 
-      click_button 'Atualizar Certificado'
+      find('.btn-submit').trigger('click')
     end
 
     it 'renders form page' do

@@ -1,7 +1,7 @@
 <%= simple_form_for @subscriber, url: url do |f| %>
-  <%= f.input :profile_id, collection: @profiles %>
-  <%= f.input :file, as: :file, hint: t('hint.subscriber.file_html') %>
+  <%= f.input :profile_id, collection: @profiles, autofocus: true, input_html: { class: 'form-select' } %>
+  <%= f.input :file, as: :file, hint: t('hint.subscriber.file_html'), input_html: { class: 'form-control' } %>
 
   <%= f.submit "#{t('title.action.import')} #{t('title.models.subscribers')}", class: 'btn btn-primary' %>
-  <%= link_to t('title.action.back'), certificate_subscribers_path(@certificate), class: 'btn btn-default' %>
+  <%= link_to t('title.action.back'), certificate_subscribers_path(@certificate), class: 'btn btn-secondary' %>
 <% end %>

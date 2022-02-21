@@ -18,7 +18,7 @@ Gerencie seus certificados online
 
 ### Inicia os bancos de dados [MongoDB](https://www.mongodb.com/) e [Redis](https://redis.io/) instalados via [Docker compose](https://docs.docker.com/compose/)
 
-    docker-compose up
+    docker compose up
 
 ### Instala o chromium para executar os testes de aceitação
 

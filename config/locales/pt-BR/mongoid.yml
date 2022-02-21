@@ -22,9 +22,9 @@ pt-BR:
         image: Imagem
       certificate:
         title: Título
-        initial_date: Data de início
-        final_date: Data de término
-        workload: Carga horária
+        initial_date: Início
+        final_date: Término
+        workload: Horas
         local: Local
         site: Site
         image: Imagem

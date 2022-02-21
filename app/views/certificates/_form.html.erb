@@ -1,20 +1,20 @@
 <%= simple_form_for(@certificate) do |f| %>
-  <%= f.input :template_id, collection: current_user.templates, autofocus: true %>
-  <%= f.input :category_id, collection: @categories %>
+  <%= f.input :template_id, collection: current_user.templates.order(name: :asc), autofocus: true, input_html: { class: 'form-select' } %>
+  <%= f.input :category_id, collection: @categories, input_html: { class: 'form-select' } %>
   <%= f.input :title %>
-  <%= f.input :initial_date %>
-  <%= f.input :final_date %>
+  <%= f.input :initial_date, input_html: { class: 'date' } %>
+  <%= f.input :final_date, input_html: { class: 'date' } %>
   <%= f.input :workload %>
   <%= f.input :local %>
 
-  <div class="panel panel-success">
-    <div class="panel-heading"><%= t('hint.title.certificate') %></div>
-    <div class="panel-body">
+  <div class="card">
+    <div class="card-header bg-success text-white"><%= t('hint.title.certificate') %></div>
+    <div class="card-body">
       <%= f.input :site, as: :url, placeholder: t('hint.site') %>
 
       <%= show_image(@certificate, @certificate.title) %>
       <%= f.input :image_cache, as: :hidden %>
-      <%= f.input :image, as: :file, hint: t('hint.image', size: '300x150') %>
+      <%= f.input :image, as: :file, hint: t('hint.image', size: '300x150'), input_html: { class: 'form-control' } %>
 
       <% if @certificate.title? %>
         <%= f.check_box :remove_image %>
@@ -23,6 +23,7 @@
     </div>
   </div>
 
-  <%= f.button :submit, class: 'btn btn-primary' %>
-  <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-default' %>
+  <hr/>
+  <%= f.button :submit, class: 'btn btn-primary btn-submit' %>
+  <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-secondary' %>
 <% end %>

@@ -1,0 +1,24 @@
+<div class="container text-center shadow" style="background-color: white;">
+  <%= image_pack_tag('certifico.jpg', class: 'img-fluid') %>
+</div>
+
+<% icons = %w[images award-fill people check-square] %>
+
+<div class="container">
+  <h1 class="text-primary text-center py-3"><%= t('title.home.header') %></h1>
+
+  <h2 class="pb-2 border-bottom text-primary"><%= t('title.home.sub') %></h2>
+
+  <div class="row g-4 py-2 row-cols-1 row-cols-lg-4">
+  <% 0.upto(3) do |number| %>
+    <div class="feature col">
+      <div class="feature-icon text-center">
+        <i class="bi-<%= icons[number] %>" style="font-size: 3rem; color: blue;"></i>
+      </div>
+      <h5><%= t("title.home.item_#{number + 1}") %></h5>
+    </div>
+  <% end %>
+  </div>
+
+  <%= render 'shared/certificates' %>
+</div>

@@ -11,22 +11,11 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'rails', '~> 6.1'
 gem 'rails-i18n', '~> 6.0'
 
-gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass', '~> 3.4.1'
-
-gem 'uglifier', '>= 1.3.0'
-
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'bootstrap-datepicker-rails'
-gem 'bootstrap-colorpicker-rails'
-
 gem 'pagy'
-
-gem 'jbuilder', '~> 2.0'
 
 gem 'mongoid', '7.3.3'
 gem 'mongoid-slug'
+gem 'mongo_beautiful_logger'
 
 gem 'devise'
 gem 'devise-i18n'
@@ -46,13 +35,15 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 
 gem 'puma'
-
+gem 'net-smtp'
+gem 'net-pop'
+gem 'net-imap'
 gem 'bootsnap'
 
 gem 'webpacker'
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'database_cleaner-mongoid', '2.0.1'

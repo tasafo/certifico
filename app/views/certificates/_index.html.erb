@@ -1,37 +1,39 @@
-<%= link_to "#{t('title.action.new')} #{t('mongoid.models.certificate')}", new_certificate_path, class: 'btn btn-primary' %>
-
-<br/>
-<%= render 'shared/paginate', pagy: @pagy %>
-<hr/>
+<div class="row">
+  <div class="col-md-2">
+    <%= link_to "#{t('title.action.new')} #{t('mongoid.models.certificate')}", new_certificate_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="col-md-10 d-flex justify-content-end">
+    <%= render 'shared/paginate', pagy: @pagy %>
+  </div>
+</div>
 
 <table class="table table-hover table-responsive">
   <thead>
     <tr>
-      <th><%= t('mongoid.models.category') %></th>
-      <th><%= t('mongoid.attributes.certificate.title') %></th>
-      <th><%= t('mongoid.models.template') %></th>
-      <th><%= t('mongoid.attributes.certificate.initial_date') %></th>
-      <th><%= t('mongoid.attributes.certificate.final_date') %></th>
-      <th><%= t('mongoid.attributes.certificate.workload') %></th>
-      <th><%= t('mongoid.attributes.certificate.image') %></th>
-      <th colspan="3"></th>
+      <th width="10%"><%= t('mongoid.models.category') %></th>
+      <th width="30%"><%= t('mongoid.attributes.certificate.title') %></th>
+      <th width="10%"><%= t('mongoid.attributes.certificate.initial_date') %></th>
+      <th width="10%"><%= t('mongoid.attributes.certificate.final_date') %></th>
+      <th width="5%" class="text-center"><%= t('mongoid.attributes.certificate.workload') %></th>
+      <th width="5%" class="text-center"><%= t('mongoid.attributes.certificate.image') %></th>
+      <th width="30%" class="text-center"><%= t('title.action.actions') %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @records.each do |certificate| %>
       <tr>
         <td><%= certificate.category.name %></td>
         <td><%= certificate.title %></td>
-        <td><%= certificate.template.name %></td>
         <td><%= certificate.initial_date %></td>
         <td><%= certificate.final_date %></td>
-        <td><%= certificate.workload %></td>
-        <td><%= show_image(certificate, certificate.title) %></td>
-        <td><%= link_to t('title.action.show'), certificate, class: 'btn btn-info' %></td>
-        <td><%= link_to t('title.action.edit'), edit_certificate_path(certificate), class: 'btn btn-success' %></td>
-        <td><%= link_to t('title.models.subscribers'), certificate_subscribers_path(certificate), class: 'btn btn-warning' %></td>
-        <td><%= link_to t('title.action.destroy'), certificate, class: 'btn btn-danger', method: :delete, data: { confirm: t('title.action.are_you_sure') } %></td>
+        <td class="text-center"><%= certificate.workload %></td>
+        <td class="text-center"><%= show_image(certificate, certificate.title) %></td>
+        <td class="text-center">
+          <%= link_to t('title.action.show'), certificate, class: 'btn btn-primary' %>
+          <%= link_to t('title.action.edit'), edit_certificate_path(certificate), class: 'btn btn-primary' %>
+          <%= link_to t('title.models.subscribers'), certificate_subscribers_path(certificate), class: 'btn btn-primary' %>
+          <%= link_to t('title.action.destroy'), certificate, class: 'btn btn-danger', method: :delete, data: { confirm: t('title.action.are_you_sure') } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

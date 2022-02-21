@@ -1,20 +1,25 @@
 <div class="row">
-  <div class="col-lg-8">
-    <%= form_tag(certificate_subscribers_path(@certificate), method: :get, class: "form-inline") do %>
-      <%= label_tag(:profile, "#{t('title.action.filter')} #{t('mongoid.attributes.subscriber.profile_id')}") %>
-      <%= select_tag 'profile', options_from_collection_for_select(@profiles, 'name', 'name', params[:profile]), include_blank: t('title.action.all'), class: 'btn' %>
-
-      <%= label_tag(:search, t('title.action.search_for')) %>
-      <%= text_field_tag(:search, params[:search], placeholder: t('title.action.name_or_email'), class: 'form-control') %>
-      <%= submit_tag(t('title.action.search'), class: 'btn btn-primary') %>
+  <div class="col-md-8">
+    <%= form_tag(certificate_subscribers_path(@certificate), method: :get, class: "form-inline", id: "search-form") do %>
+      <div class="row g-3">
+        <div class="col-auto">
+          <%= select_tag 'profile', options_from_collection_for_select(@profiles, 'name', 'name', params[:profile]), include_blank: t('title.action.all'), class: 'form-select' %>
+        </div>
+        <div class="col-auto">
+          <%= text_field_tag(:search, params[:search], placeholder: t('title.action.search_for_name_or_email'), class: 'form-control', size: '30') %>
+        </div>
+        <div class="col-auto">
+          <%= submit_tag(t('title.action.search'), class: 'btn btn-primary') %>
+        </div>
+      </div>
     <% end %>
   </div>
 
-  <div class="col-lg-4 text-right">
+  <div class="col-md-4 d-flex justify-content-end">
     <% if @subscribers_count.positive? %>
       <%= form_tag(certificate_send_by_email_path(@certificate), method: :post, class: "form-inline") do %>
         <%= submit_tag("#{t('title.action.send')} #{t('title.models.certificates')}",
-                       class: 'btn btn-warning',
+                       class: 'btn btn-primary',
                        data: { confirm: t('title.action.send_confirm', count: @subscribers_count) }) %>
         <%= hidden_field_tag 'profile', params[:profile] %>
       <% end %>
@@ -25,17 +30,17 @@
 <hr/>
 
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-md-4">
     <%= link_to "#{t('title.action.new')} #{t('mongoid.models.subscriber')}",
                 new_certificate_subscriber_path(@certificate), class: 'btn btn-primary' %>
     <%= link_to "#{t('title.action.import')} #{t('title.models.subscribers')}",
                 new_certificate_import_subscriber_path(@certificate), class: 'btn btn-primary' %>
-    <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-primary' %>
+    <%= link_to t('title.action.back'), certificates_path, class: 'btn btn-secondary' %>
+  </div>
+  <div class="col-md-8 d-flex justify-content-end">
+    <%= render 'shared/paginate', pagy: @pagy %>
   </div>
 </div>
-
-<%= render 'shared/paginate', pagy: @pagy %>
-<hr/>
 
 <table class="table table-hover table-responsive">
   <thead>
@@ -45,10 +50,9 @@
       <th><%= t('mongoid.attributes.subscriber.profile_id') %></th>
       <th><%= t('mongoid.attributes.subscriber.theme') %></th>
       <th class="text-center"><%= t('mongoid.title.subscriber.downloads') %></th>
-      <th colspan="5"></th>
+      <th colspan="5" class="text-center"><%= t('title.action.actions') %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @records.each do |subscriber| %>
       <tr>
@@ -57,35 +61,27 @@
         <td><%= subscriber.profile.name %></td>
         <td><%= subscriber.theme %></td>
         <td class="text-center">
-          <span class="badge"><%= subscriber.downloads.size %></span>
+          <span class="badge rounded-pill bg-dark"><%= subscriber.downloads.size %></span>
         </td>
         <td>
           <%= link_to issue_path(subscriber), title: "#{t('title.action.generate')}/#{t('title.action.show')} #{t('mongoid.models.certificate')}",
-                      id: "generate_#{subscriber.id}", class: 'btn btn-info',
+                      id: "generate_#{subscriber.id}", class: 'btn btn-primary',
                       method: :delete do %>
-            <i class="glyphicon glyphicon-download-alt"></i>
+            <i class="bi-download"></i>
           <% end %>
         </td>
         <td>
           <%= link_to edit_certificate_subscriber_path(@certificate, subscriber),
-                      title: "#{t('title.action.edit')} #{t('mongoid.attributes.subscriber.profile')}/#{t('mongoid.attributes.subscriber.theme')}", class: 'btn btn-success' do %>
-            <i class="glyphicon glyphicon-pencil"></i>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to certificate_subscriber_path(@certificate, subscriber),
-                      title: t('title.action.destroy'),
-                      class: 'btn btn-danger', method: :delete,
-                      data: { confirm: t('title.action.are_you_sure') } do %>
-            <i class="glyphicon glyphicon-trash"></i>
+                      title: "#{t('title.action.edit')} #{t('mongoid.attributes.subscriber.profile')}/#{t('mongoid.attributes.subscriber.theme')}", class: 'btn btn-primary' do %>
+            <i class="bi-pencil"></i>
           <% end %>
         </td>
         <td>
           <%= form_tag(certificate_send_by_email_path(@certificate), method: :post, class: 'form-inline') do %>
-            <%= button_tag type: 'submit', class: 'btn btn-warning',
+            <%= button_tag type: 'submit', class: 'btn btn-primary',
                            title: "#{t('title.action.send')} #{t('mongoid.models.certificate')}",
                            data: { confirm: t('title.action.are_you_sure') } do %>
-              <i class="glyphicon glyphicon-send"></i>
+              <i class="bi-send"></i>
             <% end %>
             <%= hidden_field_tag 'subscriber_id', subscriber.id %>
           <% end %>
@@ -94,7 +90,15 @@
           <%= link_to edit_username_path(subscriber.user, subscriber_id: subscriber.id),
                       title: "#{t('title.action.edit')} #{t('mongoid.attributes.user.full_name')}",
                       id: "edit_username_#{subscriber.id}", class: 'btn btn-primary' do %>
-            <i class="glyphicon glyphicon-user"></i>
+            <i class="bi-person-check"></i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to certificate_subscriber_path(@certificate, subscriber),
+                      title: t('title.action.destroy'),
+                      class: 'btn btn-danger', method: :delete,
+                      data: { confirm: t('title.action.are_you_sure') } do %>
+            <i class="bi-trash"></i>
           <% end %>
         </td>
       </tr>

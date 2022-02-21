@@ -1,8 +1,10 @@
-<div class="col-md-<%= cols %>">
-  <div class="panel panel-info">
-    <div class="panel-heading"><%= title.html_safe %></div>
-    <div class="panel-body">
-      <%= yield %>
+<div class="container d-flex justify-content-center">
+  <div class="col-md-<%= cols %>">
+    <div class="card">
+      <h5 class="card-header bg-primary text-white"><%= title.html_safe %></h5>
+      <div class="card-body">
+        <%= yield %>
+      </div>
     </div>
   </div>
 </div>

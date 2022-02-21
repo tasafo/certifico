@@ -6,9 +6,8 @@ describe 'Sign out', js: true do
 
     before do
       login_as user
-
       visit root_path
-
+      click_link 'Olá, paulo'
       click_link 'Sair'
     end
 
@@ -16,8 +15,8 @@ describe 'Sign out', js: true do
       expect(current_path).to eql(root_path)
     end
 
-    it 'doesn\'t render name' do
-      expect(page).not_to have_content('Login efetuado com sucesso.')
+    it 'displays success message' do
+      expect(page).to have_content('Logout efetuado com sucesso.')
     end
   end
 end

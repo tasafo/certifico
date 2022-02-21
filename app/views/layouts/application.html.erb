@@ -4,61 +4,67 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <title>Certifico</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
-
   <body>
-    <header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="navbar-inner">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/">Certifico</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Certifico</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <% if user_signed_in? %>
-              <li><%= link_to t('title.user.greeting', name: current_user.user_name), '/' %></li>
-              <li class="<%= request.fullpath.include?(templates_path) ? 'active' : '' %>"><%= link_to t('menu.templates'), templates_path %></li>
-              <li class="<%= request.fullpath.include?(certificates_path) ? 'active' : '' %>"><%= link_to t('menu.certificates'), certificates_path %></li>
-              <li class="<%= request.fullpath.include?(issues_path) ? 'active' : '' %>"><%= link_to t('menu.issues'), issues_path %></li>
-              <li class="<%= request.fullpath.include?(edit_user_registration_path) ? 'active' : '' %>"><%= link_to t('menu.update_account'), edit_user_registration_path %></li>
-              <li><%= link_to t('menu.validate'), new_validate_path %></li>
-              <li><%= link_to t('menu.sign.out'), destroy_user_session_path, method: :delete %></li>
+              <li class="nav-item"><%= link_to t('menu.templates'), templates_path, class: "nav-link #{request.fullpath.include?(templates_path) ? 'active' : ''}" %></li>
+              <li class="nav-item"><%= link_to t('menu.certificates'), certificates_path, class: "nav-link #{request.fullpath.include?(certificates_path) ? 'active' : ''}" %></li>
+              <li class="nav-item"><%= link_to t('menu.issues'), issues_path, class: "nav-link #{request.fullpath.include?(issues_path) ? 'active' : ''}" %></li>
+              <li class="nav-item"><%= link_to t('menu.validate'), new_validate_path, class: "nav-link" %></li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= t('title.user.greeting', name: current_user.user_name) %>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><%= link_to t('menu.update_account'), edit_user_registration_path, class: "dropdown-item" %></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><%= link_to t('menu.sign.out'), destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                </ul>
+              </li>
             <% else %>
-              <li><%= link_to t('menu.sign.in'), new_user_session_path %></li>
-              <li><%= link_to t('menu.sign.up'), new_user_registration_path %></li>
-              <li><%= link_to t('menu.validate'), new_validate_path %></li>
+              <li class="nav-item"><%= link_to t('menu.sign.in'), new_user_session_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to t('menu.sign.up'), new_user_registration_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to t('menu.validate'), new_validate_path, class: "nav-link" %></li>
             <% end %>
-            </ul>
-          </div>
+          </ul>
         </div>
       </div>
-    </header>
+    </nav>
 
-    <div class="container master-container">
+    <div class="container">
       <% if alert %>
-        <div class="alert alert-danger fade in" data-alert="alert">
-          <a class="close" data-dismiss='alert' href="#">×</a>
-          <p><%= alert %></p>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= alert %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       <% end %>
 
       <% if notice %>
-        <div class="alert alert-success fade in" data-alert="alert">
-          <a class="close" data-dismiss='alert' href="#">×</a>
-          <p><%= notice %></p>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= notice %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       <% end %>
 
       <%= yield %>
     </div>
 
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; <%= link_to 'Tá safo!', 'https://tasafo.org' %> 2016.</p>
-      </div>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="col-md-12 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto">
+        <span class="copy-left">&copy;</span> 2016 - <%= Time.zone.now.year %>. <%= link_to 'Tá safo!', 'https://tasafo.org', class: 'link-dark text-decoration-none' %>
+      </p>
     </footer>
 
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>

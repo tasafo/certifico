@@ -1,17 +1,17 @@
 <% unless @certificates.blank? %>
-  <hr/>
-  <h1 class="text-primary"><%= "#{t('title.models.certificates')} #{t('title.certificate.generated')}" %></h1>
+  <h2 class="text-primary border-bottom"><%= "#{t('title.models.certificates')} #{t('title.certificate.generated')}" %></h2>
 
-  <div class="content">
-    <div class="row justify-content-left">
-      <% @certificates.each do |certificate| %>
-        <div class="col-10 col-sm-5 col-md-5 col-lg-4 col-xl-3">
-          <div class="text-center border-with-shadow">
-            <%= link_to image_tag(https(certificate.image.url), alt: certificate.title, title: certificate.title, size: '300x150'), certificate.site, target: '_blank' %>
-          </div>
-          <br/>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    <% @certificates.each do |certificate| %>
+    <div class="col">
+      <div class="card h-100 text-center shadow">
+        <%= image_tag(https(certificate.image.url), size: '300x150', class: 'card-img-top', alt: certificate.title) %>
+        <div class="card-body">
+          <h5 class="card-title"><%= certificate.title %></h5>
+          <%= link_to t('title.action.event_site'), certificate.site, target: '_blank', class: 'btn btn-primary' %>
         </div>
-      <% end %>
+      </div>
     </div>
+    <% end %>
   </div>
 <% end %>

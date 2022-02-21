@@ -6,6 +6,7 @@ pt-BR:
       certificates: Certificados
       subscribers: Inscritos
     action:
+      actions: Ações
       new: Novo
       new2: Nova
       edit: Editar
@@ -20,11 +21,10 @@ pt-BR:
       validate: Validar
       send: Enviar
       send_confirm: Você confirma o envio de %{count} certificado(s) selecionado(s)?
-      filter: Filtrar
       all: todos
       search: Buscar
-      search_for: Buscar por
-      name_or_email: nome ou e-mail
+      search_for_name_or_email: Buscar por nome ou e-mail
+      event_site: Site do evento
     certificate:
       certify_that: Certificamos que
       attended: participou
@@ -59,3 +59,10 @@ pt-BR:
       resend_instructions: Reenviar instruções de desbloqueio
     subscriber:
       downloads: Downloads
+    home:
+      header: Ajudamos você a organizar e entregar seus certificados
+      sub: O que você pode fazer
+      item_1: Criar modelos com a imagem de fundo dos certificados
+      item_2: Criar certificados baseados nos modelos existentes
+      item_3: Os usuários podem gerar os certificados no momento que desejarem
+      item_4: O rodapé de cada certificado gerado vem com um link para validá-lo
