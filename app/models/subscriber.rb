@@ -80,9 +80,11 @@ class Subscriber
   end
 
   def self.user_ids(search)
-    user_ids = User.where(email: /#{search}/).pluck(:id)
+    regex = Regexp.new(Regexp.escape(search), Regexp::IGNORECASE)
 
-    user_ids += User.where(full_name: /#{search}/i).pluck(:id)
+    user_ids = User.where(email: regex).pluck(:id)
+
+    user_ids += User.where(full_name: regex).pluck(:id)
 
     { '$in' => user_ids }
   end
