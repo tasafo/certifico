@@ -383,7 +383,6 @@ DEPENDENCIES
   puma
   rails (~> 7.0)
   rails-i18n (~> 7.0)
-  rake (~> 13.0)
   roo
   roo-xls
   rspec-rails
@@ -397,6 +396,3 @@ DEPENDENCIES
 
 RUBY VERSION
    ruby 3.1.1p18
-
-BUNDLED WITH
-   2.3.7
