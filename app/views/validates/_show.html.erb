@@ -18,11 +18,11 @@
     </tr>
     <tr>
       <th><%= t('mongoid.attributes.certificate.initial_date') %></th>
-      <td><%= @subscriber.certificate.initial_date %></td>
+      <td><%= l @subscriber.certificate.initial_date %></td>
     </tr>
     <tr>
       <th><%= t('mongoid.attributes.certificate.final_date') %></th>
-      <td><%= @subscriber.certificate.final_date %></td>
+      <td><%= l @subscriber.certificate.final_date %></td>
     </tr>
     <tr>
       <th><%= t('mongoid.attributes.certificate.workload') %></th>
@@ -35,4 +35,4 @@
   </tbody>
 </table>
 
-<%= link_to t('title.action.back'), new_validate_path, class: 'btn btn-default' %>
+<%= link_to t('title.action.back'), new_validate_path, class: 'btn btn-secondary' %>

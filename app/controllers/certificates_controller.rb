@@ -15,7 +15,10 @@ class CertificatesController < ApplicationController
     @certificate = Certificate.new
   end
 
-  def edit; end
+  def edit
+    @certificate.initial_date = I18n.l(@certificate.initial_date)
+    @certificate.final_date = I18n.l(@certificate.final_date)
+  end
 
   def create
     @certificate = Certificate.new(certificate_params)
