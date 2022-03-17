@@ -41,6 +41,8 @@ gem 'net-pop'
 gem 'net-imap'
 gem 'bootsnap'
 
+gem 'rake', '~> 13.0'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
