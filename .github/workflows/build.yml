@@ -43,6 +43,7 @@ jobs:
           npm-
     - name: Build and test
       run: |
+        yarn install
         bundle exec rails assets:precompile RAILS_ENV=test
         bundle exec rails spec
     - name: Publish code coverage

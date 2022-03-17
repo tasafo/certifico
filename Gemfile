@@ -8,13 +8,13 @@ end
 ruby RUBY_VERSION
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
-gem 'rails', '~> 6.1'
-gem 'rails-i18n', '~> 6.0'
+gem 'rails', '~> 7.0'
+gem 'rails-i18n', '~> 7.0'
 
 gem 'webpacker'
 gem 'pagy'
 
-gem 'mongoid', '7.3.3'
+gem 'mongoid', '7.3.4'
 gem 'mongoid-slug'
 gem 'mongo_beautiful_logger'
 
@@ -58,7 +58,4 @@ end
 
 group :development do
   gem 'web-console'
-  gem 'listen'
-  gem 'spring'
-  gem 'spring-watcher-listen'
 end
