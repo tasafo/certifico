@@ -1,4 +1,10 @@
 {
+  "name": "certifico",
+  "version": "1.0.0",
+  "license": "AGPL-3.0",
+  "scripts": {
+    "lint": "eslint -c .eslintrc.json --ext .js,.js.es6 ."
+  },
   "dependencies": {
     "@popperjs/core": "^2.11.2",
     "@rails/webpacker": "5.4.3",
@@ -7,7 +13,9 @@
     "jquery": "^3.6.0",
     "jquery-ui": "^1.13.1",
     "jquery-ujs": "^1.2.3",
-    "maskedinput": "^3.3.11"
+    "maskedinput": "^3.3.11",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.0.0"
