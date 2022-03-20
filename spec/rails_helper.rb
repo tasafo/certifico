@@ -61,6 +61,7 @@ RSpec.configure do |config|
     headless: (ENV['BROWSER'] ? false : true),
     pending_connection_errors: false,
     timeout: 30,
+    process_timeout: 30,
     url_whitelist: %w[127.0.0.1]
   }
 
