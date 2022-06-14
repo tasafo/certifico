@@ -18,7 +18,7 @@ class Certificate
 
   validates_presence_of :template_id, :category_id, :title, :initial_date,
                         :final_date, :workload, :local
-  validates_length_of :title, maximum: 100
+  validates_length_of :title, maximum: 200
   validates_format_of :site, with: VALID_SITE_REGEX
 
   belongs_to :user
