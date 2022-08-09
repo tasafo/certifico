@@ -25,7 +25,6 @@ class Certificate
   belongs_to :template
   belongs_to :category
   has_many :subscribers, dependent: :restrict_with_error
-  has_many :downloads
 
   scope :with_relations, -> { includes(:user, :template, :category) }
 

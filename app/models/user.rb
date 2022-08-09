@@ -48,7 +48,6 @@ class User
   has_many :templates, dependent: :restrict_with_error
   has_many :certificates, dependent: :restrict_with_error
   has_many :subscribers, dependent: :restrict_with_error
-  has_many :downloads
 
   validates_presence_of :email, :full_name, :user_name
   validates_length_of :email, maximum: 100
