@@ -33,6 +33,10 @@ class Certificate
     image_file = image.file
 
     ImageFile.remove(image_file) if image_file
+
+    image_cached = Rails.root.join('tmp', 'certificates', id.to_s)
+
+    File.delete(image_cached) if File.exist?(image_cached)
   end
 
   def template_image
