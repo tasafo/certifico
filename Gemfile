@@ -14,7 +14,7 @@ gem 'rails-i18n', '~> 7.0'
 gem 'webpacker'
 gem 'pagy'
 
-gem 'mongoid', '7.3.4'
+gem 'mongoid', '7.5.1'
 gem 'mongoid-slug'
 gem 'mongo_beautiful_logger'
 
