@@ -101,13 +101,29 @@ class Subscriber
     raise notice unless email.match?(VALID_EMAIL_REGEX)
   end
 
+  def self.normalize_name(name)
+    name.titleize
+        .gsub(/D. /, &:downcase)
+        .gsub(/D.. /, &:downcase)
+        .gsub(/E /, &:downcase)
+        .gsub(/^á/, &:upcase)
+        .gsub(/^â/, &:upcase)
+        .gsub(/^é/, &:upcase)
+        .gsub(/^ó/, &:upcase)
+        .gsub(/ á/, &:upcase)
+        .gsub(/ â/, &:upcase)
+        .gsub(/ é/, &:upcase)
+        .gsub(/ ó/, &:upcase)
+  end
+
   def self.import_subscriber(sheet, certificate, profile)
     sheet.each do |line|
-      email = line[0]
+      email = line[0].downcase
+      name = normalize_name(line[1])
 
       raise_invalid_email(email)
 
-      user = find_user(email: email, name: line[1], user_name: email.split('@').first.delete('.'))
+      user = find_user(email: email, name: name, user_name: email.split('@').first.delete('.'))
 
       args = { user: user, certificate: certificate, profile: profile, theme: line[2] }
 
