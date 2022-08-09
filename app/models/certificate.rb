@@ -14,7 +14,7 @@ class Certificate
 
   slug :title
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, CertificateImageUploader
 
   validates_presence_of :template_id, :category_id, :title, :initial_date,
                         :final_date, :workload, :local

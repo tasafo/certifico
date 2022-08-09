@@ -8,7 +8,7 @@ class Template
 
   slug :name
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, TemplateImageUploader
 
   validates_presence_of :name, :font_color
   validates_length_of :name, maximum: 100

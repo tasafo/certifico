@@ -3,6 +3,6 @@ CarrierWave.configure do |config|
     config.cache_storage = :file
   else
     config.storage = :file
-    config.enable_processing = false
+    config.enable_processing = true
   end
 end

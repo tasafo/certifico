@@ -44,8 +44,6 @@ describe 'Create certificate', js: true do
       click_link 'Certificados'
       click_link 'Novo Certificado'
 
-      attach_file('Imagem', Rails.root.join('public', 'robots.txt'))
-
       find('.btn-submit').trigger('click')
     end
 

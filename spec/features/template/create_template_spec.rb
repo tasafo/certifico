@@ -33,8 +33,6 @@ describe 'Create template', js: true do
       click_link 'Modelos'
       click_link 'Novo Modelo'
 
-      attach_file('Imagem', Rails.root.join('public', 'robots.txt'))
-
       click_button 'Criar Modelo'
     end
 
@@ -44,6 +42,28 @@ describe 'Create template', js: true do
 
     it 'displays error messages' do
       expect(page).to have_content('não pode ficar em branco')
+    end
+  end
+
+  context 'with invalid image' do
+    before do
+      login_as user
+
+      click_link 'Modelos'
+      click_link 'Novo Modelo'
+      fill_in 'Nome', with: 'Modelo de certificado'
+
+      attach_file('Imagem', ImageFile.dummy('templates', 'fake.jpg'))
+
+      click_button 'Criar Modelo'
+    end
+
+    it 'renders form page' do
+      expect(current_path).to eql(templates_path)
+    end
+
+    it 'displays error messages' do
+      expect(page).to have_content('talvez arquivo não seja uma imagem?')
     end
   end
 end
